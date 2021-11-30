@@ -1,0 +1,70 @@
+﻿  Error.cpp
+  FST.cpp
+  GEN.cpp
+  GRB.cpp
+  ILG.cpp
+  In.cpp
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(203,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(211,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(292,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(429,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(568,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(721,28): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(870,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(977,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(991,57): warning C4806: ==: небезопасная операция: значение типа "bool", приведенное к типу "char", не может равняться данной константе
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1033,50): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1133,41): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1187,22): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1196,48): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1296,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1344,50): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1383,40): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1447,44): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1531,18): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1534,28): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1555,66): warning C4806: ==: небезопасная операция: значение типа "bool", приведенное к типу "char", не может равняться данной константе
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1596,51): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1720,31): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1829,21): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(178,7): warning C4101: counter_idenf_in_one_line: неиспользованная локальная переменная
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(1321,12): warning C4101: data: неиспользованная локальная переменная
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(2010,14): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(2048,14): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(2066,20): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(2094,15): warning C4553: "==": результат выражения не используется; вы хотели использовать "="?
+C:\apapka\programms\Git\SVI-2021\lp_lab13\In.cpp(2102,23): warning C4018: <: несоответствие типов со знаком и без знака
+  IT.cpp
+  LEX.cpp
+C:\apapka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(54,14): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(167,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(175,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(194,14): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(674,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(818,13): warning C4018: <: несоответствие типов со знаком и без знака
+  Log.cpp
+  LT.cpp
+  MFST.cpp
+C:\apapka\programms\Git\SVI-2021\lp_lab13\MFST.cpp(230,68): warning C4267: =: преобразование из "size_t" в "short"; возможна потеря данных
+  Parm.cpp
+C:\apapka\programms\Git\SVI-2021\lp_lab13\Parm.cpp(42,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\Parm.cpp(49,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\Parm.cpp(69,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\Parm.cpp(78,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\Parm.cpp(99,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\Parm.cpp(106,29): warning C4018: <: несоответствие типов со знаком и без знака
+  PN.cpp
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(56,42): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(70,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(81,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(130,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(141,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(169,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(355,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(377,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(397,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\apapka\programms\Git\SVI-2021\lp_lab13\PN.cpp(234,7): warning C4101: numbline: неиспользованная локальная переменная
+  SVI.cpp
+  Создание кода...
+C:\apapka\programms\Git\SVI-2021\lp_lab13\IT.cpp(110): warning C4715: IT::GetLastFunc: значение возвращается не при всех путях выполнения
+  lp_lab13.vcxproj -> C:\apapka\programms\Git\SVI-2021\Debug\lp_lab13.exe
