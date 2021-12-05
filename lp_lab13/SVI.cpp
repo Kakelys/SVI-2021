@@ -13,6 +13,7 @@
 #include "GRB.h"
 #include "MFST.h"
 #include "ILG.h"
+#include "GEN.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -36,36 +37,49 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 		LEX::lexTable(parm.out, idenfs, lexems);
 
-		PN::PolishNT(parm.out,lexems,idenfs);
+
+
+		PN::PolishNT(parm.in,lexems,idenfs);
+
+
 		std::cout << "\n\n\n";
 		LEX::DisplayLT(lexems);
 		std::cout << "\n\n\n\n\n";
-		//Промежуточный код
+
+
+		LEX::DisplayIT(idenfs);
+		std::cout << "\n\n\n\n";
+		std::cout << "\n\n\n\n";
+
+
+		//Генерация кода
+		GEN::CodeGeneration(lexems, idenfs);
+		// 
+		//Промежуточный код, который я не доделал и по итогу не использовал, bruh
 		//ILG::Gen(lexems, idenfs);
 
-		//Костыль под симантический анализатор, надо обновить Грейбаха перед удалением
-		for (int k = 1; k < lexems.size + 1; k++)
+
+
+
+		//Display part
+	
+				//Костыль под симантический анализатор, надо обновить Грейбаха перед удалением
+	/*	for (int k = 1; k < lexems.size + 1; k++)
 		{
 			if (lexems.table[k - 1].lexema == "+" || lexems.table[k - 1].lexema == "-" || lexems.table[k - 1].lexema == "*" || lexems.table[k - 1].lexema == "/")
 			{
 				lexems.table[k - 1].lexema = "v";
 			}
-		}
-
-
-		//Display part
-	
-
-
-		std::cout << "\n\n\n";
-		LEX::DisplayLT(lexems);
+		}*/
 
 
 
-		std::cout << "\n\n\n\n";
-		LEX::DisplayIT(idenfs);
+
+
 		//
-		
+
+
+
 		//Синтаксис
 		/*MFST_TRACE_START
 			MFST::Mfst mfst(lexems, GRB::getGreibach());
@@ -76,34 +90,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
-		//Костыль до того момента, пока я не обновлю Грейбаха
-		/*LT::Delete(lexems);
-		lexems = LT::Create(LT_MAXSIZE);
-		IT::Delete(idenfs);
-		idenfs = IT::Create(IT_MAXSIZE);
-		LEX::lexTable(parm.out, idenfs, lexems);*/
-
-		//Display part
-		/*PN::PolishNT(parm.out, lexems, idenfs);
 
 
-		std::cout << "\n\n\n";
-		LEX::DisplayLT(lexems);
-
-
-
-		std::cout << "\n\n\n\n";
-		LEX::DisplayIT(idenfs);*/
-		//
-
-
-		//второй способ(но нестабильный и сделан через файлы)
-		// LEX::lextable(parm.out);
-		//In::getILfile(parm.out);
-		//PN::Polish(parm.out);
-
-
-
+		system("start C:\\papka\\programms\\Git\\SVI-2021\\compile.bat");
 	}
 	catch (Error::ERROR e)
 	{

@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "GRB.h"
 #include "LT.h"
-#include <stack>
+
 
 
 #define MFST_DIAGN_MAXSIZE 2*ERROR_MAXSIZE_MESSAGE

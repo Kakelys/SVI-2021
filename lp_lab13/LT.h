@@ -25,6 +25,43 @@
 #define LEX_DIRSLASH "v"
 #define LEX_ARIFM "v"
 #define LEX_EQUAL "="
+#define LEX_IF "z"
+#define LEX_IF_OP "x"
+
+//сравнение
+#define BIGGER_EQUAL ">="
+#define LESS_EQUAL "<="
+#define DEQUAL "=="
+#define NONEQUAL "!="
+#define LESS "<"
+#define BIGGER ">"
+
+
+
+#define MAIN 'm'
+#define ID 'i'
+#define LITERAL 'l'
+#define FUNCTION 'f'
+#define DECLARE 'd'
+#define RETURN 'r'
+#define PRINT 'p'
+#define IF 'z'
+#define SEMICILON ';'
+#define COMMA ','
+#define LEFTBRACE '{'
+#define RIGHTBRACE '}'
+#define LEFTHESIS '('
+#define RIGHTHESIS ')'
+#define EQUAL '='
+#define PLUS '+'
+#define MINUS '-'
+#define STAR '*'
+#define DIRSLASH '/'
+
+
+
+
+
 
 
 
@@ -36,6 +73,9 @@ namespace LT
 		int linenumber;
 		int indexTI;
 		int IlLine;
+
+		//для условного оператора
+		std::string condition = "";
 	};
 
 	struct LexTable

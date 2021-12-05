@@ -12,189 +12,7 @@
 namespace PN
 {
 
-	void Polish(wchar_t infile[]) 
-	{
-		std::fstream input; input.open(infile, std::ios::in);
-		if (!input) { throw ERROR_THROW(113) }
-		std::fstream Idenfs; Idenfs.open("IdenfTable.txt", std::ios::in);
-
-
-		std::string fullfile= "";
-		std::string line;
-		std::string sline;
-		std::string ResLine = "";
-		std::string stack = "";
-		int numbline;
-		int linecounter=0;
-		while (getline(input, line)) 
-		{
-			ResLine = "";
-			stack = "";
-			linecounter++;
-			sline = "";
-			
-
-
-
-			
-			
-			if (line.find("=") < 15) {}
-			else {
-				fullfile += line + "\n";
-				continue;
-			}
-		
-
-			
-			//поиск строки из файла с иденфами и составление новой лексемы, но со знаками
-			numbline = atoi(line.substr(0, 3).c_str());
-			while (getline(Idenfs, sline)) 
-			{
-				if (atoi(sline.substr(0, 4).c_str()) == numbline) 
-				{ 
-					line = "";
-					for (int k = sline.find("v_") +2; k < sline.length(); k++) 
-					{
-						line += sline[k];
-					}
-					break; 
-				}
-			
-			
-			
-			}
-			//Лексема, но со знаками
-			line = LEX::LexPolish(line);
-		//
-
-			for (int j = 0; j < line.length(); j++) 
-			{
-				if (prior(line, j) == prior(line, j + 1)) 
-				{
-					ERROR_THROW_IN(126, linecounter, 0);
-				}
-
-			}
-
-			std::string oper = "";
-			//цикл разбора строки
-			for (int i = 0; i < line.length(); i++) 
-			{
-				
-				
-				if (prior(line, i) < 0) 
-				{ 
-					if (line[i] == ',') { continue; }
-					if (line[i] == 'i' && line[i + 1] == '(') { continue; }
-					//ResLine.insert(ResLine.length(), line, i, 1);
-					ResLine += line[i]; 
-				}
-				else 
-				{
-					//запись операции в stack
-					if (stack == "" || stack[0] == '(' || line[i]== '(' && prior(line,i)>0) {
-						if (line[i] == '(' && line[i - 1] == 'i')
-						{
-							stack.insert(0, "@");
-						}
-						else {
-							stack.insert(0, line, i, 1);
-						}
-						 }
-					else 
-					{
-						//выкидывание операций
-						if (prior(line, i) > 1 ) 
-						{
-							while (prior(line, i) == prior(stack, 0) || prior(line, i) > prior(stack, 0)) 
-							{
-								
-								if (stack != "")
-								{ 
-									ResLine += stack[0];
-									stack = stack.substr(1, stack.length()); 
-								}
-								else {
-									break;
-								}
-								
-							}
-							stack.insert(0, line, i, 1);
-							continue;
-						}
-
-						//для скобок
-						if (line[i] == ')') 
-						{
-							//записываю в результирающую строку стэк до скобки
-							for (int j = 0; j < stack.length(); j++) 
-							{
-								if (stack[j] == '(' || stack[j] == '@')
-								{
-									if (stack[j] == '@') { ResLine += stack[j]; }
-									break; 
-								}
-								ResLine += stack[j];
-								//
-							}
-							//убирают из стека всё до скобки
-							for (int j = 0; j < stack.length(); j++) 
-							{
-							if(stack[0]=='(' || stack[0] == '@')
-							{
-								stack = stack.substr(1, stack.length());
-								break;
-							}
-							stack = stack.substr(1,stack.length());
-							continue;
-							}
-							
-						}
-					
-					}
-				}
-
-				if (i == line.length() - 1) 
-				{
-					while (stack != "") 
-					{
-						ResLine += stack[0];
-						stack = stack.substr(1, stack.length());
-					}
-				
-				}
-			}
-
-
-			for (int j = 0; j < ResLine.length(); j++) 
-			{
-				if (prior(ResLine, j) > 1) { ResLine[j] = 'v'; }
-			}
-
-
-			if (linecounter < 10)
-			{
-				fullfile +=  "00" + std::to_string(linecounter) + " ";
-			}
-			else if (linecounter < 100)
-			{
-				fullfile +=  "0" + std::to_string(linecounter) + " ";
-			}
-			else if (linecounter < 1000)
-			{
-				fullfile +=  std::to_string(linecounter)+ " ";
-			}
-			fullfile += "i="+ ResLine + ";\n";
-			//std::cout << ResLine << std::endl;
-
-		}
-		input.close();
-
-		input.open(infile, std::ios::out);
-		input << fullfile;
-
-		
-	}
+	
 
 	void PolishNT(wchar_t infile[], LT::LexTable lexems, IT::IdTable idenfs)
 	{
@@ -210,7 +28,7 @@ namespace PN
 		std::string stack = "";
 		int firstposition=-1,lastposition=0;
 		bool findequal = false;
-		int j = 0;
+		int j = 1;
 			while (j < lexems.size) {
 		for (; j < lexems.size; j++) // граница нужной строки после равно
 		{
@@ -218,7 +36,10 @@ namespace PN
 			lexem = LT::GetEntry(lexems, j);
 			if (lexem.lexema == LEX_EQUAL)
 			{
-				firstposition = j + 1; findequal = true;
+				if (LT::GetEntry(lexems, j + 1).lexema == LEX_EQUAL) { j++; }
+				else {
+					firstposition = j + 1; findequal = true;
+				}
 			}
 			if (lexem.lexema == LEX_SEMICOLON && firstposition > lastposition) 
 			{

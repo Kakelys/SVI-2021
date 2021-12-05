@@ -14,7 +14,7 @@ namespace PN
 {
 
 
-	void Polish(wchar_t infile[]);
+
 
 	void PolishNT(wchar_t infile[], LT::LexTable lexems, IT::IdTable idenfs);
 

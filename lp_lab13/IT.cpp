@@ -109,6 +109,32 @@ namespace IT
 	
 	}
 
+	bool AlredyExist(IT::IdTable idenfs, int n, std::string name)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			if (idenfs.table[i].name == name) { return true; }
+		}
+		return false;
+	}
+
+	bool IsFun(IT::IdTable idenfs, int n, std::string name) 
+	{
+		for (int i = 0; i < idenfs.size; i++)
+		{
+			if (idenfs.table[i].name == name && idenfs.table[i].type == 2) { return true; }
+		}
+		return false;
+	}
+	int TakeDataType(IT::IdTable idenfs, std::string name)
+	{
+		for (int i = 0; i < idenfs.size; i++)
+		{
+			if (idenfs.table[i].name == name) { return idenfs.table[i].datatype; }
+		}
+		return 1;
+	}
+
 
 	void Delete(IdTable& idtable) 
 	{

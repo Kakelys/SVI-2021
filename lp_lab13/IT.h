@@ -27,7 +27,7 @@ namespace IT
 
 		/*IDDATATYPE datatype;
 		IDTYPE type;*/
-
+		int ParmCount = 0; //кол-во параметров у функции
 		union
 		{
 			int vint;
@@ -63,5 +63,12 @@ namespace IT
 	std::string GetLastFunc(IdTable& idtable, LT::LexTable lexems, int n);
 
 	void Delete(IdTable& idtable);
+
+	bool AlredyExist(IT::IdTable idenfs, int n, std::string name);
+
+	//Если существует, взять тип данных
+	int TakeDataType(IT::IdTable idenfs, std::string name);
+	//Является ли функцией в таблице 
+	bool IsFun(IT::IdTable idenfs, int n, std::string name);
 
 };
