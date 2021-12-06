@@ -5,8 +5,8 @@
 #include "IT.h"
 #include "stdafx.h"
 
-#define AssPath "C:\papka\programms\Git\SVI-2021\asm\assembler\asm.asm"
-#define AssPath1 "C:\\papka\\programms\\Git\\SVI-2021\\asm\\assembler\\asm.asm"
+#define AssPath "C:\apapka\programms\Git\SVI-2021\asm\assembler\asm.asm"
+#define AssPath1 "C:\\apapka\\programms\\Git\\SVI-2021\\asm\\assembler\\asm.asm"
 
 #define START ".586\n"\
 	".model flat,stdcall\n"\

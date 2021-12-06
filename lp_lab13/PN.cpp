@@ -62,7 +62,7 @@ namespace PN
 			int k = firstposition;
 			for (; k < lastposition + 1; k++)
 			{
-				std::cout << lexems.table[k - 1].lexema;
+				//std::cout << lexems.table[k - 1].lexema;
 				if (priorNT(lexems, k ) == 1)
 				{
 					switch (braceopen) {

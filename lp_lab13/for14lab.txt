@@ -1,9 +1,0 @@
-main
-{
-declare integer x;
-declare integer y;
-declare integer z;
-y = 5;
-
-return 0;
-};

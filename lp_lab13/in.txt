@@ -8,18 +8,22 @@ main
 integer x;
 integer y;
 integer z;
-x = 7;
+x = fi(x,y)*x+y;
 y = 5;
-z = 5+x+y*x(x+x*x*x)*(x+y+x);
+z = 5;
 if(z == y)
 {
 
-print y;
+if(z > y)
+{
+	
+print y;	
+}
+
+
 
 }
 
-print fi(x,y);
 
 return 0;
 };
-

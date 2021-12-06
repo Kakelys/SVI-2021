@@ -8,17 +8,16 @@ printstr PROTO : DWORD
 printnumb PROTO : DWORD
 .stack 4096
 .const
-		lit1 sdword 7
+		lit1 sdword 5
 		lit2 sdword 5
-		lit3 sdword 5
-		lit4 sdword 0
+		lit3 sdword 0
 .data
 		mx sdword 0
 		my sdword 0
 		mz sdword 0
 .code
 fi PROC, 
-	x : sdword, y : dword   
+	x : dword,  y : dword   
 push ebx
 push edx
 
@@ -28,66 +27,24 @@ mov eax, x
 ret
 fi ENDP
 main PROC
-push lit1
+push mx
+push my
+push mx
+push my
+pop ebx
+pop eax
+add eax, ebx
+push eax
 
 pop ebx
 mov mx, ebx
 
-push lit2
+push lit1
 
 pop ebx
 mov my, ebx
 
-push lit3
-push mx
-pop ebx
-pop eax
-add eax, ebx
-push eax
-push my
-pop ebx
-pop eax
-add eax, ebx
-push eax
-push mx
-push mx
-pop ebx
-pop eax
-add eax, ebx
-push eax
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-push mx
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-push mx
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-push mx
-push my
-pop ebx
-pop eax
-add eax, ebx
-push eax
-push mx
-pop ebx
-pop eax
-add eax, ebx
-push eax
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-pop ebx
-pop eax
-imul eax, ebx
-push eax
+push lit2
 
 pop ebx
 mov mz, ebx
@@ -98,30 +55,23 @@ cmp mz, ebx
 je L1
 jne L2
 
-L1: 
+L1:
 
 mov ebx, my
 cmp mz, ebx
-je L2
-jne L3
+ja L3
+jna L4
 
-L2: 
-
-L3: 
+L3:
 
 push my
 call printnumb
 
-L4: 
+L4:
 
+L2:
 
-push my
-push mx
-call fi 
-push eax 
-call printnumb
-
-push lit4
+push lit3
 call ExitProcess
 main ENDP
 end main

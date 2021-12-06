@@ -12,14 +12,14 @@
 #include "PN.h"
 #include "GRB.h"
 #include "MFST.h"
-#include "ILG.h"
+#include "SEM.h"
 #include "GEN.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	
 	setlocale(LC_ALL, ".1251");
-	//setlocale(LC_ALL, "rus");
+	
 
 
 	Log::LOG log = Log::INITLOG;
@@ -35,64 +35,47 @@ int _tmain(int argc, _TCHAR* argv[])
 		IT::IdTable idenfs = IT::Create(IT_MAXSIZE);
 		
 		
-		LEX::lexTable(parm.out, idenfs, lexems);
+		LEX::lexTable(parm.out, idenfs, lexems); // Лекс.анализатор, создние таблицы лексем и идентификаторов
+
+		
+		SEM::CheckSemantics(idenfs, lexems);//Семантический анализатор
+
+		PN::PolishNT(parm.in,lexems,idenfs); //Польская запись
 
 
-
-		PN::PolishNT(parm.in,lexems,idenfs);
-
+#ifdef DEBUG
 
 		std::cout << "\n\n\n";
-		LEX::DisplayLT(lexems);
+		LEX::DisplayLT(lexems);//Вывод таблицы лексем
 		std::cout << "\n\n\n\n\n";
 
 
-		LEX::DisplayIT(idenfs);
+		LEX::DisplayIT(idenfs);//Вывод таблицы идентификаторов
 		std::cout << "\n\n\n\n";
 		std::cout << "\n\n\n\n";
+#endif
 
+		
+
+
+
+		//Синтаксический анализатор
+#ifdef DEBUG
+		MFST_TRACE_START
+#endif
+		MFST::Mfst mfst(lexems, GRB::getGreibach());
+		mfst.start();
+		mfst.savededucation();
+		
+		
 
 		//Генерация кода
 		GEN::CodeGeneration(lexems, idenfs);
-		// 
-		//Промежуточный код, который я не доделал и по итогу не использовал, bruh
-		//ILG::Gen(lexems, idenfs);
 
 
 
-
-		//Display part
-	
-				//Костыль под симантический анализатор, надо обновить Грейбаха перед удалением
-	/*	for (int k = 1; k < lexems.size + 1; k++)
-		{
-			if (lexems.table[k - 1].lexema == "+" || lexems.table[k - 1].lexema == "-" || lexems.table[k - 1].lexema == "*" || lexems.table[k - 1].lexema == "/")
-			{
-				lexems.table[k - 1].lexema = "v";
-			}
-		}*/
-
-
-
-
-
-		//
-
-
-
-		//Синтаксис
-		/*MFST_TRACE_START
-			MFST::Mfst mfst(lexems, GRB::getGreibach());
-		mfst.start();
-		mfst.savededucation();*/
-
-
-
-
-
-
-
-		system("start C:\\papka\\programms\\Git\\SVI-2021\\compile.bat");
+		//Запуск bat файла, который по итогу запускает ассемблерный код
+		//system("start C:\\apapka\\programms\\Git\\SVI-2021\\compile.bat");
 	}
 	catch (Error::ERROR e)
 	{
@@ -101,11 +84,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			wchar_t str[] = L"crash_logs.log";
 			log = Log::getlog(str); logcreate = true;
 		}
-		if (e.index.line > 0) { Log::WriteError(log, e); }
-		else 
-		{
-			Log::WriteError(log, e);
-		}
+		Log::WriteError(log, e);
+		std::cout << "Error " << e.id << ":" << e.message << e.index.line;
 		return 13;
 	}
 

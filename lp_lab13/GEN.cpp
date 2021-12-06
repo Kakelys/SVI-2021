@@ -370,7 +370,8 @@ namespace GEN
 		//
 		std::string func;
 		int ParmCount;
-		int MarkCounter = 0, AmountMarks = 0; // Счётчик для меток
+		int MarkCounter = 0, AmountMarks = 0; // Счётчик для меток/общее кол-во меток
+		std::stack<std::string> marks;
 
 		for (int i = 0; i < lexems.size; i++) 
 		{
@@ -418,26 +419,46 @@ namespace GEN
 			{
 				MarkCounter += 2;
 				str = GenIf(lexems,idenfs,i,AmountMarks);
+				
+				while (MarkCounter > 0)
+				{
+					marks.push("L"+std::to_string(AmountMarks + MarkCounter) + ":");
+					MarkCounter--; 
+
+				}
+				AmountMarks += 2;
+				
+
 				break;
 				
 			}
 			case RIGHTBRACE: 
 			{
-				if (MarkCounter > 0) //Добавление метки
+				if (!marks.empty())
 				{
-					MarkCounter--; AmountMarks++;
-					fullfile += "\nL" + std::to_string(AmountMarks) + ": \n";
+					str = "\n" + marks.top() + "\n";
+					marks.pop();
 				}
+				//if (MarkCounter > 0) //Добавление метки
+				//{
+				//	MarkCounter--; AmountMarks++;
+				//	fullfile += "\nL" + std::to_string(AmountMarks) + ": \n";
+				//}
 			
 				break;
 			}
 			case LEFTBRACE: 
 			{
-				if (MarkCounter > 0) //Добавление метки
+				if (!marks.empty())
 				{
-					MarkCounter--; AmountMarks++;
-					fullfile += "\nL" + std::to_string(AmountMarks) + ": \n";
+					str = "\n" + marks.top() + "\n";
+					marks.pop();
 				}
+				//if (MarkCounter > 0) //Добавление метки
+				//{
+				//	MarkCounter--; AmountMarks++;
+				//	fullfile += "\nL" + std::to_string(AmountMarks) + ": \n";
+				//}
 			
 				break;
 			}
