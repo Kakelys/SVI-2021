@@ -32,14 +32,10 @@ namespace LEX
 		FST::NODE(1, FST::RELATION('g', 6)),\
 		FST::NODE()
 
-#define fst_integer 8,\
+#define fst_integer 4,\
 		FST::NODE(1, FST::RELATION('i', 1)),\
 		FST::NODE(1, FST::RELATION('n', 2)),\
 		FST::NODE(1, FST::RELATION('t', 3)),\
-		FST::NODE(1, FST::RELATION('e', 4)),\
-		FST::NODE(1, FST::RELATION('g', 5)),\
-		FST::NODE(1, FST::RELATION('e', 6)),\
-		FST::NODE(1, FST::RELATION('r', 7)),\
 		FST::NODE()
 
 #define fst_function 9,\

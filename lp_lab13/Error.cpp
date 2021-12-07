@@ -32,26 +32,40 @@ namespace Error
 		ERROR_ENTRY(118, "Îøèáêà â íàïèñàíèè èäåíòèôèêàòîğà ïåğåä ôóíêöèåé, ñòğîêà: "),
 		ERROR_ENTRY(119, "Â èäåíòèôèêàòîğå îáíàğóæåí íå ñèìâîë, ñòğîêà: "),
 		ERROR_ENTRY(120, "Íåâåğíîå êëş÷åâîå ñëîâî èëè èäåíòèôèêàòîğ, ñòğîêà: "),
-		ERROR_ENTRY(121, "Òèï ôóíêöèè è âîçâğàùàåìîé ïåğåìåííîé íå ñîâïàäàşò, ñòğîêà: "),
+		ERROR_ENTRY(121, "The return type does not match the function, line: "),
 		ERROR_ENTRY(122, "Íå íàéäåíà íè îäíà âñòğîåííàÿ ôóíêöèÿ, ñîâïàäàşùàÿ ñ èäåòèôèêàòîğîì, ñòğîêà: "),
 		ERROR_ENTRY(123, "data types of right and left part non equal, line: "),
 		ERROR_ENTRY(124, "Text after ; , ñòğîêà: "),
 		ERROR_ENTRY(125, "Îøèáêà ïğèñâîåíèÿ  , ñòğîêà: "),
 		ERROR_ENTRY(126, "Failed to create Polish Notation , line: "),
 		ERROR_ENTRY(127, "More than one main"),
+		ERROR_ENTRY(128, "No main"),
+		ERROR_ENTRY(129, "This Function Already Exist, line "),
 		ERROR_ENTRY(130, "Lex Table"),
-		ERROR_ENTRY(600, "Íåâåğíàÿ ñòğóêòóğà ïğîãğàììû"),
-		ERROR_ENTRY(601, "Îøèáî÷íûé îïåğàòîğ"),
-		ERROR_ENTRY(602, "Îøèáêà â âûğàæåíèè"),
-		ERROR_ENTRY(603, "Îøèáêà â ïàğàìåòğàõ ôóíêöèè"),
-		ERROR_ENTRY(604, "Îøèáêà â ïàğàìåòğàõ âûçûâàåìîé ôóíêöèè"),
+		ERROR_ENTRY_NODEF(131),ERROR_ENTRY_NODEF(132), ERROR_ENTRY_NODEF(133), ERROR_ENTRY_NODEF(134), ERROR_ENTRY_NODEF(135),
+		ERROR_ENTRY_NODEF(136), ERROR_ENTRY_NODEF(137), ERROR_ENTRY_NODEF(138), ERROR_ENTRY_NODEF(139),
+		ERROR_ENTRY_NODEF10(140), ERROR_ENTRY_NODEF10(150),
+		ERROR_ENTRY_NODEF10(160), ERROR_ENTRY_NODEF10(170), ERROR_ENTRY_NODEF10(180), ERROR_ENTRY_NODEF10(190),
+		ERROR_ENTRY_NODEF100(200),ERROR_ENTRY_NODEF100(300),
+		ERROR_ENTRY_NODEF100(400),ERROR_ENTRY_NODEF100(500),
+		ERROR_ENTRY(600, "Íåâåğíàÿ ñòğóêòóğà ïğîãğàììû, line "),
+		ERROR_ENTRY(601, "Îøèáî÷íûé îïåğàòîğ, line "),
+		ERROR_ENTRY(602, "Îøèáêà â âûğàæåíèè, line "),
+		ERROR_ENTRY(603, "Îøèáêà â âûğàæåíèè, line "),
+		ERROR_ENTRY(604, "Îøèáêà â ïàğàìåòğàõ ôóíêöèè, line "),
+		ERROR_ENTRY(605, "Îøèáêà â ïàğàìåòğàõ âûçûâàåìîé ôóíêöèè, line "),
+		ERROR_ENTRY(606, "Wrong parameters in conditional function, line"),
+		ERROR_ENTRY_NODEF(607), ERROR_ENTRY_NODEF(608), ERROR_ENTRY_NODEF(609),
+		ERROR_ENTRY_NODEF10(610), ERROR_ENTRY_NODEF10(620),ERROR_ENTRY_NODEF10(630),
+		ERROR_ENTRY_NODEF10(640), ERROR_ENTRY_NODEF10(650),
+		ERROR_ENTRY_NODEF10(660), ERROR_ENTRY_NODEF10(670), ERROR_ENTRY_NODEF10(680), ERROR_ENTRY_NODEF10(690),
 		ERROR_ENTRY_NODEF100(700), ERROR_ENTRY_NODEF100(800), ERROR_ENTRY_NODEF100(900),
 	};
 	ERROR geterror(int id)
 	{
 		if ((id > 0) && (id < ERROR_MAX_ENTRY))
 		{
-			ERROR err = { errors[id-2].id };
+			ERROR err = { errors[id].id };
 			for (int i = 0; i < ERROR_MAXSIZE_MESSAGE; i++)
 				err.message[i] = errors[id-2].message[i];
 			return err;
@@ -68,7 +82,7 @@ namespace Error
 	{
 		if ((id > 0) && (id < ERROR_MAX_ENTRY))
 		{
-			ERROR err = { errors[id].id };
+			ERROR err = { errors[id].id};
 			for (int i = 0; i < ERROR_MAXSIZE_MESSAGE; i++)
 				err.message[i] = errors[id].message[i];
 			err.index.line = line;

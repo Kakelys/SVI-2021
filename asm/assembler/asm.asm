@@ -8,70 +8,43 @@ printstr PROTO : DWORD
 printnumb PROTO : DWORD
 .stack 4096
 .const
-		lit1 sdword 5
-		lit2 sdword 5
-		lit3 sdword 0
+		lit1 byte '"a"', 0
+		lit2 sdword 1
 .data
 		mx sdword 0
-		my sdword 0
-		mz sdword 0
+		ma sdword 0
 .code
 fi PROC, 
-	x : dword,  y : dword   
+	a : sdword  
 push ebx
 push edx
 
 pop edx
 pop ebx
-mov eax, x
+mov eax, lit1
 ret
 fi ENDP
 main PROC
-push mx
-push my
-push mx
-push my
-pop ebx
-pop eax
-add eax, ebx
-push eax
 
-pop ebx
-mov mx, ebx
-
-push lit1
-
-pop ebx
-mov my, ebx
-
-push lit2
-
-pop ebx
-mov mz, ebx
-
-
-mov ebx, my
-cmp mz, ebx
-je L1
-jne L2
+mov ebx, mx
+cmp mx, ebx
+ja L1
+jna L2
 
 L1:
 
-mov ebx, my
-cmp mz, ebx
-ja L3
-jna L4
-
-L3:
-
-push my
-call printnumb
-
-L4:
-
 L2:
 
-push lit3
+push lit2
 call ExitProcess
 main ENDP
-end main
+end mainda PROC  
+	
+push ebx
+push edx
+
+pop edx
+pop ebx
+mov eax, ma
+ret
+da ENDP

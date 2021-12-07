@@ -39,8 +39,20 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		
 		SEM::CheckSemantics(idenfs, lexems);//Семантический анализатор
+		
 
-		PN::PolishNT(parm.in,lexems,idenfs); //Польская запись
+				//Синтаксический анализатор
+#ifdef DEBUG
+		MFST_TRACE_START
+#endif
+			MFST::Mfst mfst(lexems, GRB::getGreibach());
+		mfst.start();
+		mfst.savededucation();
+
+		PN::PolishNT(parm.in, lexems, idenfs); //Польская запись
+
+		//Генерация кода
+		GEN::CodeGeneration(lexems, idenfs);
 
 
 #ifdef DEBUG
@@ -54,28 +66,24 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::cout << "\n\n\n\n";
 		std::cout << "\n\n\n\n";
 #endif
-
-		
-
-
-
-		//Синтаксический анализатор
-#ifdef DEBUG
-		MFST_TRACE_START
-#endif
-		MFST::Mfst mfst(lexems, GRB::getGreibach());
-		mfst.start();
-		mfst.savededucation();
 		
 		
 
-		//Генерация кода
-		GEN::CodeGeneration(lexems, idenfs);
+
+
+
+
+
+
+		
+		
+
+		
 
 
 
 		//Запуск bat файла, который по итогу запускает ассемблерный код
-		//system("start C:\\apapka\\programms\\Git\\SVI-2021\\compile.bat");
+		//system("start C:\\papka\\programms\\Git\\SVI-2021\\compile.bat");
 	}
 	catch (Error::ERROR e)
 	{

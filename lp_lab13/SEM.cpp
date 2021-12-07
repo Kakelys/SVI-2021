@@ -7,13 +7,14 @@ namespace SEM
 {
 	void CheckSemantics(IT::IdTable idenfs, LT::LexTable lexems) 
 	{
-		OneMainCheck(idenfs,lexems);
+		MainCheck(idenfs,lexems);
+		DoubleFuncCheck(idenfs, lexems);
 		CheckTypeInEqual(idenfs, lexems);
-
-
+		CheckReturnType(idenfs, lexems);
+		
 	}
 	
-	void OneMainCheck(IT::IdTable idenfs, LT::LexTable lexems) 
+	void MainCheck(IT::IdTable idenfs, LT::LexTable lexems) 
 	{
 		bool main = false;
 		for (int i = 0; i < lexems.size; i++)
@@ -24,8 +25,10 @@ namespace SEM
 				main = true;
 			}
 		}
-	
-	
+		if (main == false) 
+		{
+			ERROR_THROW_IN(128, -1, -1);
+		}
 	}
 
 
@@ -83,18 +86,48 @@ namespace SEM
 		int FuncType;
 		for (int i = 0; i < lexems.size; i++) 
 		{
-			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION) 
+			
+
+			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION || lexems.table[i].lexema == LEX_MAIN) 
 			{
-				FuncType = idenfs.table[lexems.table[i].indexTI].datatype;
+				if (lexems.table[i].lexema == LEX_MAIN) { FuncType = 1; }
+				else {
+					FuncType = idenfs.table[lexems.table[i].indexTI].datatype;
+				}
 				while (lexems.table[i].lexema != "r") { i++; }
 				//Проверка типа возвращаемого значения с типов функции
 				if (FuncType != idenfs.table[lexems.table[i + 1].indexTI].datatype) 
 				{
-					ERROR_THROW_IN(123, lexems.table[i].linenumber, 0);
+					ERROR_THROW_IN(121, lexems.table[i].linenumber, 0);
 				}
 
 			}
 
 		}
+	}
+
+	void DoubleFuncCheck(IT::IdTable idenfs, LT::LexTable lexems) 
+	{
+		for (int i = 0; i < lexems.size; i++)
+		{
+
+			int FindPos = -1;
+			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION)
+			{
+				FindPos = i; std::string FuncName = idenfs.table[lexems.table[i].indexTI].name;
+				while (i < lexems.size) 
+				{
+					i++;
+					if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION) 
+					{
+						if (idenfs.table[lexems.table[i].indexTI].name == FuncName) { ERROR_THROW_IN(129, lexems.table[i].linenumber, 0); }
+					}
+					
+				}
+				i = FindPos;
+			}
+
+		}
+	
 	}
 }

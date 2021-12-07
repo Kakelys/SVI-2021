@@ -63,7 +63,7 @@ namespace MFST
 	Mfst::RC_STEP Mfst::step()
 	{
 		RC_STEP rc = SURPRISE;
-		if (lenta_position < lenta_size)
+		if (lenta_position < lenta_size || st.top()!= '$')
 		{
 			if (ISNS(st.top()))
 			{
@@ -182,6 +182,8 @@ namespace MFST
 		{
 		case LENTA_END:
 #ifdef DEBUG
+			//if(st.top() != '$') { ERROR_THROW_IN(600, lex.table[diagnosis[2].lenta_position].linenumber, 0); }
+			
 			MFST_TRACE4("------>LENTA_END")
 			std::cout << "------------------------------------------------------------------" << std::endl;
 			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: всего строк %d, синтаксический анализ выполнен без ошибок", 0, lenta_size);
@@ -191,15 +193,17 @@ namespace MFST
 			break;
 		case NS_NORULE:
 #ifdef DEBUG
-
-
-
-			MFST_TRACE4("------>NS_NORULE")
-			std::cout << "------------------------------------------------------------------" << std::endl;
 			std::cout << getDiagnosis(0, buf) << std::endl;
 			std::cout << getDiagnosis(1, buf) << std::endl;
 			std::cout << getDiagnosis(2, buf) << std::endl;
+
+			MFST_TRACE4("------>NS_NORULE")
+			std::cout << "------------------------------------------------------------------" << std::endl;
+			
 #endif // DEBUG
+			getDiagnosis(0, buf);
+			getDiagnosis(1, buf);
+			getDiagnosis(2, buf);
 			break;
 		case NS_NORULECHAIN:
 #ifdef DEBUG
@@ -246,9 +250,16 @@ namespace MFST
 		if (n < MFST_DIAGN_NUMBER && (lpos = diagnosis[n].lenta_position) >= 0)
 		{
 			errid = grebach.getRule(diagnosis[n].nrule).iderror;
+#ifdef DEBUG
+
+
+
 			Error::ERROR err = Error::geterror(errid);
 			err.id = errid;
 			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: строка %d, %s", err.id, lex.table[lpos].linenumber, err.message);
+#endif // DEBUG
+			ERROR_THROW_IN(errid, lex.table[lpos].linenumber, 0);
+			
 			rc = buf;
 		};
 		return rc;

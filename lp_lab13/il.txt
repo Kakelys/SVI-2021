@@ -1,21 +1,15 @@
-integer function fi(string x, string y)•
-{••
-return x;•
-}•
+string function fi(int a)•
+{•••
+return "a";•
+}••
 main•
 {• 
-integer x;•
-integer y;•
-integer z;•
-x = fi(x,y)*x+y;•
-y = 5;•
-z = 5;•
-if(z == y)•
+int x;••
+if(x > x){•••
+}•
+return 1;•
+}•
+int function da()•
 {••
-if(z > y)•
-{••
-print y;•
-}••••
-}•••
-return 0;•
-}
+return a;•
+}••

@@ -1,29 +1,17 @@
-integer function fi(integer x, string y)
-{
-
-return x;
-}
-main
-{
-integer x;
-integer y;
-integer z;
-x = fi(x,y)*x+y;
-y = 5;
-z = 5;
-if(z == y)
-{
-
-if(z > y)
+string function fi(int a)
 {
 	
-print y;	
+
+	return "a";
 }
 
+main
+{
+int x;
+
+if(x > x){
 
 
 }
-
-
-return 0;
-};
+return 1;
+}

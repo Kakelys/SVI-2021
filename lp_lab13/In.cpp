@@ -47,6 +47,7 @@ namespace In
 
 			if (inn.code[(int)ch + 256] == IN::I) 
 			{
+				line += letter[0];
 				goto ifFindEndOfFile; 
 			} //Убирает символ конца файла 
 			++zs;
