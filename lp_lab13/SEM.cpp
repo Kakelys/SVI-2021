@@ -8,9 +8,11 @@ namespace SEM
 	void CheckSemantics(IT::IdTable idenfs, LT::LexTable lexems) 
 	{
 		MainCheck(idenfs,lexems);
+	//	CheckAvailableIdenfs(idenfs, lexems);
 		DoubleFuncCheck(idenfs, lexems);
 		CheckTypeInEqual(idenfs, lexems);
 		CheckReturnType(idenfs, lexems);
+		
 		
 	}
 	
@@ -88,8 +90,26 @@ namespace SEM
 		{
 			
 
-			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION || lexems.table[i].lexema == LEX_MAIN) 
+			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION || lexems.table[i].lexema == LEX_MAIN)
 			{
+				//Проверить, не является ли библиотечной функцией 
+				bool checked = true;
+				for (int j = i; ;j++) 
+				{
+					if (lexems.table[j].lexema == LEX_RIGHTHESIS) 
+					{
+					if(lexems.table[j+1].lexema == LEX_SEMICOLON)
+					{
+						checked = false;
+					}
+					break;
+					}
+				
+				}
+				if (!checked) { break; }
+
+
+
 				if (lexems.table[i].lexema == LEX_MAIN) { FuncType = 1; }
 				else {
 					FuncType = idenfs.table[lexems.table[i].indexTI].datatype;
@@ -130,4 +150,40 @@ namespace SEM
 		}
 	
 	}
+
+
+	void CheckAvailableIdenfs(IT::IdTable idenfs, LT::LexTable lexems)
+	{
+		std::string name;
+		for (int i = 0; i < lexems.size; i++) 
+		{
+		
+			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema != LEX_FUNCTION && lexems.table[i - 1].lexema != LEX_INTEGER) 
+			{
+				bool find = false;
+				name = idenfs.table[lexems.table[i].indexTI].name;
+			
+				for (int j = i; j > 0; j--) 
+				{
+					if (lexems.table[j].lexema == LEX_ID && lexems.table[j-1].lexema == LEX_INTEGER)
+					{
+						if (idenfs.table[lexems.table[j].indexTI].name == name) 
+						{
+							find = true;
+						}
+					}
+				
+				}
+				if (find == false) 
+				{
+				
+					ERROR_THROW_IN(125, lexems.table[i].linenumber, 0);
+				}
+			}
+
+		
+		}
+
+	}
+
 }

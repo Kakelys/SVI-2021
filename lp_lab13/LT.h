@@ -27,6 +27,7 @@
 #define LEX_EQUAL "="
 #define LEX_IF "z"
 #define LEX_IF_OP "x"
+#define LEX_ELSE "c"
 
 //сравнение
 #define BIGGER_EQUAL ">="
@@ -40,6 +41,7 @@
 
 #define MAIN 'm'
 #define ID 'i'
+#define FUN '@'
 #define LITERAL 'l'
 #define FUNCTION 'f'
 #define DECLARE 'd'
@@ -89,7 +91,7 @@ namespace LT
 
 	void Add(LexTable& lextable, Entry entry);
 
-	Entry  GetEntry(LexTable& lextable, int n);
+	Entry GetEntry(LexTable& lextable, int n);
 
 	void Delete(LexTable& lextable);
 

@@ -2,9 +2,20 @@
 
 extern "C"
 {
-	int  line_length(int str)
+	int __stdcall linelength(char* str)
 	{
-		return 0;
+
+		int length = 0;
+		if (str == nullptr) { std::cout << std::endl; }
+		else {
+			for (int i = 0; str[i] != '\0'; i++)
+			{
+				length = length +1;
+			}
+		}
+
+
+		return length;
 	}
 
 	int __stdcall printstr(char* str)

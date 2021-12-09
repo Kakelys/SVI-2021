@@ -3,19 +3,24 @@
 includelib libucrt.lib
 includelib kernel32.lib
 ExitProcess PROTO:DWORD 
-line_length PROTO: DWORD
+linelength PROTO: DWORD
 printstr PROTO : DWORD
 printnumb PROTO : DWORD
 .stack 4096
 .const
-		lit1 byte '"a"', 0
-		lit2 sdword 1
+		lit1 sdword 0
+		lit2 byte 'dada', 0
+		lit3 sdword 2
+		lit4 sdword 1
+		lit5 sdword 2
+		lit6 sdword 0
 .data
-		mx sdword 0
 		ma sdword 0
+		mx sdword 0
+		my dword ?
 .code
-fi PROC, 
-	a : sdword  
+fu PROC, 
+	fua : sdword  
 push ebx
 push edx
 
@@ -23,28 +28,40 @@ pop edx
 pop ebx
 mov eax, lit1
 ret
-fi ENDP
+fu ENDP
 main PROC
+mov my, offset lit2
+push lit3
 
-mov ebx, mx
-cmp mx, ebx
-ja L1
-jna L2
+pop ebx
+mov mx, ebx
 
-L1:
+push mx
+push lit4
+pop ebx
+pop eax
+add eax, ebx
+push eax
 
-L2:
+push fu
+call fu 
+push eax
+pop ebx
+pop eax
+add eax, ebx
+push eax
 
-push lit2
+pop ebx
+mov ma, ebx
+
+
+
+push my
+call linelength 
+push eax 
+call printnumb
+
+push lit6
 call ExitProcess
 main ENDP
-end mainda PROC  
-	
-push ebx
-push edx
-
-pop edx
-pop ebx
-mov eax, ma
-ret
-da ENDP
+end main

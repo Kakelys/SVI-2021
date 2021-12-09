@@ -134,12 +134,14 @@ std::string genEqual(LT::LexTable lexems, IT::IdTable idenfs, int i)
 		{
 			switch (lexems.table[j].lexema[0])
 			{
+			
 			case LITERAL:
 			case ID:
 			{
 				if (idenfs.table[lexems.table[j].indexTI].type == 2)
 				{
-					str += genCallFunction(lexems, idenfs, i); //возврат в eax
+					str += genCallFunction(lexems, idenfs, j); //возврат в eax
+					str += "\n";
 					str = str + "push eax\n"; // закинуть в стек для дальнейшего вычисления
 					while (lexems.table[j].lexema != LEX_RIGHTHESIS) { j++; }
 					break;
@@ -359,7 +361,7 @@ namespace GEN
 {
 
 
-	void CodeGeneration(LT::LexTable lexems, IT::IdTable idenfs) 
+	void CodeGeneration(LT::LexTable lexems, IT::IdTable idenfs, LIB::LibTable lib)
 	{
 		std::string fullfile = StartWork(lexems, idenfs);
 		std::fstream input; 
@@ -390,6 +392,14 @@ namespace GEN
 			}
 			case FUNCTION:
 			{
+				//Проверка на функцию из библиотеки
+				bool fun_lib = false;
+				for (int j = i; j < lib.size; j++) 
+				{
+					if (idenfs.table[lexems.table[i + 1].indexTI].name == lib.table[i].name) { fun_lib = true; break; }
+				}
+				if (fun_lib == true) { break; }
+				//
 				func = idenfs.table[lexems.table[i + 1].indexTI].name;
 				ParmCount = idenfs.table[lexems.table[i + 1].indexTI].ParmCount;
 				str = genFucntion(lexems, idenfs, i, func, ParmCount);
@@ -434,16 +444,24 @@ namespace GEN
 			}
 			case RIGHTBRACE: 
 			{
-				if (!marks.empty())
+
+				if (lexems.table[i + 1].lexema == LEX_ELSE)
 				{
-					str = "\n" + marks.top() + "\n";
-					marks.pop();
+					
+					marks.push("L" + std::to_string(AmountMarks+1) + ":");
+
+					str = "\njmp L" + std::to_string(AmountMarks) + "\n";
+					fullfile.replace(fullfile.find("L" + std::to_string(AmountMarks)) + 1,1,std::to_string(AmountMarks+1));
+					AmountMarks++;
+					i += 1;
 				}
-				//if (MarkCounter > 0) //Добавление метки
-				//{
-				//	MarkCounter--; AmountMarks++;
-				//	fullfile += "\nL" + std::to_string(AmountMarks) + ": \n";
-				//}
+				else {
+					if (!marks.empty())
+					{
+						str = "\n" + marks.top() + "\n";
+						marks.pop();
+					}
+				}
 			
 				break;
 			}
@@ -454,11 +472,7 @@ namespace GEN
 					str = "\n" + marks.top() + "\n";
 					marks.pop();
 				}
-				//if (MarkCounter > 0) //Добавление метки
-				//{
-				//	MarkCounter--; AmountMarks++;
-				//	fullfile += "\nL" + std::to_string(AmountMarks) + ": \n";
-				//}
+				
 			
 				break;
 			}

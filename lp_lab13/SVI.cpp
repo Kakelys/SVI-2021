@@ -14,6 +14,7 @@
 #include "MFST.h"
 #include "SEM.h"
 #include "GEN.h"
+#include "LIB.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -33,29 +34,53 @@ int _tmain(int argc, _TCHAR* argv[])
 		In::getin(parm.in, parm.out);
 		LT::LexTable lexems = LT::Create(LT_MAXSIZE);
 		IT::IdTable idenfs = IT::Create(IT_MAXSIZE);
+		LIB::LibTable lib = LIB::Create(100);
+		LIB::AddSomeFunc(lib);
+
+		//
+
+		/*std::cout << "\n"
+			<< lib.table[0].name
+			<< lib.table[0].datatype
+			<< "|" << lib.size
+			<< "|" << lib.table[0].ParmCounter
+			<< "\n" << lib.table[0].elem[0].datatype;*/
 		
+
+
+		//
 		
 		LEX::lexTable(parm.out, idenfs, lexems); // Лекс.анализатор, создние таблицы лексем и идентификаторов
 
 		
-		SEM::CheckSemantics(idenfs, lexems);//Семантический анализатор
+		
+		
 		
 
 				//Синтаксический анализатор
 #ifdef DEBUG
 		MFST_TRACE_START
 #endif
+
 			MFST::Mfst mfst(lexems, GRB::getGreibach());
 		mfst.start();
 		mfst.savededucation();
 
+		SEM::CheckSemantics(idenfs, lexems);//Семантический анализатор
+		
+		
+
+		
+
 		PN::PolishNT(parm.in, lexems, idenfs); //Польская запись
+		
 
 		//Генерация кода
-		GEN::CodeGeneration(lexems, idenfs);
+		GEN::CodeGeneration(lexems, idenfs,lib);
+		
 
 
-#ifdef DEBUG
+#ifdef DISPLAY
 
 		std::cout << "\n\n\n";
 		LEX::DisplayLT(lexems);//Вывод таблицы лексем
@@ -83,7 +108,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 		//Запуск bat файла, который по итогу запускает ассемблерный код
-		//system("start C:\\papka\\programms\\Git\\SVI-2021\\compile.bat");
+		system("start C:\\papka\\programms\\Git\\SVI-2021\\compile.bat");
 	}
 	catch (Error::ERROR e)
 	{

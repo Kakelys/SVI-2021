@@ -258,7 +258,7 @@ namespace MFST
 			err.id = errid;
 			sprintf_s(buf, MFST_DIAGN_MAXSIZE, "%d: строка %d, %s", err.id, lex.table[lpos].linenumber, err.message);
 #endif // DEBUG
-			ERROR_THROW_IN(errid, lex.table[lpos].linenumber, 0);
+			ERROR_THROW_IN(errid-1, lex.table[lpos].linenumber, 0);
 			
 			rc = buf;
 		};

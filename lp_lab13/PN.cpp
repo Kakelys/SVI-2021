@@ -122,7 +122,19 @@ namespace PN
 				if (priorNT(lexems, i) < 0)
 				{
 					if (lexems.table[i-1].lexema == ",") { continue; }
-					if (lexems.table[i - 2].lexema == "i" && lexems.table[i - 1].lexema == "(") { continue; }
+					if (lexems.table[i - 2].lexema == "i" && lexems.table[i - 1].lexema == "(") 
+					{	continue; }
+					if (lexems.table[i - 1].lexema == "i" && lexems.table[i].lexema == "(") 
+					{
+						for (; lexems.table[i - 2].lexema != LEX_RIGHTHESIS; i++)
+						{
+							ResLine += lexems.table[i - 1].lexema;
+							LT::Entry lexem;
+							lexem = lexems.table[i - 1];
+							LT::Add(PolishLexems, lexem);
+						}
+						continue;
+					}
 					//ResLine.insert(ResLine.length(), line, i, 1);
 					LT::Entry lexem;
 					lexem = lexems.table[i - 1];
@@ -134,8 +146,9 @@ namespace PN
 					if (stack == "" || stack[0] == '(' || lexems.table[i - 1].lexema == "(" && priorNT(lexems, i) > 0) {
 						if (lexems.table[i - 1].lexema == "(" && lexems.table[i - 2].lexema == "i")
 						{
-							PolishLexems.size--;
-							stack.insert(0, "@");
+							/*PolishLexems.size--;
+							stack.insert(0, "@");*/
+							
 						}
 						else {
 							stack.insert(0, lexems.table[i - 1].lexema);
@@ -157,7 +170,7 @@ namespace PN
 									lexem.linenumber = lexems.table[i - 1].linenumber;
 									LT::Add(PolishLexems, lexem);
 
-								
+									
 									stack = stack.substr(1, stack.length());
 								}
 								else {
@@ -179,10 +192,11 @@ namespace PN
 								{
 									if (stack[j] == '@') 
 									{
+										
 										LT::Entry lexem;
 										lexem.lexema = stack[j];
-										lexem.indexTI = lexems.table[i - 1].indexTI;
-										lexem.linenumber = lexems.table[i - 1].linenumber;
+										lexem.indexTI = lexems.table[i - 2].indexTI-1;
+										lexem.linenumber = lexems.table[i - 2].linenumber;
 										LT::Add(PolishLexems, lexem);
 									}
 									break;

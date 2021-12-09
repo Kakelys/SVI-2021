@@ -1,15 +1,16 @@
-string function fi(int a)•
-{•••
-return "a";•
-}••
+int function linelength(string a);•
+int function fu(int a)•
+{••
+return 0;•
+}••••
 main•
 {• 
-int x;••
-if(x > x){•••
+int a;•
+int x;•
+string y;•
+y = "dada";•
+x = 2;•
+a = x+1+fu(2);•
+print linelength(y);••
+return 0;•
 }•
-return 1;•
-}•
-int function da()•
-{••
-return a;•
-}••

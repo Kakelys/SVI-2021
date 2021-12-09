@@ -20,7 +20,10 @@ namespace LT
 
 	void Add(LexTable& lextable, Entry entry) 
 	{
-		
+		if (lextable.size == lextable.maxsize) 
+		{
+			ERROR_THROW_IN(131, NULL, -1);
+		}
 		lextable.table[lextable.size] = entry;
 		lextable.size++;
 	}

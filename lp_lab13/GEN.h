@@ -4,6 +4,7 @@
 #include "LT.h"
 #include "IT.h"
 #include "stdafx.h"
+#include "LIB.h"
 
 #define AssPath "C:\papka\programms\Git\SVI-2021\asm\assembler\asm.asm"
 #define AssPath1 "C:\\papka\\programms\\Git\\SVI-2021\\asm\\assembler\\asm.asm"
@@ -14,7 +15,7 @@
 	"includelib kernel32.lib\n"\
 
 #define EXTERN "ExitProcess PROTO:DWORD \n"\
-"line_length PROTO: DWORD\n"\
+"linelength PROTO: DWORD\n"\
 "printstr PROTO : DWORD\n"\
 "printnumb PROTO : DWORD\n"\
 ".stack 4096\n"\
@@ -31,7 +32,7 @@
 
 namespace GEN
 {
-	void CodeGeneration(LT::LexTable, IT::IdTable);
+	void CodeGeneration(LT::LexTable, IT::IdTable, LIB::LibTable lib);
 
 }
 

@@ -220,7 +220,23 @@ namespace LEX
 						InfinityCycle = 0;
 						break;
 					}
+					//else
+					FST::FST eLse(words, fst_else); if (FST::execute(eLse))
+					{
+						lexemcounter++;
+						LT::Entry lexem;
+						lexem.lexema = LEX_ELSE;
+						lexem.linenumber = sepline + separat(separators, sepcount, i);
+						lexem.indexTI = LT_TI_NULLIDX;
+						lexem.IlLine = linecounter;
+						lexem.condition = word;
+						LT::Add(lexems, lexem);
 
+
+						isif=true;
+						InfinityCycle = 0;
+						break;
+					}
 
 
 					//return 
@@ -579,7 +595,7 @@ namespace LEX
 
 						}
 						//Дописывание функции спереди идентефикатора
-						if (type == 2 && lexems.table[lexemcounter - 2].lexema != LEX_FUNCTION)
+						if (type == 2 && lexems.table[lexemcounter - 2].lexema == LEX_FUNCTION)
 						{
 							if (fun == "") { prevfun = fun; }
 							fun = word;
@@ -596,9 +612,7 @@ namespace LEX
 						if (subscope != 0) { word = prevfun + word; }
 
 
-						//check for keywords
-						//if (word == "lit") { ERROR_THROW_IN(116, sepline + separat(separators, sepcount, i), 0); } 
-						// P.S Менял названия литералов, добавляемых в таблицу. так что закомментил
+						
 
 						function = false;
 						if (word.length() > 15) { word = word.substr(0, 15); }
@@ -734,7 +748,7 @@ namespace LEX
 			}
 
 			std::cout << "\n";
-			//не забудь потом про value
+			
 		}
 	}
 

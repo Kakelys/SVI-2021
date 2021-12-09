@@ -93,6 +93,13 @@ namespace LEX
 		FST::NODE(1, FST::RELATION('=', 2)),\
 		FST::NODE()
 
+#define fst_else 5,\
+		FST::NODE(1, FST::RELATION('e', 1)),\
+		FST::NODE(1, FST::RELATION('l', 2)),\
+		FST::NODE(1, FST::RELATION('s', 3)),\
+		FST::NODE(1, FST::RELATION('e', 4)),\
+		FST::NODE()
+
 #define fst_arifm 2,\
 		FST::NODE(4, FST::RELATION('+', 1), FST::RELATION('-', 1), FST::RELATION('*', 1), FST::RELATION('/', 1)),\
 		FST::NODE()

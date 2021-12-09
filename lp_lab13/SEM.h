@@ -17,5 +17,7 @@ namespace SEM
 	void CheckReturnType(IT::IdTable idenfs, LT::LexTable lexems);
 	//Проверка на повторяющиеся функции
 	void DoubleFuncCheck(IT::IdTable idenfs, LT::LexTable lexems);
+	//Проверка на то, что каждый используемый идентификатор должен быть проинициализирован
+	void CheckAvailableIdenfs(IT::IdTable idenfs, LT::LexTable lexem);
 }
 

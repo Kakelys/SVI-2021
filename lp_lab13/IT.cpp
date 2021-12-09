@@ -21,7 +21,10 @@ namespace IT
 
 	void Add(IdTable& idtable, Entry entry)
 	{
-		
+		if (idtable.size == idtable.maxsize)
+		{
+			ERROR_THROW_IN(131, NULL, -1);
+		}
 		idtable.table[idtable.size] = entry;
 		idtable.size++;
 	}
