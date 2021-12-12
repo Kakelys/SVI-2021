@@ -100,7 +100,7 @@ std::string genCallFunction(LT::LexTable lexems, IT::IdTable idenfs, int i)
 	{
 		if (lexems.table[j].lexema == LEX_ID || lexems.table[j].lexema == LEX_LITERAL) 
 		{
-			tmp.push(idenfs.table[lexems.table[i].indexTI]);//заполняем стек
+			tmp.push(idenfs.table[lexems.table[j].indexTI]);//заполняем стек
 		}
 	}
 	str += "\n";
@@ -394,9 +394,9 @@ namespace GEN
 			{
 				//Проверка на функцию из библиотеки
 				bool fun_lib = false;
-				for (int j = i; j < lib.size; j++) 
+				for (int j = 0; j < lib.size+1; j++) 
 				{
-					if (idenfs.table[lexems.table[i + 1].indexTI].name == lib.table[i].name) { fun_lib = true; break; }
+					if (idenfs.table[lexems.table[i + 1].indexTI].name == lib.table[i-1].name) { fun_lib = true; break; }
 				}
 				if (fun_lib == true) { break; }
 				//

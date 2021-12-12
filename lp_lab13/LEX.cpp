@@ -90,9 +90,10 @@ namespace LEX
 						break;
 					}
 					if (line[i] == ' ') { i++; break; }
-					if (line[i] == 0x27)
+					//Что-то с отделением строки
+					if (line[i] == 0x22)
 					{
-						for (int j = line.find("'", i + 1); i < j + 1; i++)
+						for (int j = line.find(0x22, i + 1); i < j + 1; i++)
 						{
 
 							word += line[i];
@@ -409,7 +410,15 @@ namespace LEX
 						}
 
 						//word = word.substr(0, word.length());
+						std::string temp= "";
+						for (int l = 0; l < word.length(); l++) 
+						{
+							if (word[l] == 0x22) {  continue; }
+							temp += word[l];
+						}
+						word = temp;
 
+						
 
 						strcpy(idenf.value.vstr->str, word.c_str());
 						idenf.value.vstr->len = word.length();

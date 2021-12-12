@@ -8,42 +8,62 @@ printstr PROTO : DWORD
 printnumb PROTO : DWORD
 .stack 4096
 .const
-		lit1 sdword 0
-		lit2 byte 'dada', 0
-		lit3 sdword 2
-		lit4 sdword 1
-		lit5 sdword 2
-		lit6 sdword 0
+		lit1 sdword 2
+		lit2 sdword 4
+		lit3 byte 'dada', 0
+		lit4 sdword 2
+		lit5 byte '', 0
+		lit6 sdword 1
+		lit7 sdword 2
+		lit8 sdword 3
+		lit9 sdword 0
 .data
 		ma sdword 0
 		mx sdword 0
 		my dword ?
+		mc dword ?
 .code
 fu PROC, 
-	fua : sdword  
+	fua : sdword, fux : sdword  
 push ebx
 push edx
 
 pop edx
 pop ebx
-mov eax, lit1
+mov eax, fua
 ret
 fu ENDP
 main PROC
-mov my, offset lit2
-push lit3
+push lit1
 
 pop ebx
 mov mx, ebx
 
-push mx
+push lit2
+
+pop ebx
+mov ma, ebx
+
+mov my, offset lit3
 push lit4
+
+pop ebx
+mov mx, ebx
+
+mov ecx, my
+mov mc, ecx
+
+push mc
+call printstr
+push mx
+push lit6
 pop ebx
 pop eax
 add eax, ebx
 push eax
 
-push fu
+push lit8
+push lit7
 call fu 
 push eax
 pop ebx
@@ -55,13 +75,7 @@ pop ebx
 mov ma, ebx
 
 
-
-push my
-call linelength 
-push eax 
-call printnumb
-
-push lit6
+push lit9
 call ExitProcess
 main ENDP
 end main

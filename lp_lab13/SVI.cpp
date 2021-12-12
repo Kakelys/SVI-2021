@@ -54,7 +54,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		
 		
-		
+		std::cout << "\n\n\n";
+		LEX::DisplayLT(lexems);//Вывод таблицы лексем
+		std::cout << "\n\n\n\n\n";
 		
 
 				//Синтаксический анализатор
@@ -65,6 +67,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			MFST::Mfst mfst(lexems, GRB::getGreibach());
 		mfst.start();
 		mfst.savededucation();
+
+
 
 		SEM::CheckSemantics(idenfs, lexems);//Семантический анализатор
 		

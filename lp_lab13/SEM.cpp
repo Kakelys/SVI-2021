@@ -7,13 +7,22 @@ namespace SEM
 {
 	void CheckSemantics(IT::IdTable idenfs, LT::LexTable lexems) 
 	{
+		//Проверка наличие мэйна и один ли он
 		MainCheck(idenfs,lexems);
-	//	CheckAvailableIdenfs(idenfs, lexems);
+		//Проверка на повторное объявление идентификаторов
+		DoubleIdenfsCheck(idenfs, lexems);
+		//Проверка на повторяющиеся функции
 		DoubleFuncCheck(idenfs, lexems);
+		//Проверка на то, что каждый используемый идентификатор должен быть проинициализирован
+		CheckAvailableIdenfs(idenfs, lexems);
+		//Проверка соответствия типов левой и правой части
 		CheckTypeInEqual(idenfs, lexems);
+		//Проверка типа ретурна с типом функции
 		CheckReturnType(idenfs, lexems);
-		
-		
+		//Проверить, чтобы библиотечные функции не переопределялись
+		LibFuncCheck(idenfs, lexems);
+		//Проверка на пустые строки(ассемблер их не любит)
+		NullLiteralCheck(idenfs, lexems);
 	}
 	
 	void MainCheck(IT::IdTable idenfs, LT::LexTable lexems) 
@@ -157,15 +166,16 @@ namespace SEM
 		std::string name;
 		for (int i = 0; i < lexems.size; i++) 
 		{
-		
-			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema != LEX_FUNCTION && lexems.table[i - 1].lexema != LEX_INTEGER) 
+		//Нахождение идентификатора, который используется, а не объявляется
+			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema != LEX_FUNCTION && lexems.table[i - 1].lexema != LEX_INTEGER  && lexems.table[i + 1].lexema != LEX_RIGHTHESIS && idenfs.table[lexems.table[i].indexTI].datatype != 4)
 			{
 				bool find = false;
 				name = idenfs.table[lexems.table[i].indexTI].name;
 			
 				for (int j = i; j > 0; j--) 
 				{
-					if (lexems.table[j].lexema == LEX_ID && lexems.table[j-1].lexema == LEX_INTEGER)
+					//Нахождение определений идентификаторов и сравнение по имени
+					if (lexems.table[j].lexema == LEX_ID && lexems.table[j-1].lexema == LEX_INTEGER || lexems.table[j].lexema == LEX_ID && lexems.table[j - 1].lexema == LEX_FUNCTION)
 					{
 						if (idenfs.table[lexems.table[j].indexTI].name == name) 
 						{
@@ -180,10 +190,48 @@ namespace SEM
 					ERROR_THROW_IN(125, lexems.table[i].linenumber, 0);
 				}
 			}
-
-		
 		}
-
 	}
 
+	void DoubleIdenfsCheck(IT::IdTable idenfs, LT::LexTable lexems) 
+	{
+		for (int i = 0; i < lexems.size; i++) 
+		{
+			//Находим конструкцию типа ti
+			if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_STRING) 
+			{
+				//Записываем идентификатор в отдельную переменную
+				std::string name = idenfs.table[lexems.table[i].indexTI].name;
+				for (int j = i - 1; j > 0; j--) 
+				{
+					//Нахождение конструкций ti или fi до первой и сравнение по имени
+					if (lexems.table[j].lexema == LEX_ID && lexems.table[j - 1].lexema == LEX_STRING || lexems.table[j].lexema == LEX_ID && lexems.table[j - 1].lexema == LEX_FUNCTION)
+					{
+						if (idenfs.table[lexems.table[j].indexTI].name == name) 
+						{
+							ERROR_THROW_IN(132, lexems.table[i].linenumber, 0);
+						}
+					}
+				}
+			}
+		}
+	}
+	void LibFuncCheck(IT::IdTable idenfs, LT::LexTable lexems) 
+	{
+	
+	}
+	void NullLiteralCheck(IT::IdTable idenfs, LT::LexTable lexems)
+	{
+		for (int i =0;i < lexems.size; i++) 
+		{
+			if (lexems.table[i].lexema == LEX_LITERAL) 
+			{
+				if (idenfs.table[lexems.table[i].indexTI].datatype == 2) 
+				{
+					std::string value = idenfs.table[lexems.table[i].indexTI].value.vstr->str;
+					if (value == "") { ERROR_THROW_IN(133, lexems.table[i].linenumber, 0);}
+				}
+			}
+		}
+	}
 }
