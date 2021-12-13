@@ -77,7 +77,8 @@ namespace LEX
 				for (; i < line.length(); i++)
 				{
 					if (line[i] == ',' || line[i] == '(' || line[i] == ')' || \
-						line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/' || line[i] == ';')
+						line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/' || line[i] == ';' ||\
+						line[i] == '>' || line[i] == '<' || line[i] == '!')
 					{
 						if (somethingelse == true)
 						{
@@ -316,8 +317,8 @@ namespace LEX
 						InfinityCycle = 0;
 						break;
 					}
-					//int literal 
-					FST::FST integerliteral(words, fst_integer_literal); if (FST::execute(integerliteral))
+					//int literal 8
+					FST::FST integerliteral_8(words, fst_integer_lit_8); if (FST::execute(integerliteral_8))
 					{
 						lexemcounter++;
 						idenfscounter++;
@@ -356,7 +357,36 @@ namespace LEX
 								idenf.indexfirstLE = sepline + separat(separators, sepcount, i);
 							}
 						}
-						idenf.value.vint = atoi(word.c_str());
+						//Перевод из 8 в 10
+						long long l, N;
+						bool p;
+						
+						if (word[0] == '-')
+						{
+							word.erase(0, 1);
+							p = true;
+						}
+						else
+						{
+							p = false;
+						}
+						l = word.length();
+						N = 0;
+						for (int i = 0; i < l; i++)
+						{
+							N += (word[i] - '0') * pow(8, l - i - 1);
+						}
+						if (p) 
+						{
+							N *= -1;
+						}
+
+						//
+
+						//std::cout << "Из числа " << word << "  в число " << N;
+
+
+						idenf.value.vint = N;
 						IT::Add(idenfs, idenf);
 
 
@@ -367,6 +397,77 @@ namespace LEX
 						break;
 
 					}
+					//int literal 2 
+					FST::FST integerliteral_2(words, fst_integer_lit_2); if (FST::execute(integerliteral_2))
+					{
+						lexemcounter++;
+						idenfscounter++;
+						LT::Entry lexem;
+						lexem.lexema = LEX_LITERAL;
+						lexem.linenumber = sepline + separat(separators, sepcount, i);
+						lexem.indexTI = idenfscounter - 1;
+						lexem.IlLine = linecounter;
+						LT::Add(lexems, lexem);
+
+						if (lexems.table[lexemcounter - 1].lexema == "=")
+						{
+							if (idenfs.table[idenfscounter - 2].datatype == 1)
+							{
+								idenfs.table[idenfscounter - 1].value.vint = atoi(word.c_str());
+							}
+							else { ERROR_THROW_IN(123, sepline + separat(separators, sepcount, i), 0); }
+						}
+
+
+						litcounter++;
+						IT::Entry idenf;
+						idenf.name = "lit" + std::to_string(litcounter);
+						idenf.scope = scope;
+						idenf.subscope = subscope;
+						idenf.type = 4;
+						idenf.datatype = 1;
+
+						if (idenfscounter > 1) {
+							if (idenfscounter > 1 && IT::IsId(idenfs, word, scope, subscope) < IT_NULLIDX)
+							{
+								idenf.indexfirstLE = IT::IsId(idenfs, word, scope, subscope);
+							}
+							else
+							{
+								idenf.indexfirstLE = sepline + separat(separators, sepcount, i);
+							}
+						}
+
+						int N = 0;
+						std::string value = word.substr(2,word.length()-2);
+						for (int i = 0; i < value.length(); i++)
+						{
+							N *= 2;
+							N += value[i] - '0';
+						}
+						switch (word[0]) 
+						{
+						case '1': N = -N;
+							break;
+						case '0': break;
+						}
+
+
+						idenf.value.vint = N;
+						IT::Add(idenfs, idenf);
+
+
+
+
+
+						InfinityCycle = 0;
+						break;
+
+					}
+
+
+
+
 					//string literal 
 					FST::FST strngliteral(words, fst_string_literal); if (FST::execute(strngliteral))
 					{
@@ -418,8 +519,10 @@ namespace LEX
 						}
 						word = temp;
 
-						
 
+
+						//Максимальное кол-во символов в строке
+						if (word.length() > 255) { ERROR_THROW_IN(114, sepline + separat(separators, sepcount, i), 0); }
 						strcpy(idenf.value.vstr->str, word.c_str());
 						idenf.value.vstr->len = word.length();
 						IT::Add(idenfs, idenf);
@@ -452,7 +555,7 @@ namespace LEX
 
 						
 						isfunction = false;
-						if (subscope > 0 && isdeclare == true)
+						if (subscope > 0 && isif !=true)
 						{
 							subscope--;
 							isdeclare = false;
@@ -495,7 +598,7 @@ namespace LEX
 						lexem.indexTI = LT_TI_NULLIDX;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
-						if (subscope != 0)
+						if (subscope != 0 && isif !=true)
 						{
 							fun = prevfun;
 						}
@@ -586,7 +689,7 @@ namespace LEX
 						break;
 					}
 					//idenf
-					FST::FST idenf(words, fst_idenf); if (FST::execute(idenf))
+					FST::FST fstidenf(words, fst_idenf); if (FST::execute(fstidenf))
 					{
 						idenfscounter++;
 						lexemcounter++;
@@ -596,6 +699,7 @@ namespace LEX
 						lexem.indexTI = idenfscounter - 1;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
+						if (word.length() > 15) { word = word.substr(0, 15); }
 
 						if (isfunction == true && function == false)
 						{
@@ -624,7 +728,7 @@ namespace LEX
 						
 
 						function = false;
-						if (word.length() > 15) { word = word.substr(0, 15); }
+						
 						//check for big letter
 						for (int j = 0; j < word.length(); j++)
 						{

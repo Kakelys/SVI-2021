@@ -20,10 +20,17 @@ namespace LIB
 		{
 			ERROR_THROW_IN(131, NULL, -1);
 		}*/
+
 		lib.table[lib.size] = entry;
-		
+		lib.table[lib.size].elem = new Elem[entry.ParmCounter];
+		//Добавление параметров функции
+		for (int i = 0; i < entry.ParmCounter; i++) 
+		{
+			lib.table[lib.size].elem[i] = entry.elem[i];
+		}
 		lib.size++;
 	}
+	
 
 	Entry  GetEntry(LibTable& lib, int n)
 	{
@@ -47,7 +54,7 @@ namespace LIB
 		lib.name = "linelength";
 		lib.ParmCounter = 1;
 		lib.datatype = 1;
-		lib.elem = new LIB::Elem[lib.ParmCounter];
+		lib.elem = new Elem[lib.ParmCounter];
 		lib.elem[0].datatype = 2;
 		LIB::Add(libs, lib);
 		delete lib.elem;

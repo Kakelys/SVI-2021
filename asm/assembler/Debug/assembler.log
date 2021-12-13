@@ -1,5 +1,2 @@
 ﻿  Assembling asm.asm...
-asm.asm(31): warning A6004: procedure argument or local not referenced : fua
-asm.obj : error LNK2019: ссылка на неразрешенный внешний символ _linelength@4 в функции _main@0.
-asm.obj : error LNK2019: ссылка на неразрешенный внешний символ _printstr@4 в функции _main@0.
-C:\papka\programms\Git\SVI-2021\asm\Debug\assembler.exe : fatal error LNK1120: неразрешенных внешних элементов: 2
+  assembler.vcxproj -> C:\papka\programms\Git\SVI-2021\asm\Debug\assembler.exe

@@ -1,5 +1,5 @@
 #include <iostream>
-
+#pragma warning(disable : 4996)
 extern "C"
 {
 	int __stdcall linelength(char* str)
@@ -16,6 +16,16 @@ extern "C"
 
 
 		return length;
+	}
+
+	int __stdcall factorial(int numb) 
+	{
+		int fact = 1;
+		for (int i = 1; i <= numb; i++) 
+		{
+			fact *= i;
+		}
+		return fact;
 	}
 
 	int __stdcall printstr(char* str)
@@ -37,5 +47,25 @@ extern "C"
 
 
 		return 0;
+	}
+
+	char* __stdcall concats(char* buffer, char* str1, char* str2)
+	{
+		int i = NULL, len1 = NULL, len2 = NULL;
+	
+		for (int j = 0; str1[j] != '\0'; j++)
+		{
+			if (i == 255)
+				break;
+			buffer[i++] = str1[j];
+		}
+		for (int j = 0; str2[j] != '\0'; j++)
+		{
+			if (i == 255)
+				break;
+			buffer[i++] = str2[j];
+		}
+		buffer[i] = '\0';
+		return buffer;
 	}
 }

@@ -1,10 +1,14 @@
 #pragma once
 #include "stdafx.h"
+#define MAX_LIB 20
+
+
 
 namespace LIB 
 {
 	struct Elem
 	{
+		
 		int datatype = 0;
 	};
 
@@ -15,7 +19,7 @@ namespace LIB
 		int datatype;
 		int ParmCounter;
 		int size;
-		//Добавление параметров
+		
 		
 		
 		Elem* elem;
@@ -40,4 +44,5 @@ namespace LIB
 	void Delete(LibTable& lib);
 
 	void AddSomeFunc(LibTable& lib);
+	
 }

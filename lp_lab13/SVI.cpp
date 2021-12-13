@@ -34,21 +34,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		In::getin(parm.in, parm.out);
 		LT::LexTable lexems = LT::Create(LT_MAXSIZE);
 		IT::IdTable idenfs = IT::Create(IT_MAXSIZE);
-		LIB::LibTable lib = LIB::Create(100);
+		LIB::LibTable lib = LIB::Create(MAX_LIB);
 		LIB::AddSomeFunc(lib);
 
-		//
 
-		/*std::cout << "\n"
-			<< lib.table[0].name
-			<< lib.table[0].datatype
-			<< "|" << lib.size
-			<< "|" << lib.table[0].ParmCounter
-			<< "\n" << lib.table[0].elem[0].datatype;*/
 		
 
 
-		//
+		
 		
 		LEX::lexTable(parm.out, idenfs, lexems); // Лекс.анализатор, создние таблицы лексем и идентификаторов
 
@@ -58,6 +51,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		LEX::DisplayLT(lexems);//Вывод таблицы лексем
 		std::cout << "\n\n\n\n\n";
 		
+		LEX::DisplayIT(idenfs);//Вывод таблицы идентификаторов
+		std::cout << "\n\n\n\n";
+		std::cout << "\n\n\n\n";
 
 				//Синтаксический анализатор
 #ifdef DEBUG
@@ -70,7 +66,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
-		SEM::CheckSemantics(idenfs, lexems);//Семантический анализатор
+		SEM::CheckSemantics(idenfs, lexems,lib);//Семантический анализатор
 		
 		
 

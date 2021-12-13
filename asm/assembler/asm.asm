@@ -2,80 +2,101 @@
 .model flat,stdcall
 includelib libucrt.lib
 includelib kernel32.lib
+
 ExitProcess PROTO:DWORD 
+
 linelength PROTO: DWORD
+
 printstr PROTO : DWORD
+
 printnumb PROTO : DWORD
+
+concats PROTO: DWORD,: DWORD,: DWORD
+
+factorial PROTO: DWORD
 .stack 4096
 .const
-		lit1 sdword 2
-		lit2 sdword 4
-		lit3 byte 'dada', 0
-		lit4 sdword 2
-		lit5 byte '', 0
-		lit6 sdword 1
-		lit7 sdword 2
-		lit8 sdword 3
-		lit9 sdword 0
+		lit1 sdword 0
+		lit2 byte 'da', 0
+		lit3 byte 'da', 0
+		lit4 byte 'net', 0
+		lit5 sdword 5265
+		lit6 sdword 1838
+		lit7 sdword 0
 .data
-		ma sdword 0
-		mx sdword 0
-		my dword ?
+
+buffer1 byte 256 dup(0)
+buffer2 byte 256 dup(0)
 		mc dword ?
+		my dword ?
+		ma dword ?
 .code
-fu PROC, 
-	fua : sdword, fux : sdword  
+fu PROC  
+	
 push ebx
 push edx
 
 pop edx
 pop ebx
-mov eax, fua
+mov eax, lit1
 ret
 fu ENDP
+da PROC  
+	
+push ebx
+push edx
+
+pop edx
+pop ebx
+mov eax, offset lit2
+ret
+da ENDP
 main PROC
-push lit1
+push offset lit3
 
 pop ebx
-mov mx, ebx
+mov my, ebx
 
-push lit2
+push offset lit4
 
 pop ebx
 mov ma, ebx
 
-mov my, offset lit3
-push lit4
-
-pop ebx
-mov mx, ebx
-
-mov ecx, my
-mov mc, ecx
-
-push mc
-call printstr
-push mx
-push lit6
-pop ebx
-pop eax
-add eax, ebx
+push my
+push ma
+push offset buffer2
+call concats
+push eax
+push my
+push offset buffer1
+call concats
 push eax
 
-push lit8
-push lit7
+pop ebx
+mov mc, ebx
+
+
 call fu 
-push eax
-pop ebx
-pop eax
-add eax, ebx
-push eax
+mov ebx, lit6
+cmp lit5, ebx
+ja L1
+jna L3
 
-pop ebx
-mov ma, ebx
+L1:
 
+push my
+call printstr
 
-push lit9
+jmp L2
+
+L3:
+
+push ma
+call printstr
+
+L2:
+
+push lit7
 call ExitProcess
 main ENDP
 end main

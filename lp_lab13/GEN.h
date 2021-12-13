@@ -14,15 +14,19 @@
 	"includelib libucrt.lib\n"\
 	"includelib kernel32.lib\n"\
 
-#define EXTERN "ExitProcess PROTO:DWORD \n"\
-"linelength PROTO: DWORD\n"\
-"printstr PROTO : DWORD\n"\
-"printnumb PROTO : DWORD\n"\
+#define EXTERN "\nExitProcess PROTO:DWORD \n"\
+"\nlinelength PROTO: DWORD\n"\
+"\nprintstr PROTO : DWORD\n"\
+"\nprintnumb PROTO : DWORD\n"\
+"\nconcats PROTO: DWORD,: DWORD,: DWORD\n"\
+"\nfactorial PROTO: DWORD\n"\
 ".stack 4096\n"\
 
 
 #define CONST ".const\n"
-#define DATA ".data\n"
+#define DATA ".data\n"\
+"\nbuffer1 byte 256 dup(0)\n"\
+"buffer2 byte 256 dup(0)\n"\
 
 #define CODE ".code\n"
 
@@ -33,6 +37,5 @@
 namespace GEN
 {
 	void CodeGeneration(LT::LexTable, IT::IdTable, LIB::LibTable lib);
-
 }
 

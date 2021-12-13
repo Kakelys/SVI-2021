@@ -169,24 +169,54 @@ std::string genEqual(LT::LexTable lexems, IT::IdTable idenfs, int i)
 	}
 	case 2: 
 	{
-		std::string lexema = lexems.table[i+1].lexema;
-		IT::Entry elem2 = idenfs.table[lexems.table[i + 1].indexTI];
-		if (lexema == LEX_ID && elem2.type == 4) // вызов функции
+
+		bool ConcatsBufferChange = false;
+		for (int j = i + 1; lexems.table[j].lexema != LEX_SEMICOLON; j++)
 		{
-			str += genCallFunction(lexems,idenfs, i + 1);
-			str +=  "mov " + elem1.name + ", eax";
+			switch (lexems.table[j].lexema[0])
+			{
+
+			case LITERAL:
+			{
+				str += "push offset " + idenfs.table[lexems.table[j].indexTI].name + "\n";
+				break;
+			}
+			case ID:
+			{
+				if (idenfs.table[lexems.table[j].indexTI].type == 2)
+				{
+					str += genCallFunction(lexems, idenfs, j); //возврат в eax
+					str += "\n";
+					str = str + "push eax\n"; // закинуть в стек для дальнейшего вычисления
+					while (lexems.table[j].lexema != LEX_RIGHTHESIS) { j++; }
+					break;
+				}
+				else
+				{
+
+					str += "push " + idenfs.table[lexems.table[j].indexTI].name + "\n";
+				}
+				break;
+			}
+			case PLUS:
+			{
+				//Поочерёдная смена буфера(если использовать один и тот же буфер, то оно ломается)
+				switch (ConcatsBufferChange) 
+				{
+				case true:str = str + "push offset buffer1\ncall concats\npush eax\n"; ConcatsBufferChange = false; break;
+
+				case false:str = str + "push offset buffer2\ncall concats\npush eax\n"; ConcatsBufferChange = true; break;
+
+				}
+				
+				//str = str + "pop ebx\npop eax\npush offset buffer\ncall concats\npush eax\n"; break;
+			}
+			}
 		}
-		else if (lexema == LEX_LITERAL) // литерал
-		{
-			str += "mov " + elem1.name + ", offset " + elem2.name;
-		}
-		else // ид(переменная) - через регистр
-		{
-			str += "mov ecx, " + elem2.name + "\nmov " + elem1.name + ", ecx";
-		}
+		str = str + "\npop ebx\nmov " + elem1.name + ", ebx\n";			// вычисленное выражение в ebx 
+		break;
 
 
-		break; 
 	
 	}
 	}
@@ -233,7 +263,16 @@ std::string genReturn(LT::LexTable lexems, IT::IdTable idenfs, int i, std::strin
 	std::string str = "\npop edx\npop ebx\n";
 	if (lexems.table[i + 1].lexema != LEX_SEMICOLON) 
 	{
-		str += "mov eax, " + idenfs.table[lexems.table[i + 1].indexTI].name + "\n";
+		if (idenfs.table[lexems.table[i + 1].indexTI].datatype == 2)
+		{
+			str += "mov eax, offset " + idenfs.table[lexems.table[i + 1].indexTI].name + "\n";
+			
+		}
+		else 
+		{
+			str += "mov eax, " + idenfs.table[lexems.table[i + 1].indexTI].name + "\n";
+		}
+		
 		if (func == "main") 
 		{
 			return  "\npush "+ idenfs.table[lexems.table[i + 1].indexTI].name +"\ncall ExitProcess\nmain ENDP\nend main"; 
@@ -294,10 +333,12 @@ std::string GenIf(LT::LexTable lexems, IT::IdTable idenfs, int i, int mark)
 	std::string str = "\n";
 
 	IT::Entry op1 = idenfs.table[lexems.table[i + 2].indexTI];
-	IT::Entry op2 = idenfs.table[lexems.table[i + 4].indexTI];
+	int secondop = 0;
+	while (lexems.table[i + secondop-1].lexema != LEX_IF_OP) { secondop++; }
+	IT::Entry op2 = idenfs.table[lexems.table[i + secondop].indexTI];
 	//Небольшой костыль для красоты
 	enum OPER { big, less, equal, nonequal, big_equal, less_equal };
-	std::string cond = lexems.table[i + 3].condition;
+	std::string cond = lexems.table[i + secondop-1].condition;
 	OPER op = equal;
 	if (cond == DEQUAL) { op = equal; }
 	else if (cond == NONEQUAL) { op = nonequal; }
@@ -305,6 +346,30 @@ std::string GenIf(LT::LexTable lexems, IT::IdTable idenfs, int i, int mark)
 	else if (cond == LESS) { op = less; }
 	else if (cond == BIGGER_EQUAL) { op = big_equal; }
 	else if (cond == LESS_EQUAL) { op = less_equal; }
+	if (op1.type == 2) 
+	{
+		str += GenCallFunction(lexems, idenfs, i+2) + "\n";
+		op1.name = "eax";
+		if (op2.type == 2) 
+		{
+			str += "mov edx, eax\n";
+			op1.name = "edx";
+			str += GenCallFunction(lexems, idenfs, i + secondop) + "\n";
+			op2.name = "eax";
+		}
+	}
+	else 
+	{
+		if (op2.type == 2)
+		{
+			str += GenCallFunction(lexems, idenfs, i + secondop) + "\n";
+			op2.name = "eax";
+		}
+	}
+
+
+
+
 
 	switch (op) 
 	{
@@ -437,7 +502,7 @@ namespace GEN
 
 				}
 				AmountMarks += 2;
-				
+				while (lexems.table[i].lexema != LEX_RIGHTHESIS) { i++; }
 
 				break;
 				

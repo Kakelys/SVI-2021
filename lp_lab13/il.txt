@@ -1,21 +1,27 @@
-int function linelength(string a);•
-int function fu(int a, string x)•
-{• 
-x = "string";•
-return a;•
+int function linelength(string a);••
+int function fu()•
+{••
+return 0;•
+}••
+string function da()•
+{••
+return "da";•
 }••••
 main•
 {• 
-int a;•
-int x;••
-x = 2;•
-string y;•
-a = 4;•
-y = "dada";•
-x = 2;•
 string c;•
-c = y + "";•
-print c;•
-a = x+1+fu(2,3);•••
+string y;•
+y = "da";•
+string a;•
+a = "net";•
+c = y + a * y;•
+fu();•
+if(9999>3456){••
+print y;•
+}•
+else•
+{• 
+print a;••
+}••
 return 0;•
 }•
