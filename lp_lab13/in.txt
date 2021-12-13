@@ -2,13 +2,11 @@ int function linelength(string a);
 
 int function fu()
 {
-	
-	return 0;
+               return 0;
 }
 
 string function da()
 {
-	
 	return "da";
 }
 

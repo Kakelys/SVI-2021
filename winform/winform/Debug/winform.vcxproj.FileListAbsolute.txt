@@ -1,0 +1,3 @@
+C:\Users\VladIsLove\source\repos\winform\winform\Debug\winform.vcxproj.AssemblyReference.cache
+C:\Users\VladIsLove\source\repos\winform\winform\Debug\winform.MyForm.resources
+C:\Users\VladIsLove\source\repos\winform\winform\Debug\winform.vcxproj.GenerateResource.cache
