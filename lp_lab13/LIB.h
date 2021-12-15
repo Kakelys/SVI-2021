@@ -1,5 +1,6 @@
 #pragma once
 #include "stdafx.h"
+#include "Error.h"
 #define MAX_LIB 20
 
 

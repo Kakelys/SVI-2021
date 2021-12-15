@@ -17,7 +17,7 @@ namespace PN
 	void PolishNT(wchar_t infile[], LT::LexTable lexems, IT::IdTable idenfs)
 	{
 		std::fstream input; input.open(infile, std::ios::in);
-		if (!input) { throw ERROR_THROW(113) }
+		if (!input) { throw ERROR_THROW(203) }
 		std::fstream Idenfs; Idenfs.open("IdenfTable.txt", std::ios::in);
 
 
@@ -77,26 +77,26 @@ namespace PN
 					
 					if (priorNT(lexems, k - 1) == 1 && priorNT(lexems, k - 2) < 1 && priorNT(lexems, k - 2) != -2)
 					{
-						ERROR_THROW_IN(126, lexems.table[k - 1].linenumber, 0);
+						ERROR_THROW_IN(304, lexems.table[k - 1].linenumber, 0);
 					}
 
 					if (priorNT(lexems, k - 1) < 0 && priorNT(lexems, k - 1) != -1)
 					{
 
-						ERROR_THROW_IN(126, lexems.table[k - 1].linenumber, 0);
+						ERROR_THROW_IN(304, lexems.table[k - 1].linenumber, 0);
 					}
 
 				}
 				if (priorNT(lexems, k) == priorNT(lexems, k + 1))
 				{
-					ERROR_THROW_IN(126, lexems.table[k - 1].linenumber, 0);
+					ERROR_THROW_IN(304, lexems.table[k - 1].linenumber, 0);
 				}
 
 
 			}
 			if (braceopen == true) 
 			{ 
-				ERROR_THROW_IN(126, lexems.table[k - 1].linenumber, 0); 
+				ERROR_THROW_IN(304, lexems.table[k - 1].linenumber, 0); 
 			}
 		}
 		

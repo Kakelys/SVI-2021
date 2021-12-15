@@ -7,6 +7,7 @@
 #include "Error.h"
 #include "FST.h"
 #include "LEX.h"
+#include "LT.h"
 #pragma warning(disable : 6262)
 
 
@@ -22,7 +23,7 @@ namespace LEX
 
 
 		std::fstream input; input.open("il.txt", std::ios::in);
-		if (!input) { throw ERROR_THROW(113) }
+		if (!input) { throw ERROR_THROW(203) }
 		std::string line;
 		std::string word;
 		std::string fun = "";
@@ -328,15 +329,15 @@ namespace LEX
 						lexem.indexTI = idenfscounter - 1;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
-
-						if (lexems.table[lexemcounter - 1].lexema == "=")
+						//Проверка типов, но зачем она тут была, уже не помню
+					/*	if (lexems.table[lexemcounter - 1].lexema == "=")
 						{
 							if (idenfs.table[idenfscounter - 2].datatype == 1)
 							{
 								idenfs.table[idenfscounter - 1].value.vint = atoi(word.c_str());
 							}
 							else { ERROR_THROW_IN(123, sepline + separat(separators, sepcount, i), 0); }
-						}
+						}*/
 
 
 						litcounter++;
@@ -408,15 +409,15 @@ namespace LEX
 						lexem.indexTI = idenfscounter - 1;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
-
-						if (lexems.table[lexemcounter - 1].lexema == "=")
+						//Проверка типов, но тут уже не нужна, на всякий оставил, если сломается без неё
+						/*if (lexems.table[lexemcounter - 1].lexema == "=")
 						{
 							if (idenfs.table[idenfscounter - 2].datatype == 1)
 							{
 								idenfs.table[idenfscounter - 1].value.vint = atoi(word.c_str());
 							}
 							else { ERROR_THROW_IN(123, sepline + separat(separators, sepcount, i), 0); }
-						}
+						}*/
 
 
 						litcounter++;
@@ -479,7 +480,8 @@ namespace LEX
 						lexem.indexTI = idenfscounter - 1;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
-						if (lexems.table[lexemcounter - 2].lexema == "=")
+						//Проверка
+						/*if (lexems.table[lexemcounter - 2].lexema == "=")
 						{
 							if (idenfs.table[idenfscounter - 2].datatype == 2)
 							{
@@ -490,7 +492,7 @@ namespace LEX
 								idenfs.table[idenfscounter - 1].value.vstr->len = word.length();
 							}
 							else { ERROR_THROW_IN(123, sepline + separat(separators, sepcount, i), 0); }
-						}
+						}*/
 
 						IT::Entry idenf;
 						litcounter++;
@@ -522,7 +524,7 @@ namespace LEX
 
 
 						//Максимальное кол-во символов в строке
-						if (word.length() > 255) { ERROR_THROW_IN(114, sepline + separat(separators, sepcount, i), 0); }
+						if (word.length() > 255) { ERROR_THROW_IN(204, sepline + separat(separators, sepcount, i), 0); }
 						strcpy(idenf.value.vstr->str, word.c_str());
 						idenf.value.vstr->len = word.length();
 						IT::Add(idenfs, idenf);
@@ -725,14 +727,17 @@ namespace LEX
 						if (subscope != 0) { word = prevfun + word; }
 
 
-						
+						if (word == "printnumb" || word == "printstr" || word == "concats") 
+						{
+							ERROR_THROW_IN(207, sepline + separat(separators, sepcount, i), 0);
+						}
 
 						function = false;
 						
 						//check for big letter
 						for (int j = 0; j < word.length(); j++)
 						{
-							if (word[j] != tolower(word[j])) { ERROR_THROW_IN(115, sepline + separat(separators, sepcount, i), 0); }
+							if (word[j] != tolower(word[j])) { ERROR_THROW_IN(205, sepline + separat(separators, sepcount, i), 0); }
 						}
 
 
@@ -788,7 +793,7 @@ namespace LEX
 					}
 
 				}
-				if (InfinityCycle > 5) { ERROR_THROW_IN(120, sepline + separat(separators, sepcount, i), 0); }
+				if (InfinityCycle > 5) { ERROR_THROW_IN(206, sepline + separat(separators, sepcount, i), 0); }
 
 
 				delete[] words;

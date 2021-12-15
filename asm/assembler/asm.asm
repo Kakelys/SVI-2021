@@ -21,12 +21,13 @@ factorial PROTO: DWORD
 		lit3 byte 'da', 0
 		lit4 byte 'net', 0
 		lit5 sdword 5265
-		lit6 sdword 1838
+		lit6 sdword 8
 		lit7 sdword 0
 .data
 
 buffer1 byte 256 dup(0)
 buffer2 byte 256 dup(0)
+		mfa sdword 0
 		mc dword ?
 		my dword ?
 		ma dword ?

@@ -22,7 +22,7 @@ namespace LT
 	{
 		if (lextable.size == lextable.maxsize) 
 		{
-			ERROR_THROW_IN(131, NULL, -1);
+			ERROR_THROW_IN(208, NULL, -1);
 		}
 		lextable.table[lextable.size] = entry;
 		lextable.size++;
@@ -30,10 +30,7 @@ namespace LT
 
 	Entry  GetEntry(LexTable& lextable, int n) 
 	{
-		if (n<0 || n>lextable.size) 
-		{
-			throw ERROR_THROW(130);
-		}
+		
 	
 		return lextable.table[n-1];
 	}

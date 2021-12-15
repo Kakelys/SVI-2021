@@ -552,6 +552,14 @@ namespace GEN
 		}
 		//fullfile += END;
 		input << fullfile;
+
+
+#ifdef DISPLAY
+
 		std::cout << fullfile;
+
+#endif // DEBUG
+
+		
 	}
 }

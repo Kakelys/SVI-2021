@@ -1,26 +1,2 @@
-﻿  Error.cpp
-  GEN.cpp
-  ILG.cpp
-  IT.cpp
-  LEX.cpp
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(50,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(58,29): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(77,14): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(377,48): warning C4244: +=: преобразование "double" в "__int64", возможна потеря данных
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(389,26): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(443,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(515,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\LEX.cpp(733,25): warning C4018: <: несоответствие типов со знаком и без знака
-  LT.cpp
-  MFST.cpp
-C:\papka\programms\Git\SVI-2021\lp_lab13\MFST.cpp(285,68): warning C4267: =: преобразование из "size_t" в "short"; возможна потеря данных
-  PN.cpp
-C:\papka\programms\Git\SVI-2021\lp_lab13\PN.cpp(189,26): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\PN.cpp(212,26): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\PN.cpp(232,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\papka\programms\Git\SVI-2021\lp_lab13\PN.cpp(55,7): warning C4101: numbline: неиспользованная локальная переменная
-  SEM.cpp
-  SVI.cpp
-  Создание кода...
-C:\papka\programms\Git\SVI-2021\lp_lab13\IT.cpp(113): warning C4715: IT::GetLastFunc: значение возвращается не при всех путях выполнения
+﻿  GRB.cpp
   lp_lab13.vcxproj -> C:\papka\programms\Git\SVI-2021\Debug\lp_lab13.exe

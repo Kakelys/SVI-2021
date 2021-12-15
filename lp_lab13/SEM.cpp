@@ -28,6 +28,8 @@ namespace SEM
 		CallFuncCheck(idenfs,lexems);
 		//Проверка конкатенации строк(Должен быть только +)
 		CheckConcat(idenfs, lexems);
+		//В сравнении только int
+		CheckTypesIF(idenfs,lexems);
 	}
 	
 	void MainCheck(IT::IdTable idenfs, LT::LexTable lexems) 
@@ -37,13 +39,13 @@ namespace SEM
 		{
 			if (lexems.table[i].lexema == LEX_MAIN) 
 			{
-				if(main == true){ ERROR_THROW_IN(127, lexems.table[i].linenumber, 0); }
+				if(main == true){ ERROR_THROW_IN(305, lexems.table[i].linenumber, 0); }
 				main = true;
 			}
 		}
 		if (main == false) 
 		{
-			ERROR_THROW_IN(128, -1, -1);
+			ERROR_THROW_IN(306, -1, -1);
 		}
 	}
 
@@ -69,7 +71,7 @@ namespace SEM
 					//Проверка соответствия типа левой части и найденного идентификатора
 					if (idenfs.table[lexems.table[i].indexTI].datatype != lefttype) 
 					{
-						ERROR_THROW_IN(123, lexems.table[i].linenumber, 0);
+						ERROR_THROW_IN(301, lexems.table[i].linenumber, 0);
 					}
 					
 
@@ -132,7 +134,7 @@ namespace SEM
 				//Проверка типа возвращаемого значения с типов функции
 				if (FuncType != idenfs.table[lexems.table[i + 1].indexTI].datatype) 
 				{
-					ERROR_THROW_IN(121, lexems.table[i].linenumber, 0);
+					ERROR_THROW_IN(300, lexems.table[i].linenumber, 0);
 				}
 
 			}
@@ -154,7 +156,7 @@ namespace SEM
 					i++;
 					if (lexems.table[i].lexema == LEX_ID && lexems.table[i - 1].lexema == LEX_FUNCTION) 
 					{
-						if (idenfs.table[lexems.table[i].indexTI].name == FuncName) { ERROR_THROW_IN(129, lexems.table[i].linenumber, 0); }
+						if (idenfs.table[lexems.table[i].indexTI].name == FuncName) { ERROR_THROW_IN(307, lexems.table[i].linenumber, 0); }
 					}
 					
 				}
@@ -192,7 +194,7 @@ namespace SEM
 				if (find == false) 
 				{
 				
-					ERROR_THROW_IN(125, lexems.table[i].linenumber, 0);
+					ERROR_THROW_IN(303, lexems.table[i].linenumber, 0);
 				}
 			}
 		}
@@ -214,7 +216,7 @@ namespace SEM
 					{
 						if (idenfs.table[lexems.table[j].indexTI].name == name) 
 						{
-							ERROR_THROW_IN(132, lexems.table[i].linenumber, 0);
+							ERROR_THROW_IN(308, lexems.table[i].linenumber, 0);
 						}
 					}
 				}
@@ -242,7 +244,7 @@ namespace SEM
 					if (lexems.table[j].lexema == LEX_RIGHTHESIS) 
 					{
 						if (lexems.table[j + 1].lexema != LEX_SEMICOLON) {
-							ERROR_THROW_IN(124, lexems.table[i].linenumber, 0);
+							ERROR_THROW_IN(302, lexems.table[i].linenumber, 0);
 						}
 						break;
 					}
@@ -255,13 +257,13 @@ namespace SEM
 					{
 						if (lib.table[WhatLib].elem[FuncParmCounter].datatype != idenfs.table[lexems.table[j].indexTI].datatype) 
 						{
-							ERROR_THROW_IN(124, lexems.table[i].linenumber, 0);
+							ERROR_THROW_IN(302, lexems.table[i].linenumber, 0);
 						}
 						FuncParmCounter++;
 					}
 				}
 				//Если не нашлось переменных
-				if (ParmCount != FuncParmCounter) { ERROR_THROW_IN(124, lexems.table[i].linenumber, 0); }
+				if (ParmCount != FuncParmCounter) { ERROR_THROW_IN(302, lexems.table[i].linenumber, 0); }
 			}
 		}
 	}
@@ -280,7 +282,7 @@ namespace SEM
 					{
 						if (lexema(j) == LEX_STAR || lexema(j) == LEX_DIRSLASH || lexema(j) == LEX_MINUS) 
 						{
-							ERROR_THROW_IN(137, lexems.table[i].linenumber, 0);
+							ERROR_THROW_IN(313, lexems.table[i].linenumber, 0);
 						}
 					}
 				
@@ -304,7 +306,7 @@ namespace SEM
 				if (idenfs.table[lexems.table[i].indexTI].datatype == 2) 
 				{
 					std::string value = idenfs.table[lexems.table[i].indexTI].value.vstr->str;
-					if (value == "") { ERROR_THROW_IN(133, lexems.table[i].linenumber, 0);}
+					if (value == "") { ERROR_THROW_IN(309, lexems.table[i].linenumber, 0);}
 				}
 			}
 		}
@@ -318,7 +320,7 @@ namespace SEM
 				if (idenfs.table[lexems.table[i].indexTI].datatype == 1)
 				{
 					int value = idenfs.table[lexems.table[i].indexTI].value.vint;
-					if (value > 32767 || value < -32768) { ERROR_THROW_IN(134, lexems.table[i].linenumber, 0); }
+					if (value > 32767 || value < -32768) { ERROR_THROW_IN(310, lexems.table[i].linenumber, 0); }
 				}
 			}
 		}
@@ -354,11 +356,11 @@ namespace SEM
 					{
 						if (idenf(j).datatype != lib.table[WhatFunc].elem[CallFuncParamsCount].datatype) 
 						{
-							ERROR_THROW_IN(135, lexems.table[i].linenumber, 0);
+							ERROR_THROW_IN(311, lexems.table[i].linenumber, 0);
 							CallFuncParamsCount++;
 						}
 						//Соответствие кол-ва параметров в вызываемой функции и её объявлению
-						if (CallFuncParamsCount != lib.table[WhatFunc].ParmCounter) {}
+						if (CallFuncParamsCount != lib.table[WhatFunc].ParmCounter) { ERROR_THROW_IN(312, lexems.table[i].linenumber, 0); }
 					}
 				
 				}
@@ -394,6 +396,21 @@ namespace SEM
 			}
 			LIB::Add(libs, lib);
 		}
+		
+		}
+	
+	}
+
+	void CheckTypesIF(IT::IdTable idenfs, LT::LexTable lexems) 
+	{
+		for (int i = 0; i < lexems.size; i++) 
+		{
+			if (lexema(i) == LEX_IF) 
+			{
+				if (idenf(i + 2).datatype != 1){ ERROR_THROW_IN(314, lexems.table[i].linenumber, 0); }
+				while (lexema(i) != LEX_IF_OP) { i++; }
+				if (idenf(i + 1).datatype != 1) { ERROR_THROW_IN(314, lexems.table[i].linenumber, 0); }
+			}
 		
 		}
 	

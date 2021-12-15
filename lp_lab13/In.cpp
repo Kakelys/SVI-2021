@@ -23,14 +23,14 @@ namespace In
 
 
 		std::fstream input; input.open(infile, std::ios::in);
-		if (!input) { throw ERROR_THROW(110) }
+		if (!input) { throw ERROR_THROW(200) }
 		char letter[1];
 		
 
 		
 		std::fstream il; 
 		il.open(out, std::ios::out);
-		if(!il){ throw ERROR_THROW(112); }
+		if(!il){ throw ERROR_THROW(203); }
 		bool findfirstbrackets=false;
 		bool findsecondbrackets = false;
 		char bracket[2] = "'";
@@ -45,16 +45,16 @@ namespace In
 		{
 			char ch = input.get();
 
-			if (inn.code[(int)ch + 256] == IN::I) 
+			if (inn.code[(int)ch + 256] == IN::E) 
 			{
 				line += letter[0];
 				goto ifFindEndOfFile; 
 			} //Убирает символ конца файла 
 			++zs;
 			if (inn.code[(int)ch] == IN::F)
-				ERROR_THROW_IN(111, zs, 0);
+				ERROR_THROW_IN(201, zs, 0);
 			if (inn.code[(int)ch+256] == IN::F)
-				ERROR_THROW_IN(111, zs, 0);
+				ERROR_THROW_IN(201, zs, 0);
 			if (inn.code[(int)ch] == IN::I) { continue; }
 			if (inn.code[(int)ch + 256] == IN::I) { continue; }
 

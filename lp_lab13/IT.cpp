@@ -23,7 +23,7 @@ namespace IT
 	{
 		if (idtable.size == idtable.maxsize)
 		{
-			ERROR_THROW_IN(131, NULL, -1);
+			ERROR_THROW_IN(209, NULL, -1);
 		}
 		idtable.table[idtable.size] = entry;
 		idtable.size++;
@@ -31,10 +31,10 @@ namespace IT
 
 	Entry GetEntry(IdTable& idtable, int n) 
 	{
-		if (n<0 || n>idtable.size)
+		/*if (n<0 || n>idtable.size)
 		{
 			throw ERROR_THROW(130);
-		}
+		}*/
 
 		return idtable.table[n - 1];
 	}

@@ -33,6 +33,8 @@ namespace SEM
 	void CheckValueOfNumb(IT::IdTable idenfs, LT::LexTable lexems);
 	//Проверка конкатенации строк(Должен быть только +)
 	void CheckConcat(IT::IdTable idenfs, LT::LexTable lexems);
+	//В сравнении только int
+	void CheckTypesIF(IT::IdTable idenfs, LT::LexTable lexems);
 
 
 

@@ -27,7 +27,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool logcreate = false;				//Если лог файл не был создан или указан, то при ошибке создастся crash_logs
 	try
 	{
-
 		
 
 		Parm::PARM parm = Parm::getparm(argc, argv);
@@ -44,16 +43,20 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 		
 		LEX::lexTable(parm.out, idenfs, lexems); // Лекс.анализатор, создние таблицы лексем и идентификаторов
+#ifdef DISPLAY
 
-		
-		
 		std::cout << "\n\n\n";
 		LEX::DisplayLT(lexems);//Вывод таблицы лексем
 		std::cout << "\n\n\n\n\n";
-		
+
+
 		LEX::DisplayIT(idenfs);//Вывод таблицы идентификаторов
 		std::cout << "\n\n\n\n";
 		std::cout << "\n\n\n\n";
+#endif
+
+		
+
 
 				//Синтаксический анализатор
 #ifdef DEBUG
@@ -80,18 +83,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 
 
-#ifdef DISPLAY
 
-		std::cout << "\n\n\n";
-		LEX::DisplayLT(lexems);//Вывод таблицы лексем
-		std::cout << "\n\n\n\n\n";
-
-
-		LEX::DisplayIT(idenfs);//Вывод таблицы идентификаторов
-		std::cout << "\n\n\n\n";
-		std::cout << "\n\n\n\n";
-#endif
-		
 		
 
 

@@ -1,0 +1,27 @@
+int function linelength(string a);••
+int function fu()•
+{• 
+ return 0;•
+}••
+string function da()•
+{• 
+return "da";•
+}••••
+main•
+{• 
+string c;•
+string y;•
+y = "da";•
+string a;•
+a = "net";•
+c = y + a + y;•
+fu();•
+if(9999>3456){••
+print y;•
+}•
+else•
+{• 
+print a;••
+}••
+return 0;•
+}•
