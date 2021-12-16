@@ -14,88 +14,117 @@ printnumb PROTO : DWORD
 concats PROTO: DWORD,: DWORD,: DWORD
 
 factorial PROTO: DWORD
+
+printline PROTO
 .stack 4096
 .const
-		lit1 sdword 0
-		lit2 byte 'da', 0
-		lit3 byte 'da', 0
-		lit4 byte 'net', 0
-		lit5 sdword 5265
-		lit6 sdword 8
-		lit7 sdword 0
+		lit1 dword 5
+		lit2 dword 0
+		lit3 dword 8
+		lit4 dword 3
+		lit5 byte 'Some Text', 0
+		lit6 byte 'And more', 0
+		lit7 dword 0
 .data
 
 buffer1 byte 256 dup(0)
 buffer2 byte 256 dup(0)
-		mfa sdword 0
-		mc dword ?
-		my dword ?
-		ma dword ?
+		funca dword 0
+		ma dword 0
+		mb dword 0
+		mstr dword ?
+		mstrr dword ?
+		mst dword ?
 .code
-fu PROC  
+func PROC  
 	
 push ebx
 push edx
+push lit1
+
+pop ebx
+mov funca, ebx
+
+
+push funca
+call printnumb
 
 pop edx
 pop ebx
-mov eax, lit1
+mov eax, lit2
 ret
-fu ENDP
-da PROC  
-	
-push ebx
-push edx
-
-pop edx
-pop ebx
-mov eax, offset lit2
-ret
-da ENDP
+func ENDP
 main PROC
-push offset lit3
-
-pop ebx
-mov my, ebx
-
-push offset lit4
+push lit3
 
 pop ebx
 mov ma, ebx
 
-push my
-push ma
-push offset buffer2
-call concats
-push eax
-push my
-push offset buffer1
-call concats
-push eax
+push lit4
 
 pop ebx
-mov mc, ebx
+mov mb, ebx
 
 
-call fu 
-mov ebx, lit6
-cmp lit5, ebx
+mov ebx, mb
+cmp ma, ebx
 ja L1
 jna L3
 
 L1:
+push mb
 
-push my
-call printstr
+pop ebx
+mov ma, ebx
+
 
 jmp L2
 
 L3:
-
 push ma
-call printstr
+
+pop ebx
+mov mb, ebx
+
 
 L2:
+push offset lit5
+
+pop ebx
+mov mstr, ebx
+
+push offset lit6
+
+pop ebx
+mov mstrr, ebx
+
+push mstr
+push mstrr
+push offset buffer2
+call concats
+push eax
+
+pop ebx
+mov mst, ebx
+
+
+push mstr
+call printstr
+
+call printline 
+push mstrr
+call printstr
+
+call printline 
+push mb
+call printnumb
+
+call printline 
+
+push mb
+call factorial 
+push eax 
+call printnumb
 
 push lit7
 call ExitProcess

@@ -28,7 +28,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	try
 	{
 		
-
+		
 		Parm::PARM parm = Parm::getparm(argc, argv);
 		In::getin(parm.in, parm.out);
 		LT::LexTable lexems = LT::Create(LT_MAXSIZE);
@@ -76,7 +76,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 
 		PN::PolishNT(parm.in, lexems, idenfs); //Польская запись
-		
+		std::cout << "\n\n\n";
+		LEX::DisplayLT(lexems);//Вывод таблицы лексем
+		std::cout << "\n\n\n\n\n";
 
 		//Генерация кода
 		GEN::CodeGeneration(lexems, idenfs,lib);

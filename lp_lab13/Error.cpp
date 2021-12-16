@@ -23,7 +23,8 @@ namespace Error
 		ERROR_ENTRY_NODEF(105), ERROR_ENTRY_NODEF(106), ERROR_ENTRY_NODEF(107), ERROR_ENTRY_NODEF(108), ERROR_ENTRY_NODEF(109),
 		ERROR_ENTRY_NODEF(110), ERROR_ENTRY_NODEF(111), 
 		ERROR_ENTRY(112, "Ошибка при создании файла протокола (-log)"),
-		ERROR_ENTRY_NODEF(113),ERROR_ENTRY_NODEF(114),ERROR_ENTRY_NODEF(115),ERROR_ENTRY_NODEF(116),
+		ERROR_ENTRY(113, "Ошибка при открытии файла с промежуточным кодом (il.txt)"),
+		ERROR_ENTRY_NODEF(114),ERROR_ENTRY_NODEF(115),ERROR_ENTRY_NODEF(116),
 		ERROR_ENTRY(117, "В параметрах функции ошибка, строка "),
 		ERROR_ENTRY(118, "Ошибка в написании идентификатора перед функцией, строка: "),
 		ERROR_ENTRY(119, "В идентификаторе обнаружен не символ, строка: "),
@@ -32,25 +33,26 @@ namespace Error
 		ERROR_ENTRY_NODEF10(160), ERROR_ENTRY_NODEF10(170), ERROR_ENTRY_NODEF10(180), ERROR_ENTRY_NODEF10(190),
 		//Лексический
 		ERROR_ENTRY(200, "Ошибка при открытии файла с исходным кодом(-in)"), //110
-		ERROR_ENTRY(201, "Недопустимый символ в исходном файле (-in)"), //111 
-		ERROR_ENTRY(203, "Ошибка при открытии файла с промежуточным кодом (il.txt)"),  //113
+		ERROR_ENTRY(201, "Недопустимый символ в файле с исходным кодом (-in), строка "), //111 
+		ERROR_ENTRY_NODEF(202),ERROR_ENTRY_NODEF(203),
 		ERROR_ENTRY(204, "Превышен лимит в размере строки литерала, строка  "), //114
-		ERROR_ENTRY(205, "Большой символ в идентификаторе, строка "), //115
+		ERROR_ENTRY(205, "Неверный символ в идентификаторе, строка "), //115
 		ERROR_ENTRY(206, "Неверное ключевое слово или идентификатор, строка: "), //120
-		ERROR_ENTRY(207, "Переменная совпадает с ключевым словом, строка "), //116
+		ERROR_ENTRY(207, "Идентификатор совпадает с ключевым словом, строка "), //116
 		ERROR_ENTRY(208, "Выход за пределы таблицы лексем"), // 131
 		ERROR_ENTRY(209, "Выход за пределы таблицы идентификаторов"), 
 		
+
 		ERROR_ENTRY_NODEF10(210), ERROR_ENTRY_NODEF10(220),ERROR_ENTRY_NODEF10(230), ERROR_ENTRY_NODEF10(240),
 		ERROR_ENTRY_NODEF10(250),
 		ERROR_ENTRY_NODEF10(260), ERROR_ENTRY_NODEF10(270), ERROR_ENTRY_NODEF10(280), ERROR_ENTRY_NODEF10(290),
 		//Семантика
 		ERROR_ENTRY(300, "Тип return не соответствует типу функции, строка "),//121
-		ERROR_ENTRY(301, "Типы данных правой и левой части отличаются, строка "), //123
+		ERROR_ENTRY(301, "Типы правой и левой части отличаются, строка "), //123
 		ERROR_ENTRY(302, "Попытка переопределения библиотечной функции, строка "), //124
 		ERROR_ENTRY(303, "Идентификатор не существует, строка "), //125
 		ERROR_ENTRY(304, "Возникла ошибка при создании польской записи: "), //126
-		ERROR_ENTRY(305, "В программе больше, чем 1 мэйн"), //127
+		ERROR_ENTRY(305, "Несколько точек входа main"), //127
 		ERROR_ENTRY(306, "Нет начала программы(main)"), //128
 		ERROR_ENTRY(307, "Попытка переопределения функции, строка "), //129
 		ERROR_ENTRY(308, "Попытка переопределения переменной, строка "), // 132
@@ -72,12 +74,13 @@ namespace Error
 		ERROR_ENTRY_NODEF100(400),ERROR_ENTRY_NODEF100(500),
 		//Синтаксис
 		ERROR_ENTRY(600, "Неверная структура программы, строка "),
-		ERROR_ENTRY(601, "Ошибочный оператор, строка "),
-		ERROR_ENTRY(602, "Ошибка в выражении, строка "),
-		ERROR_ENTRY(603, "Ошибка в выражении, строка "),
-		ERROR_ENTRY(604, "Ошибка в параметрах функции, строка "),
-		ERROR_ENTRY(605, "Ошибка в параметрах вызываемой функции, строка "),
-		ERROR_ENTRY(606, "Wrong parameters in conditional function, строка "),
+		ERROR_ENTRY(601, "Неверная синтаксическая конструкция, строка "),
+		ERROR_ENTRY(602, "Неверное выражение, строка "),
+		ERROR_ENTRY(603, "Неверный знак в выражении, строка "),
+		ERROR_ENTRY(604, "Неверные параметры функции, строка "),
+		ERROR_ENTRY(605, "Неверные параметры вызываемой функции, строка "),
+		ERROR_ENTRY(606, "Неверная конструкция условного оператора, строка "),
+
 		ERROR_ENTRY_NODEF(607), ERROR_ENTRY_NODEF(608), ERROR_ENTRY_NODEF(609),
 		ERROR_ENTRY_NODEF10(610), ERROR_ENTRY_NODEF10(620),ERROR_ENTRY_NODEF10(630),
 		ERROR_ENTRY_NODEF10(640), ERROR_ENTRY_NODEF10(650),
@@ -88,7 +91,7 @@ namespace Error
 	{
 		if ((id > 0) && (id < ERROR_MAX_ENTRY))
 		{
-			ERROR err = { errors[id-1] };
+			ERROR err = { errors[id] };
 			
 			throw err;
 			return err;
@@ -105,7 +108,7 @@ namespace Error
 	{
 		if ((id > 0) && (id < ERROR_MAX_ENTRY))
 		{
-			ERROR err = { errors[id-1] };
+			ERROR err = { errors[id] };
 			
 			err.index.line = line;
 			err.index.col = col;

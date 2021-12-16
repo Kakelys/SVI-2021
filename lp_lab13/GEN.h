@@ -20,7 +20,8 @@
 "\nprintnumb PROTO : DWORD\n"\
 "\nconcats PROTO: DWORD,: DWORD,: DWORD\n"\
 "\nfactorial PROTO: DWORD\n"\
-".stack 4096\n"\
+"\nprintline PROTO\n"\
+".stack 4096\n"
 
 
 #define CONST ".const\n"

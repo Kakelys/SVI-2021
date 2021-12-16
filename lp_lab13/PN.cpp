@@ -75,7 +75,7 @@ namespace PN
 				if (priorNT(lexems, k) < -1 && k != firstposition)
 				{
 					
-					if (priorNT(lexems, k - 1) == 1 && priorNT(lexems, k - 2) < 1 && priorNT(lexems, k - 2) != -2)
+					if (priorNT(lexems, k - 1) == 1 && priorNT(lexems, k - 2) < 1 && priorNT(lexems, k - 2) != -2 && priorNT(lexems, k - 2) != -1)
 					{
 						ERROR_THROW_IN(304, lexems.table[k - 1].linenumber, 0);
 					}
@@ -159,9 +159,9 @@ namespace PN
 						//выкидывание операций
 						if (priorNT(lexems, i) > 1)
 						{
-							while (priorNT(lexems, i) == prior(stack, 0) || priorNT(lexems, i) > prior(stack, 0))
+							while (priorNT(lexems, i) == prior(stack, 0) || priorNT(lexems, i) < prior(stack, 0))
 							{
-
+								
 								if (stack != "")
 								{
 									LT::Entry lexem;
@@ -186,19 +186,11 @@ namespace PN
 						if (lexems.table[i - 1].lexema == ")")
 						{
 							//записываю в результирающую строку стэк до скобки
-							for (int j = 0; j < stack.length(); j++)
+							for (int j = 0; j < stack.length()+1; j++)
 							{
 								if (stack[j] == '(' || stack[j] == '@')
 								{
-									if (stack[j] == '@') 
-									{
-										
-										LT::Entry lexem;
-										lexem.lexema = stack[j];
-										lexem.indexTI = lexems.table[i - 2].indexTI-1;
-										lexem.linenumber = lexems.table[i - 2].linenumber;
-										LT::Add(PolishLexems, lexem);
-									}
+									
 									break;
 								}
 								LT::Entry lexem;
@@ -209,7 +201,7 @@ namespace PN
 								//
 							}
 							//убирают из стека всё до скобки
-							for (int j = 0; j < stack.length(); j++)
+							for (int j = 0; j < stack.length()+1; j++)
 							{
 								if (stack[0] == '(' || stack[0] == '@')
 								{
@@ -229,8 +221,10 @@ namespace PN
 			}
 			if (stack != "") 
 			{
-				for (int k = 0; k < stack.length(); k++) 
+				for (int k = 0; ;) 
 				{
+					
+					if (stack == "") { break; }
 					LT::Entry lexem;
 					lexem.lexema = stack[k];
 					lexem.indexTI = lexems.table[i - 1].indexTI;

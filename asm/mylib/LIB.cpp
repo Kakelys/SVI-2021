@@ -53,19 +53,25 @@ extern "C"
 	{
 		int i = NULL, len1 = NULL, len2 = NULL;
 	
-		for (int j = 0; str1[j] != '\0'; j++)
-		{
-			if (i == 255)
-				break;
-			buffer[i++] = str1[j];
-		}
 		for (int j = 0; str2[j] != '\0'; j++)
 		{
 			if (i == 255)
 				break;
 			buffer[i++] = str2[j];
 		}
+		for (int j = 0; str1[j] != '\0'; j++)
+		{
+			if (i == 255)
+				break;
+			buffer[i++] = str1[j];
+		}
 		buffer[i] = '\0';
 		return buffer;
+	}
+
+	int __stdcall printline() 
+	{
+		std::cout << "\n";
+		return 0;
 	}
 }

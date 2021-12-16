@@ -1,28 +1,31 @@
-int function linelength(string a);••
-int function fu()•
+int function func()•
 {• 
- return 0;•
+int a = 5;•
+print a;•
+return 0;•
 }••
-string function da()•
-{• 
-return "da";•
-}••••
+int function printline();•
+int function factorial(int b);•
 main•
 {• 
-int fa;•
-string c;•
-string y;•
-y = "da";•
-string a;•
-a = "net";•
-c = y + a + y;•
-fu();•
-if(9999> 10){••
-print y;••
+int a = 10;•
+int b = 3;•
+if(a > b)•
+{• 
+a = b;•
 }•
 else•
 {• 
-print a;••
+b = a;•
 }••
+string str = "Some Text";•
+string strr = "And more";•
+string st = str + strr;••
+print str; printline();•
+print strr;••
+printline();•
+print b;•
+printline();••
+print factorial(b);•
 return 0;•
-}•
+}

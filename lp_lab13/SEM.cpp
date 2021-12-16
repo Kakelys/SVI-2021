@@ -112,6 +112,7 @@ namespace SEM
 				bool checked = true;
 				for (int j = i; ;j++) 
 				{
+					if (lexems.table[i].lexema == LEX_MAIN) { break; }
 					if (lexems.table[j].lexema == LEX_RIGHTHESIS) 
 					{
 					if(lexems.table[j+1].lexema == LEX_SEMICOLON)
@@ -187,6 +188,7 @@ namespace SEM
 						if (idenfs.table[lexems.table[j].indexTI].name == name) 
 						{
 							find = true;
+							break;
 						}
 					}
 				
@@ -357,13 +359,16 @@ namespace SEM
 						if (idenf(j).datatype != lib.table[WhatFunc].elem[CallFuncParamsCount].datatype) 
 						{
 							ERROR_THROW_IN(311, lexems.table[i].linenumber, 0);
-							CallFuncParamsCount++;
+							
 						}
-						//—оответствие кол-ва параметров в вызываемой функции и еЄ объ€влению
-						if (CallFuncParamsCount != lib.table[WhatFunc].ParmCounter) { ERROR_THROW_IN(312, lexems.table[i].linenumber, 0); }
+						CallFuncParamsCount++;
+						
+						
 					}
 				
 				}
+				//—оответствие кол-ва параметров в вызываемой функции и еЄ объ€влению
+				if (CallFuncParamsCount != lib.table[WhatFunc].ParmCounter) { ERROR_THROW_IN(312, lexems.table[i].linenumber, 0); }
 			}
 		
 		}

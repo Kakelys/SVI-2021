@@ -1,0 +1,32 @@
+﻿  Assembling asm.asm...
+asm.asm(1): error A2008: syntax error : .
+asm.asm(2): error A2008: syntax error : .
+asm.asm(17): error A2008: syntax error : .
+asm.asm(37): error A2070: invalid instruction operands
+asm.asm(38): error A2070: invalid instruction operands
+asm.asm(40): error A2070: invalid instruction operands
+asm.asm(43): error A2070: invalid instruction operands
+asm.asm(44): error A2070: invalid instruction operands
+asm.asm(56): error A2070: invalid instruction operands
+asm.asm(57): error A2070: invalid instruction operands
+asm.asm(58): error A2070: invalid instruction operands
+asm.asm(59): error A2070: invalid instruction operands
+asm.asm(61): error A2070: invalid instruction operands
+asm.asm(62): error A2070: invalid instruction operands
+asm.asm(63): error A2070: invalid instruction operands
+asm.asm(64): error A2070: invalid instruction operands
+asm.asm(66): error A2070: invalid instruction operands
+asm.asm(67): error A2070: invalid instruction operands
+asm.asm(68): error A2070: invalid instruction operands
+asm.asm(69): error A2070: invalid instruction operands
+asm.asm(71): error A2070: invalid instruction operands
+asm.asm(72): error A2070: invalid instruction operands
+asm.asm(73): error A2070: invalid instruction operands
+asm.asm(74): error A2070: invalid instruction operands
+asm.asm(76): error A2070: invalid instruction operands
+asm.asm(78): error A2070: invalid instruction operands
+asm.asm(82): error A2070: invalid instruction operands
+asm.asm(91): error A2070: invalid instruction operands
+asm.asm(94): error A2008: syntax error : main
+asm.asm(94): error A2088: END directive required at end of file
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\BuildCustomizations\masm.targets(70,5): error MSB3721: выход из команды "ml64.exe /c /nologo /Zi /Fo"x64\Debug\asm.obj" /W3 /errorReport:prompt  /Taasm.asm" с кодом "1".

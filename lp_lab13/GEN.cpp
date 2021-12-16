@@ -35,7 +35,7 @@ std::string StartWork(LT::LexTable lexems, IT::IdTable idenfs)
 		{
 			switch (elem.datatype)
 			{
-			case 1: temp = temp + " sdword " + std::to_string(elem.value.vint); break;
+			case 1: temp = temp + " dword " + std::to_string(elem.value.vint); break;
 			case 2: temp = temp + " byte '" + std::string(elem.value.vstr->str) + "', 0"; break;
 			}
 			ForConst += temp + "\n";
@@ -46,7 +46,7 @@ std::string StartWork(LT::LexTable lexems, IT::IdTable idenfs)
 			if (IT::AlredyExist(idenfs, i, elem.name)) { continue; }
 			switch (elem.datatype)
 			{
-			case 1: temp = temp + " sdword 0" ; break;
+			case 1: temp = temp + " dword 0" ; break;
 			case 2: temp = temp + " dword ?"; break;
 			}
 			ForData += temp + "\n";
@@ -461,7 +461,7 @@ namespace GEN
 				bool fun_lib = false;
 				for (int j = 0; j < lib.size+1; j++) 
 				{
-					if (idenfs.table[lexems.table[i + 1].indexTI].name == lib.table[i-1].name) { fun_lib = true; break; }
+					if (idenfs.table[lexems.table[i + 1].indexTI].name == lib.table[j-1].name) { fun_lib = true; break; }
 				}
 				if (fun_lib == true) { break; }
 				//

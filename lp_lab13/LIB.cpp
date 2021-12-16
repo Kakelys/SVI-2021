@@ -65,6 +65,13 @@ namespace LIB
 		lib.elem = new LIB::Elem[lib.ParmCounter];
 		lib.elem[0].datatype = 1;
 		LIB::Add(libs, lib);
+		delete lib.elem;
+
+		lib.name = "printline";
+		lib.ParmCounter = 0;
+		lib.datatype = 1;
+		LIB::Add(libs, lib);
+		
 	
 	}
 

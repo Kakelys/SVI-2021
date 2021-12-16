@@ -23,7 +23,7 @@ namespace LEX
 
 
 		std::fstream input; input.open("il.txt", std::ios::in);
-		if (!input) { throw ERROR_THROW(203) }
+		if (!input) { throw ERROR_THROW(113) }
 		std::string line;
 		std::string word;
 		std::string fun = "";
@@ -160,11 +160,7 @@ namespace LEX
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
 
-						if (scope == 0) { scope = maxscope + 1; maxscope++; }
-						else
-						{
-							subscope++;
-						}
+						scope = maxscope + 1; maxscope++;
 
 
 						type = 2;
@@ -288,11 +284,8 @@ namespace LEX
 						lexem.indexTI = LT_TI_NULLIDX;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
-						if (scope == 0) { scope = maxscope + 1; maxscope++; }
-						else
-						{
-							subscope++;
-						}
+						scope = maxscope + 1; maxscope++;
+						subscope = 0;
 						isfunction = true;
 						fun = "m";
 
@@ -347,6 +340,7 @@ namespace LEX
 						idenf.subscope = subscope;
 						idenf.type = 4;
 						idenf.datatype = 1;
+						idenf.indexfirstLE = sepline + separat(separators, sepcount, i);
 
 						if (idenfscounter > 1) {
 							if (idenfscounter > 1 && IT::IsId(idenfs, word, scope, subscope) < IT_NULLIDX)
@@ -553,7 +547,7 @@ namespace LEX
 
 							ParmCount = 0;
 						}
-
+					
 
 						
 						isfunction = false;
@@ -664,7 +658,7 @@ namespace LEX
 						lexem.indexTI = LT_TI_NULLIDX;
 						lexem.IlLine = linecounter;
 						LT::Add(lexems, lexem);
-
+						
 
 
 
@@ -724,7 +718,7 @@ namespace LEX
 							}
 
 						}
-						if (subscope != 0) { word = prevfun + word; }
+						//if (subscope != 0) { word = prevfun + word; }
 
 
 						if (word == "printnumb" || word == "printstr" || word == "concats") 
@@ -834,6 +828,19 @@ namespace LEX
 
 	}
 
+	void DisplayLtOneByOne(LT::LexTable lexems) 
+	{
+		int curLine = 1;
+		LT::Entry lexem;
+		for (int i = 1; i < lexems.size + 1; i++)
+		{
+
+			lexem = LT::GetEntry(lexems, i);
+			
+			std::cout << "|" << lexem.lexema << "| line -" << lexem.linenumber << "| index Ti - " << lexem.indexTI << "|\n";
+		}
+	}
+
 	void DisplayIT(IT::IdTable idenfs)
 	{
 		IT::Entry idenf;
@@ -845,8 +852,6 @@ namespace LEX
 				<< "  name - " << idenf.name
 				<< "  type - " << idenf.type
 				<< "  datatype - " << idenf.datatype
-				<< "  scope - " << idenf.scope << "-" << idenf.subscope
-				<< "  first in LE - " << idenf.indexfirstLE
 				<< " ParmCount - " << idenf.ParmCount
 				<< " value - ";
 
