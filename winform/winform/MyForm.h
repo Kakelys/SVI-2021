@@ -44,10 +44,10 @@ namespace winform {
 
 			}
 			//Из первой кнопки сделать эллипс
-			System::Drawing::Drawing2D::GraphicsPath^ Button_Path = gcnew System::Drawing::Drawing2D::GraphicsPath();
+			/*System::Drawing::Drawing2D::GraphicsPath^ Button_Path = gcnew System::Drawing::Drawing2D::GraphicsPath();
 			Button_Path->AddEllipse(5, 15, this->button1->Width-15, 60);
 			System::Drawing::Region^ Button_Region = gcnew System::Drawing::Region(Button_Path);
-			this->button1->Region = Button_Region;
+			this->button1->Region = Button_Region;*/
 
 			
 			//this->button1->CreateGraphics
@@ -100,9 +100,10 @@ namespace winform {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 12);
+			this->button1->Location = System::Drawing::Point(9, 10);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(208, 108);
+			this->button1->Size = System::Drawing::Size(156, 88);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Открыть файл";
 			this->button1->UseVisualStyleBackColor = true;
@@ -115,17 +116,19 @@ namespace winform {
 			// 
 			// richTextBox1
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(265, 12);
+			this->richTextBox1->Location = System::Drawing::Point(199, 10);
+			this->richTextBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(442, 471);
+			this->richTextBox1->Size = System::Drawing::Size(332, 489);
 			this->richTextBox1->TabIndex = 2;
 			this->richTextBox1->Text = L"";
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(12, 126);
+			this->button2->Location = System::Drawing::Point(9, 102);
+			this->button2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(208, 128);
+			this->button2->Size = System::Drawing::Size(156, 104);
 			this->button2->TabIndex = 3;
 			this->button2->Text = L"Save";
 			this->button2->UseVisualStyleBackColor = true;
@@ -133,9 +136,10 @@ namespace winform {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(12, 260);
+			this->button3->Location = System::Drawing::Point(9, 211);
+			this->button3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(208, 105);
+			this->button3->Size = System::Drawing::Size(156, 85);
 			this->button3->TabIndex = 4;
 			this->button3->Text = L"compile";
 			this->button3->UseVisualStyleBackColor = true;
@@ -143,17 +147,16 @@ namespace winform {
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(83)), static_cast<System::Int32>(static_cast<System::Byte>(88)),
 				static_cast<System::Int32>(static_cast<System::Byte>(117)));
-			this->ClientSize = System::Drawing::Size(822, 523);
+			this->ClientSize = System::Drawing::Size(659, 510);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->button1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);

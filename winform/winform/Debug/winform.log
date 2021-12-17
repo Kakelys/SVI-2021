@@ -1,5 +1,5 @@
 ﻿  MyForm.cpp
-C:\papka\programms\Git\SVI-2021\winform\winform\MyForm.h(192,21): warning C4101: e: неиспользованная локальная переменная
+C:\papka\programms\Git\SVI-2021\winform\winform\MyForm.h(195,21): warning C4101: e: неиспользованная локальная переменная
 C:\papka\programms\Git\SVI-2021\winform\winform\MyForm.cpp(8,32): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
   MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   winform.vcxproj -> C:\papka\programms\Git\SVI-2021\winform\Debug\winform.exe
