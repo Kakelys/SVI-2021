@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <msclr\marshal_cppstd.h>
+#include <fstream>
+
 namespace winform {
 
 	using namespace System;
@@ -27,6 +29,28 @@ namespace winform {
 			//TODO: добавьте код конструктора
 			//
 			
+			std::fstream input; input.open("last_file.txt", std::ios::in);
+			if (input) {
+				std::string FilePath; std::getline(input, FilePath);
+				String^ Path;
+
+				msclr::interop::marshal_context context;
+				Path = context.marshal_as<String^>(FilePath);
+
+				StreamReader^ file = File::OpenText(Path);
+				richTextBox1->Text = file->ReadToEnd();
+				openFileDialog1->FileName = Path;
+
+
+			}
+			//»з первой кнопки сделать эллипс
+			System::Drawing::Drawing2D::GraphicsPath^ Button_Path = gcnew System::Drawing::Drawing2D::GraphicsPath();
+			Button_Path->AddEllipse(5, 15, this->button1->Width-15, 60);
+			System::Drawing::Region^ Button_Region = gcnew System::Drawing::Region(Button_Path);
+			this->button1->Region = Button_Region;
+
+			
+			//this->button1->CreateGraphics
 		}
 		
 
@@ -42,6 +66,7 @@ namespace winform {
 			}
 		}
 	private: System::Windows::Forms::Button^ button1;
+
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 	private: System::Windows::Forms::RichTextBox^ richTextBox1;
@@ -64,6 +89,7 @@ namespace winform {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
@@ -126,9 +152,10 @@ namespace winform {
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->button1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"MyForm";
-			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -139,6 +166,7 @@ namespace winform {
 	private: System::Void openFileDialog1_FileOk(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
 	}
 	private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		// нопка дл€ открыти€ файла
 		String^ FileName = "";
 		
 		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK)
@@ -151,6 +179,15 @@ namespace winform {
 			StreamReader^ file = File::OpenText(FileName);
 			richTextBox1->Text = file->ReadToEnd();
 			file->Close();
+
+			//—охранение в файл, чтобы при последующих запусках открывалс€ тот же файл
+			std::fstream input; input.open("last_file.txt", std::ios::out);
+				
+
+				msclr::interop::marshal_context context;
+				std::string FilePath = context.marshal_as<std::string>(openFileDialog1->FileName);
+
+				input << FilePath;
 		}
 		catch (Exception^ e)
 		{
@@ -160,7 +197,7 @@ namespace winform {
 	}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	
+	// нопка дл€ сохранени€ файла
 	String^ FileName = openFileDialog1->FileName;
 	//StreamWriter^ file = File::OpenWrite(FileName);
 	//richTextBox1->Text = filename;
@@ -169,13 +206,16 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	String^ line = "call C:\papka\programms\Git\SVI-2021\Debug\lp_lab13.exe -in:" + openFileDialog1->FileName;
+	// нопка дл€ компил€ции
+	String^ line = "start C:\\papka\\programms\\Git\\SVI-2021\\Debug\\SVI-2021.exe -in:" + openFileDialog1->FileName;
 	msclr::interop::marshal_context context;
 	std::string command = context.marshal_as<std::string>(line);
 
-	//std::string command = "call C:\papka\programms\Git\SVI-2021\Debug\lp_lab13.exec -in:" + line;
+	
 	std::system(command.c_str());
 
+}
+private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

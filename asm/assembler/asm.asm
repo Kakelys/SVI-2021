@@ -20,11 +20,12 @@ printline PROTO
 .const
 		lit1 dword 5
 		lit2 dword 0
-		lit3 dword 8
-		lit4 dword 3
-		lit5 byte 'Some Text', 0
-		lit6 byte 'And more', 0
-		lit7 dword 0
+		lit3 dword 0
+		lit4 dword 8
+		lit5 dword 3
+		lit6 byte 'Some Text', 0
+		lit7 byte 'And more', 0
+		lit8 dword 0
 .data
 
 buffer1 byte 256 dup(0)
@@ -54,13 +55,19 @@ pop ebx
 mov eax, lit2
 ret
 func ENDP
+
+pop edx
+pop ebx
+mov eax, lit3
+ret
+func ENDP
 main PROC
-push lit3
+push lit4
 
 pop ebx
 mov ma, ebx
 
-push lit4
+push lit5
 
 pop ebx
 mov mb, ebx
@@ -88,12 +95,12 @@ mov mb, ebx
 
 
 L2:
-push offset lit5
+push offset lit6
 
 pop ebx
 mov mstr, ebx
 
-push offset lit6
+push offset lit7
 
 pop ebx
 mov mstrr, ebx
@@ -126,7 +133,7 @@ call factorial
 push eax 
 call printnumb
 
-push lit7
+push lit8
 call ExitProcess
 main ENDP
 end main

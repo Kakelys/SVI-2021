@@ -1,10 +1,5 @@
 ﻿  MyForm.cpp
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.h(172,17): warning C4129: p: неизвестная escape-последовательность
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.h(172,17): warning C4129: G: неизвестная escape-последовательность
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.h(172,17): warning C4129: S: неизвестная escape-последовательность
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.h(172,17): warning C4129: D: неизвестная escape-последовательность
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.h(172,17): warning C4129: l: неизвестная escape-последовательность
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.h(155,21): warning C4101: e: неиспользованная локальная переменная
-C:\Users\VladIsLove\source\repos\winform\winform\MyForm.cpp(8,32): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
+C:\papka\programms\Git\SVI-2021\winform\winform\MyForm.h(192,21): warning C4101: e: неиспользованная локальная переменная
+C:\papka\programms\Git\SVI-2021\winform\winform\MyForm.cpp(8,32): warning C4829: Возможно, неправильные параметры функции main. Рекомендуемый вариант - "int main(Platform::Array<Platform::String^>^ argv)"
   MyForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
-  winform.vcxproj -> C:\Users\VladIsLove\source\repos\winform\Debug\winform.exe
+  winform.vcxproj -> C:\papka\programms\Git\SVI-2021\winform\Debug\winform.exe
