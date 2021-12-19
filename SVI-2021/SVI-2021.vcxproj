@@ -144,7 +144,6 @@
     <ClCompile Include="FST.cpp" />
     <ClCompile Include="GEN.cpp" />
     <ClCompile Include="GRB.cpp" />
-    <ClCompile Include="ILG.cpp" />
     <ClCompile Include="In.cpp" />
     <ClCompile Include="IT.cpp" />
     <ClCompile Include="LEX.cpp" />
@@ -162,7 +161,6 @@
     <ClInclude Include="FST.h" />
     <ClInclude Include="GEN.h" />
     <ClInclude Include="GRB.h" />
-    <ClInclude Include="ILG.h" />
     <ClInclude Include="In.h" />
     <ClInclude Include="IT.h" />
     <ClInclude Include="LEX.h" />

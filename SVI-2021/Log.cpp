@@ -139,7 +139,7 @@ namespace Log {
 
 	}
 	void WriteError(LOG log, Error::ERROR error) {
-		*log.stream << "Error " << error.id << ": " << error.message;
+		*log.stream << "Îøèáêà " << error.id << ": " << error.message;
 		if (error.index.line > 0) {
 			*log.stream << error.index.line << "\n\n";
 		}

@@ -22,15 +22,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	setlocale(LC_ALL, ".1251");
 	
 
-
+	bool console = false;
 	Log::LOG log = Log::INITLOG;
 	bool logcreate = false;				//Если лог файл не был создан или указан, то при ошибке создастся crash_logs
 	try
 	{
 		
 		
-		Parm::PARM parm = Parm::getparm(argc, argv);
-		In::getin(parm.in, parm.out);
+		Parm::PARM parm = Parm::getparm(argc, argv, console);
+		In::getin(parm.in);
 		LT::LexTable lexems = LT::Create(LT_MAXSIZE);
 		IT::IdTable idenfs = IT::Create(IT_MAXSIZE);
 		LIB::LibTable lib = LIB::Create(MAX_LIB);
@@ -85,14 +85,21 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		
 
-		PN::PolishNT(parm.in, lexems, idenfs); //Польская запись
+		PN::PolishNT(lexems, idenfs); //Польская запись
+		Log::WriteLine(log, "Польская запись успешно построена\n");
+#ifdef DISPLAY
 		std::cout << "\n\n\n";
 		LEX::DisplayLT(lexems);//Вывод таблицы лексем
 		std::cout << "\n\n\n\n\n";
+#endif // DISPLAY
+
+	
+
+
 
 		//Генерация кода
-		GEN::CodeGeneration(lexems, idenfs,lib);
-		
+		GEN::CodeGeneration(lexems, idenfs,lib, parm.out);
+		Log::WriteLine(log, "Генерация кода успешно завершена\n");
 
 
 
@@ -109,17 +116,33 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		
 		Log::Close(log);
-
-
 		//Запуск bat файла, который по итогу запускает ассемблерный код
-		system("start C:\\papka\\programms\\Git\\SVI-2021\\compile.bat");
+		if (console == true) 
+		{
+			system("start ..\\compile.bat");
+		}
+		else 
+		{
+			system("start ..\\..\\..\\..\\..\\..\\compile.bat");
+		}
+		
+		
 	}
 	catch (Error::ERROR e)
 	{
 		
 		if (logcreate == false) {
-			wchar_t str[] = L"crash_logs.log";
-			log = Log::getlog(str); logcreate = true;
+			if (console == true) 
+			{
+				wchar_t str[] = L"crash_logs.log";
+				log = Log::getlog(str);
+			}
+			else 
+			{
+				wchar_t str[] = L"..\\..\\..\\..\\..\\..\\Final\\crash_logs.log";
+				log = Log::getlog(str);
+			}
+			
 		}
 		
 		Log::WriteLine(log, "\n\n\n================ERORR MESSAGE=================\n\n\n");
@@ -129,10 +152,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		Log::Close(log);
 #ifdef DISPLAY
-		std::cout << "Error " << e.id << ":" << e.message << e.index.line;
+		std::cout << "Ошибка " << e.id << ":" << e.message << e.index.line;
 #endif // DEBUG
-
-		system("start C:\\papka\\programms\\Git\\SVI-2021\\error.bat");
+		if (console == true) 
+		{
+			system("start ..\\error.bat");
+		}
+		else
+		{
+		system("start ..\\..\\..\\..\\..\\..\\error.bat");
+		}
+		
 		
 	}
 

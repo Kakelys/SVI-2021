@@ -14,23 +14,16 @@ namespace PN
 
 	
 
-	void PolishNT(wchar_t infile[], LT::LexTable lexems, IT::IdTable idenfs)
+	void PolishNT(LT::LexTable lexems, IT::IdTable idenfs)
 	{
-		std::fstream input; input.open(infile, std::ios::in);
-		if (!input) { throw ERROR_THROW(203) }
-		std::fstream Idenfs; Idenfs.open("IdenfTable.txt", std::ios::in);
-
-
 		std::string fullfile = "";
-		std::string line;
-		std::string sline;
 		std::string ResLine = "";
 		std::string stack = "";
 		int firstposition=-1,lastposition=0;
 		bool findequal = false;
 		int j = 1;
 			while (j < lexems.size) {
-		for (; j < lexems.size; j++) // граница нужной строки после равно
+		for (; j < lexems.size; j++) // граница нужного выражения после равно
 		{
 			LT::Entry lexem;
 			lexem = LT::GetEntry(lexems, j);
@@ -60,9 +53,10 @@ namespace PN
 		for (int m = 0; m < 1; m++) {
 			bool braceopen = false;
 			int k = firstposition;
+			//Проверка выражения на ошибки
 			for (; k < lastposition + 1; k++)
 			{
-				//std::cout << lexems.table[k - 1].lexema;
+				
 				if (priorNT(lexems, k ) == 1)
 				{
 					switch (braceopen) {
@@ -87,12 +81,6 @@ namespace PN
 					}
 
 				}
-				if (priorNT(lexems, k) == priorNT(lexems, k + 1))
-				{
-					ERROR_THROW_IN(304, lexems.table[k - 1].linenumber, 0);
-				}
-
-
 			}
 			if (braceopen == true) 
 			{ 
@@ -103,7 +91,6 @@ namespace PN
 			ResLine = "";
 			stack = "";
 			linecounter++;
-			sline = "";
 
 
 
@@ -114,11 +101,9 @@ namespace PN
 			
 
 			
-			//цикл разбора строки
+			//цикл разбора выражение
 			for (; i < lastposition+1; i++)
 			{
-
-
 				if (priorNT(lexems, i) < 0)
 				{
 					if (lexems.table[i-1].lexema == ",") { continue; }
@@ -133,9 +118,9 @@ namespace PN
 							lexem = lexems.table[i - 1];
 							LT::Add(PolishLexems, lexem);
 						}
+						i--;
 						continue;
 					}
-					//ResLine.insert(ResLine.length(), line, i, 1);
 					LT::Entry lexem;
 					lexem = lexems.table[i - 1];
 					LT::Add(PolishLexems,lexem);
@@ -146,9 +131,6 @@ namespace PN
 					if (stack == "" || stack[0] == '(' || lexems.table[i - 1].lexema == "(" && priorNT(lexems, i) > 0) {
 						if (lexems.table[i - 1].lexema == "(" && lexems.table[i - 2].lexema == "i")
 						{
-							/*PolishLexems.size--;
-							stack.insert(0, "@");*/
-							
 						}
 						else {
 							stack.insert(0, lexems.table[i - 1].lexema);
@@ -181,16 +163,14 @@ namespace PN
 							stack.insert(0, lexems.table[i - 1].lexema);
 							continue;
 						}
-
 						//для скобок
 						if (lexems.table[i - 1].lexema == ")")
 						{
-							//записываю в результирающую строку стэк до скобки
+							//записываю в польскую запись стэк до скобки
 							for (int j = 0; j < stack.length()+1; j++)
 							{
-								if (stack[j] == '(' || stack[j] == '@')
+								if (stack[j] == '(')
 								{
-									
 									break;
 								}
 								LT::Entry lexem;
@@ -198,12 +178,12 @@ namespace PN
 								lexem.indexTI = lexems.table[i - 1].indexTI;
 								lexem.linenumber = lexems.table[i - 1].linenumber;
 								LT::Add(PolishLexems, lexem);
-								//
+							
 							}
 							//убирают из стека всё до скобки
 							for (int j = 0; j < stack.length()+1; j++)
 							{
-								if (stack[0] == '(' || stack[0] == '@')
+								if (stack[0] == '(')
 								{
 									stack = stack.substr(1, stack.length());
 									break;
@@ -235,34 +215,26 @@ namespace PN
 
 			}
 
-
+			//Замена элементов в таблица лексем н польскую запись
 			for (int k = firstposition, l = 1; l < PolishLexems.size + 1; k++,l++) 
 			{
-				/*if (PolishLexems.table[l - 1].lexema == "+" || PolishLexems.table[l - 1].lexema == "-" || PolishLexems.table[l - 1].lexema == "*" || PolishLexems.table[l - 1].lexema == "/") 
-				{
-					PolishLexems.table[l-1].lexema = "v";
-				}*/
+
+
 				lexems.table[k - 1] = PolishLexems.table[l - 1];
 				i = k+1;
 			}
-
 			if (i < lastposition + 1) 
 			{
+				//Замена лишних элементов
 				for (; i < lastposition + 1; i++) 
 				{
 					lexems.table[i - 1].lexema = "A";
 				}
 			}
-			
-			
-		
-			
+
+
 			j++;
 		}
-		input.close();
-
-		input.open(infile, std::ios::out);
-		input << fullfile;
 
 
 	}

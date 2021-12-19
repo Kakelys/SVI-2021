@@ -1,3 +1,3 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (lp_lab13.vcxproj).  Это может привести к ошибкам очистки и перестроения.
-  SEM.cpp
+  SVI.cpp
   SVI-2021.vcxproj -> C:\papka\programms\Git\SVI-2021\Debug\SVI-2021.exe

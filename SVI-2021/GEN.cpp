@@ -148,7 +148,6 @@ std::string genEqual(LT::LexTable lexems, IT::IdTable idenfs, int i)
 				}
 				else
 				{
-
 						str += "push " + idenfs.table[lexems.table[j].indexTI].name + "\n";
 				}
 				break;
@@ -426,11 +425,11 @@ namespace GEN
 {
 
 
-	void CodeGeneration(LT::LexTable lexems, IT::IdTable idenfs, LIB::LibTable lib)
+	void CodeGeneration(LT::LexTable lexems, IT::IdTable idenfs, LIB::LibTable lib, wchar_t outfile[])
 	{
 		std::string fullfile = StartWork(lexems, idenfs);
 		std::fstream input; 
-		input.open(AssPath1, std::ios::out);
+		input.open(outfile, std::ios::out);
 	
 
 		std::string str = "";

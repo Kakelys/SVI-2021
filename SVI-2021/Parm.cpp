@@ -7,7 +7,7 @@
 using namespace std;
 namespace Parm
 {
-	PARM getparm(int argc, _TCHAR* argv[])
+	PARM getparm(int argc, _TCHAR* argv[], bool& console)
 	{
 		setlocale(LC_ALL, "RUS");
 		PARM prm = {};
@@ -19,7 +19,7 @@ namespace Parm
 		wchar_t findlog[] = L"-log:";
 		wchar_t founded[900] = L"";
 		wchar_t space[] = L" ";
-
+		wchar_t isconsole[] = L"-c";
 
 
 		for (int i = 1; i < argc; i++) {
@@ -29,9 +29,10 @@ namespace Parm
 		}
 
 
-		//debug str
-		//std::wcout << L"Полная строка: " << fullstr << "\n\n";
-
+	
+		//Определение, запускается ли с консоли
+		if (wcsstr(fullstr, isconsole) == NULL) {}
+		else { console = true; }
 
 
 		// Поиск/Создание in
@@ -58,7 +59,7 @@ namespace Parm
 		// Поиск/Создание out
 		if (wcsstr(fullstr, findout) == NULL) {
 			wcsncat_s(prm.out, prm.in, PARM_MAX_SIZE);
-			wcsncat_s(prm.out, L"out.txt", PARM_MAX_SIZE);
+			wcsncat_s(prm.out, L"out.asm", PARM_MAX_SIZE);
 			//debug out
 			//std::wcout << L"Полученное out " << prm.out << "\n\n";
 		}

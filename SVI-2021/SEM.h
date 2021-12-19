@@ -35,9 +35,7 @@ namespace SEM
 	void CheckConcat(IT::IdTable idenfs, LT::LexTable lexems);
 	//В сравнении только int
 	void CheckTypesIF(IT::IdTable idenfs, LT::LexTable lexems);
-
-
-
+	
 
 	//Добавление всех найденных функций в библиотеку
 	void AddAllFunctions(IT::IdTable idenfs, LT::LexTable lexems, LIB::LibTable& libs);

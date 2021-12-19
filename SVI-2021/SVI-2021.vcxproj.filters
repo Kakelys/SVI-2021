@@ -48,9 +48,6 @@
     <ClCompile Include="MFST.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="ILG.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="GEN.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -99,9 +96,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MFST.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="ILG.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="GEN.h">

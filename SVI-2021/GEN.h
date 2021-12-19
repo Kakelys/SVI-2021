@@ -5,6 +5,8 @@
 #include "IT.h"
 #include "stdafx.h"
 #include "LIB.h"
+#include "Parm.h"
+
 
 #define AssPath "C:\papka\programms\Git\SVI-2021\asm\assembler\asm.asm"
 #define AssPath1 "C:\\papka\\programms\\Git\\SVI-2021\\asm\\assembler\\asm.asm"
@@ -37,6 +39,6 @@
 
 namespace GEN
 {
-	void CodeGeneration(LT::LexTable, IT::IdTable, LIB::LibTable lib);
+	void CodeGeneration(LT::LexTable, IT::IdTable, LIB::LibTable lib, wchar_t outfile[]);
 }
 

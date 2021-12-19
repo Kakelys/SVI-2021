@@ -16,7 +16,7 @@ namespace PN
 
 
 
-	void PolishNT(wchar_t infile[], LT::LexTable lexems, IT::IdTable idenfs);
+	void PolishNT(LT::LexTable lexems, IT::IdTable idenfs);
 
 	int prior(std::string line, int pos);
 

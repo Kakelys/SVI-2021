@@ -11,7 +11,7 @@ namespace In
 	int zs;
 	int snl;
 	int rng;
-	void getin(wchar_t infile[],  wchar_t outfile[]) // delete outfile and put il.txt for find some errors
+	void getin(wchar_t infile[]) // delete outfile and put il.txt for find some errors
 	{
 		setlocale(LC_CTYPE, ".1251");
 		IN inn;

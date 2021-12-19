@@ -1,12 +1,12 @@
 int function func()
 {
 	int a = 5;
-	print a;
+	
 	return 0;
 }
 
 int function printline();
-int function factorial(int b){return 0;}
+int function factorial(int b);
 
 
 main
@@ -21,7 +21,6 @@ main
 	{
 	b = a;
 	}
-
 	string str = "Some Text";
 	string strr = "And more";
 	string st = str + strr;
@@ -30,12 +29,13 @@ main
 	print strr;
 
 
-
-
 	printline();
 	print b;
 	printline();
 
 	print factorial(b);
+	
 	return 0;
+
 }
+

@@ -30,6 +30,8 @@ namespace SEM
 		CheckConcat(idenfs, lexems);
 		//В сравнении только int
 		CheckTypesIF(idenfs,lexems);
+
+		
 	}
 	
 	void MainCheck(IT::IdTable idenfs, LT::LexTable lexems) 
@@ -65,32 +67,35 @@ namespace SEM
 			//Если выражение было найдено
 			if (find == true) 
 			{
-				//Если идентификатор
-				if (lexems.table[i].lexema == LEX_ID) 
-				{
-					//Проверка соответствия типа левой части и найденного идентификатора
-					if (idenfs.table[lexems.table[i].indexTI].datatype != lefttype) 
+				for (; i < lexems.size; i++) {
+					//Если идентификатор
+					if (lexems.table[i].lexema == LEX_ID || lexems.table[i].lexema == LEX_LITERAL)
 					{
-						ERROR_THROW_IN(301, lexems.table[i].linenumber, 0);
-					}
-					
-
-
-					//Если идентификатор - функция, то пропустить до скобки
-					if (idenfs.table[lexems.table[i].indexTI].type == 2) 
-					{
-						while (lexems.table[i].lexema != LEX_RIGHTHESIS) 
+						//Проверка соответствия типа левой части и найденного идентификатора
+						if (idenfs.table[lexems.table[i].indexTI].datatype != lefttype)
 						{
-							i++;
+							ERROR_THROW_IN(301, lexems.table[i].linenumber, 0);
 						}
+
+
+
+						//Если идентификатор - функция, то пропустить до скобки
+						if (idenfs.table[lexems.table[i].indexTI].type == 2)
+						{
+							while (lexems.table[i].lexema != LEX_RIGHTHESIS)
+							{
+								i++;
+							}
+						}
+
+
 					}
-					
-					
-				}
-				//Если ; - конец выражения
-				if (lexems.table[i].lexema == LEX_SEMICOLON) 
-				{
-					find = false;
+					//Если ; - конец выражения
+					if (lexems.table[i].lexema == LEX_SEMICOLON)
+					{
+						find = false;
+						break;
+					}
 				}
 			}
 			
@@ -432,5 +437,7 @@ namespace SEM
 		}
 	
 	}
+
+	
 
 }

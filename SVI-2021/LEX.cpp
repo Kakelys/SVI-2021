@@ -703,6 +703,11 @@ namespace LEX
 							ParmCount++;
 
 						}
+						//key words check
+						if (word == "printstr" || word == "printnumb")
+						{
+							ERROR_THROW_IN(207, sepline + separat(separators, sepcount, i), 0);
+						}
 						//Дописывание функции спереди идентефикатора
 						if (type == 2 && lexems.table[lexemcounter - 2].lexema == LEX_FUNCTION)
 						{
@@ -733,6 +738,8 @@ namespace LEX
 						{
 							if (word[j] != tolower(word[j])) { ERROR_THROW_IN(205, sepline + separat(separators, sepcount, i), 0); }
 						}
+
+						
 
 
 						IT::Entry idenf;
