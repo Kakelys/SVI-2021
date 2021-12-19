@@ -35,10 +35,12 @@ namespace WinFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.myButton3 = new WinFormsApp1.MyButton();
             this.myButton1 = new WinFormsApp1.MyButton();
+            this.myButton4 = new WinFormsApp1.MyButton();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -47,12 +49,13 @@ namespace WinFormsApp1
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(260, 42);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.richTextBox1.Location = new System.Drawing.Point(497, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(384, 301);
+            this.richTextBox1.Size = new System.Drawing.Size(754, 683);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // myButton3
             // 
@@ -67,12 +70,13 @@ namespace WinFormsApp1
             this.myButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.myButton3.Font = new System.Drawing.Font("Verdana", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.myButton3.ForeColor = System.Drawing.Color.Black;
-            this.myButton3.Location = new System.Drawing.Point(12, 42);
+            this.myButton3.Location = new System.Drawing.Point(16, 70);
+            this.myButton3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.myButton3.Name = "myButton3";
             this.myButton3.RippleColor = System.Drawing.Color.Black;
             this.myButton3.Rounding = 50;
             this.myButton3.RoundingEnable = true;
-            this.myButton3.Size = new System.Drawing.Size(97, 35);
+            this.myButton3.Size = new System.Drawing.Size(129, 58);
             this.myButton3.TabIndex = 3;
             this.myButton3.TabStop = false;
             this.myButton3.Text = "Открыть файл";
@@ -95,12 +99,13 @@ namespace WinFormsApp1
             this.myButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.myButton1.Font = new System.Drawing.Font("Verdana", 10.32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.myButton1.ForeColor = System.Drawing.Color.Black;
-            this.myButton1.Location = new System.Drawing.Point(127, 42);
+            this.myButton1.Location = new System.Drawing.Point(169, 70);
+            this.myButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.myButton1.Name = "myButton1";
             this.myButton1.RippleColor = System.Drawing.Color.Black;
             this.myButton1.Rounding = 50;
             this.myButton1.RoundingEnable = true;
-            this.myButton1.Size = new System.Drawing.Size(104, 35);
+            this.myButton1.Size = new System.Drawing.Size(139, 58);
             this.myButton1.TabIndex = 4;
             this.myButton1.Text = "Сохранить Файл";
             this.myButton1.TextHover = null;
@@ -109,26 +114,53 @@ namespace WinFormsApp1
             this.myButton1.UseZoomEffectOnHover = false;
             this.myButton1.Click += new System.EventHandler(this.myButton1_Click);
             // 
+            // myButton4
+            // 
+            this.myButton4.BackColor = System.Drawing.Color.Tomato;
+            this.myButton4.BackColorAdditional = System.Drawing.Color.Gray;
+            this.myButton4.BackColorGradientEnabled = false;
+            this.myButton4.BackColorGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Horizontal;
+            this.myButton4.BorderColor = System.Drawing.Color.Tomato;
+            this.myButton4.BorderColorEnabled = false;
+            this.myButton4.BorderColorOnHover = System.Drawing.Color.Tomato;
+            this.myButton4.BorderColorOnHoverEnabled = false;
+            this.myButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.myButton4.Font = new System.Drawing.Font("Verdana", 16.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.myButton4.ForeColor = System.Drawing.Color.Black;
+            this.myButton4.Location = new System.Drawing.Point(16, 190);
+            this.myButton4.Name = "myButton4";
+            this.myButton4.RippleColor = System.Drawing.Color.Black;
+            this.myButton4.Rounding = 50;
+            this.myButton4.RoundingEnable = true;
+            this.myButton4.Size = new System.Drawing.Size(292, 124);
+            this.myButton4.TabIndex = 5;
+            this.myButton4.Text = "Compile";
+            this.myButton4.TextHover = null;
+            this.myButton4.UseDownPressEffectOnClick = false;
+            this.myButton4.UseRippleEffect = true;
+            this.myButton4.UseZoomEffectOnHover = false;
+            this.myButton4.Click += new System.EventHandler(this.myButton4_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 410);
+            this.ClientSize = new System.Drawing.Size(1251, 683);
+            this.Controls.Add(this.myButton4);
             this.Controls.Add(this.myButton1);
             this.Controls.Add(this.myButton3);
             this.Controls.Add(this.richTextBox1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private MyButton myButton2;
         private MyButton myButton3;
         private MyButton myButton1;
+        private MyButton myButton4;
     }
 }
 

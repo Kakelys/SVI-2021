@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\best try\\MyWindow\\MyWindow\\MyWindow.csproj": {}
+    "C:\\papka\\programms\\Git\\SVI-2021\\MyWindow\\MyWindow\\MyWindow.csproj": {}
   },
   "projects": {
-    "D:\\best try\\MyWindow\\MyWindow\\MyWindow.csproj": {
+    "C:\\papka\\programms\\Git\\SVI-2021\\MyWindow\\MyWindow\\MyWindow.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\best try\\MyWindow\\MyWindow\\MyWindow.csproj",
+        "projectUniqueName": "C:\\papka\\programms\\Git\\SVI-2021\\MyWindow\\MyWindow\\MyWindow.csproj",
         "projectName": "MyWindow",
-        "projectPath": "D:\\best try\\MyWindow\\MyWindow\\MyWindow.csproj",
-        "packagesPath": "C:\\Users\\Vlad\\.nuget\\packages\\",
-        "outputPath": "D:\\best try\\MyWindow\\MyWindow\\obj\\",
+        "projectPath": "C:\\papka\\programms\\Git\\SVI-2021\\MyWindow\\MyWindow\\MyWindow.csproj",
+        "packagesPath": "C:\\Users\\VladIsLove\\.nuget\\packages\\",
+        "outputPath": "C:\\papka\\programms\\Git\\SVI-2021\\MyWindow\\MyWindow\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Vlad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\VladIsLove\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,31 @@
+int function func()•
+{• 
+int a = 5;•
+print a;•
+return 0;•
+}••
+int function printline();•
+int function factorial(int b);••
+main•
+{••
+int a = 10;•
+int b = 3;•
+if(a > b)•
+{• 
+a = b;•
+}•
+else•
+{• 
+b = a;•
+}••
+string str = "Some Text";•
+string strr = "And more";•
+string st = str + strr;••
+print str; printline();•
+print strr;•••••
+printline();•
+print b;•
+printline();••
+print factorial(b);•
+return 0;•
+}
