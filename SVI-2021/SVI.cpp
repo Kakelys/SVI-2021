@@ -46,9 +46,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 		LEX::lexTable(parm.out, idenfs, lexems); // Лекс.анализатор, создние таблицы лексем и идентификаторов
 		Log::WriteLine(log, "Лексический анализатор успешно завершил работу\n");
+		
 		Log::WriteLexResult(log, idenfs, lexems);
 
-
+		
 #ifdef DISPLAY
 
 		std::cout << "\n\n\n";
@@ -135,13 +136,13 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (logcreate == false) {
 			if (parm.isForm == true) 
 			{
-				wchar_t str[] = L"..\\..\\..\\..\\..\\..\\Final\\crash_logs.log";
+				wchar_t str[] = L"..\\..\\..\\..\\..\\..\\crash_logs.log";
 				log = Log::getlog(str);
 			}
 			else 
 			{
 			
-				wchar_t str[] = L"crash_logs.log";
+				wchar_t str[] = L"..\\crash_logs.log";
 				log = Log::getlog(str);
 
 			}

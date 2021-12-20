@@ -66,26 +66,34 @@ namespace LEX
 				else { nosep += line[j]; }
 			}
 			line = nosep;
-			//nosep для того, что replace оставляет пустые места
-
-			linecounter++;
-
-			i = 0;
-			while (i != line.length())
-			{
-				word = "";
-				//отделением лексемы от строки
+			//nosep для того, что replace оставляет пустые места										   
+																										   
+			linecounter++;																				   
+																										   
+			i = 0;																						   
+			while (i != line.length())																	   
+			{																							   
+				word = "";																				   
+				//отделением лексемы от строки															   
 				for (; i < line.length(); i++)
 				{
 					if (line[i] == ',' || line[i] == '(' || line[i] == ')' || \
 						line[i] == '+' || line[i] == '-' || line[i] == '*' || line[i] == '/' || line[i] == ';' ||\
-						line[i] == '>' || line[i] == '<' || line[i] == '!')
+						line[i] == '>' || line[i] == '<' || line[i] == '!' || (line[i] == '='))
 					{
 						if (somethingelse == true)
 						{
+							
 							word += line[i];
 							somethingelse = false;
-							i++;
+							//Небольшой костыль для сравнений: равенство/неравенство
+							if (line[i + 1] == '=') 
+							{
+								word += "="; i++; 
+							}
+							
+								i++;
+							
 							break;
 						}
 						somethingelse = true;
@@ -726,7 +734,7 @@ namespace LEX
 						//if (subscope != 0) { word = prevfun + word; }
 
 
-						if (word == "printnumb" || word == "printstr" || word == "concats") 
+						if (word == "printnumb" || word == "printstr" || word == "concats"||word == "buffer1"|| word == "buffer2"|| word == "zero")
 						{
 							ERROR_THROW_IN(207, sepline + separat(separators, sepcount, i), 0);
 						}

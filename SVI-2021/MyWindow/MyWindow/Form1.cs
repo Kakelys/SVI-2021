@@ -24,50 +24,63 @@ namespace WinFormsApp1
 
         public Form1()
 		{
-			//init();
-			InitializeComponent();
-			//Buttons();
-
-			numberedrtb1.RichTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(richTextBox1_KeyDown);
-			bool FileExist = false;
-			if (File.Exists("last_file.txt")) { FileExist = true;}
-			
-
-
-			if (FileExist == true)
+			try
 			{
-				//Работа с файлом "последних сохранений"
-				using (FileStream Last_File = new("last_file.txt", FileMode.Open))
+				//init();
+				InitializeComponent();
+				//Buttons();
+
+
+				//Некоторые параметры для текстового поля
+				numberedrtb1.RichTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(richTextBox1_KeyDown);
+				numberedrtb1.RichTextBox.AcceptsTab = true;
+
+
+
+				bool FileExist = false;
+				if (File.Exists("last_file.txt")) { FileExist = true; }
+
+
+
+				if (FileExist == true)
 				{
-					using (StreamReader read = new(Last_File))
+					//Работа с файлом "последних сохранений"
+					using (FileStream Last_File = new("last_file.txt", FileMode.Open))
 					{
-						//Если первая строка не пуста, то записать в текстовое поле всё из него
-						openFileDialog1.FileName = read.ReadLine();
-						if (openFileDialog1.FileName != "")
+						using (StreamReader read = new(Last_File))
 						{
-							if(File.Exists(openFileDialog1.FileName))
-							using (StreamReader TextToBox = new(openFileDialog1.FileName))
+							//Если первая строка не пуста, то записать в текстовое поле всё из него
+							openFileDialog1.FileName = read.ReadLine();
+							if (openFileDialog1.FileName != "")
 							{
-								//richTextBox1.Text = TextToBox.ReadToEnd();
-									numberedrtb1.RichTextBox.Text = TextToBox.ReadToEnd();
-								//Если вторая строка пуста, то взять значение по умолчанию
-								openFileDialog2.FileName = read.ReadLine();
-								if (openFileDialog2.FileName == "" || openFileDialog2.FileName == "openFileDialog2")
-								{
-									openFileDialog2.FileName = "C:\\papka\\programms\\Git\\SVI-2021\\SVI-2021\\asm\\assembler\\asm.asm";
-								}
+								if (File.Exists(openFileDialog1.FileName))
+									using (StreamReader TextToBox = new(openFileDialog1.FileName))
+									{
+										//richTextBox1.Text = TextToBox.ReadToEnd();
+										numberedrtb1.RichTextBox.Text = TextToBox.ReadToEnd();
+										//Если вторая строка пуста, то взять значение по умолчанию
+										openFileDialog2.FileName = read.ReadLine();
+										if (openFileDialog2.FileName == "" || openFileDialog2.FileName == "openFileDialog2")
+										{
+											openFileDialog2.FileName = "C:\\papka\\programms\\Git\\SVI-2021\\SVI-2021\\asm\\assembler\\asm.asm";
+										}
+									}
 							}
 						}
 					}
 				}
-			}
-			else
-			{
-				using (FileStream Last_File = new("last_file.txt", FileMode.OpenOrCreate))
+				else
 				{
+					using (FileStream Last_File = new("last_file.txt", FileMode.OpenOrCreate))
+					{
 
+					}
 				}
+
+				//Выровнять номера строк
+				numberedrtb1.RichTextBox.SelectedText = " ";
 			}
+			catch { }
 		}
 
 
@@ -119,7 +132,10 @@ namespace WinFormsApp1
 		//Сохранение файла
 		private void myButton1_Click(object sender, EventArgs e)
         {
-			
+			textBox1.Text = "File Saved...";
+
+			TimerCallback tm = new TimerCallback(ClearTextBox);
+			System.Threading.Timer timer = new System.Threading.Timer(tm, 0, 5000, 0);
 			String FileName = openFileDialog1.FileName;
 			//File.WriteAllText(FileName, richTextBox1.Text);
 			File.WriteAllText(FileName, numberedrtb1.RichTextBox.Text);
@@ -149,10 +165,7 @@ namespace WinFormsApp1
 		private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
 
-			if (e.KeyCode == Keys.Tab) 
-			{
-				numberedrtb1.RichTextBox.SelectedText = "\t";
-			}
+
 
 			if (e.KeyCode == Keys.F5 && e.Control)
 			{
@@ -168,10 +181,7 @@ namespace WinFormsApp1
 
 				myButton1_Click(sender, e);
 			
-				textBox1.Text = "File Saved...";
 
-				TimerCallback tm = new TimerCallback(ClearTextBox);
-				System.Threading.Timer timer = new System.Threading.Timer(tm, 0, 5000, 0);
 
 				e.Handled = true;
 			}
@@ -204,35 +214,6 @@ namespace WinFormsApp1
 
 		}
 
-        private void numberedrtb1_KeyDown(object sender, KeyEventArgs e)
-        {
-			if (e.KeyCode == Keys.S && e.Control)
-			{
-
-				myButton1_Click(sender, e);
-
-				textBox1.Text = "File Saved...";
-
-				TimerCallback tm = new TimerCallback(ClearTextBox);
-				System.Threading.Timer timer = new System.Threading.Timer(tm, 0, 5000, 0);
-
-				e.Handled = true;
-			}
-
-
-
-			if (e.KeyCode == Keys.O && e.Control)
-			{
-
-				myButton3_Click(sender, e);
-				e.Handled = true;
-			}
-		}
-
-        private void numberedrtb1_KeyDown_1(object sender, KeyEventArgs e)
-        {
-
-        }
     }
 }
 

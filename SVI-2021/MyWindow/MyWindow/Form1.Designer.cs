@@ -186,9 +186,6 @@ namespace WinFormsApp1
             this.numberedrtb1.Name = "numberedrtb1";
             this.numberedrtb1.Size = new System.Drawing.Size(710, 410);
             this.numberedrtb1.TabIndex = 8;
-            this.numberedrtb1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberedrtb1_KeyDown_1);
-         
-
             // 
             // Form1
             // 

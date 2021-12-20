@@ -1,3 +1,2 @@
 ﻿  Assembling asm.asm...
-asm.asm(121): fatal error A1010: unmatched block nesting : printline
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\BuildCustomizations\masm.targets(70,5): error MSB3721: выход из команды "ml.exe /c /nologo /Zi /Fo"Debug\asm.obj" /W3 /errorReport:prompt  /Taasm.asm" с кодом "1".
+  assembler.vcxproj -> C:\papka\programms\Git\SVI-2021\SVI-2021\asm\Debug\assembler.exe

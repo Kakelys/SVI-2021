@@ -26,14 +26,27 @@
 ".stack 4096\n"
 
 
-#define CONST ".const\n"
+#define CONST ".const\n"\
+"zero byte 'Error: Division by zero', 0\n\n"\
+
 #define DATA ".data\n"\
 "\nbuffer1 byte 256 dup(0)\n"\
 "buffer2 byte 256 dup(0)\n"\
 
 #define CODE ".code\n"
 
-#define END "push 0\ncall ExitProcess\nmain ENDP\nend main"
+
+//В конечном итоге не используется
+#define END "push 0\
+ncall ExitProcess\
+div_by_0:\
+push zero\
+call printstr\
+push -1\
+call ExitProcess\
+nmain ENDP\
+nend main\
+"
 
 
 

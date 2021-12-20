@@ -1,4 +1,4 @@
-int function func()•
+ int function func()•
 {• 
 int a = 5;••
 return 0;•
@@ -22,7 +22,8 @@ string str = "Some Text";•
 string strr = "And more";•
 string st = str + strr;••
 print str; printline();•
-print strr;•••••
+print strr;•••
+printline();•
 print b;•
 print factorial(b);•
 return 0;••

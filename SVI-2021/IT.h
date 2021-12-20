@@ -12,8 +12,7 @@
 
 namespace IT
 {
-	// enum IDDATATYPE { INT = 1, STR = 2 };
-	//enum IDTYPE { V = 1, F = 2, P = 3, L = 4 };
+	
 
 
 	struct Entry
@@ -25,8 +24,7 @@ namespace IT
 		int datatype;
 		int type;
 
-		/*IDDATATYPE datatype;
-		IDTYPE type;*/
+
 		int ParmCount = 0; //кол-во параметров у функции
 		union
 		{

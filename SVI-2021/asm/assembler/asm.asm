@@ -18,23 +18,25 @@ factorial PROTO: DWORD
 printline PROTO
 .stack 4096
 .const
-		lit1 dword 5
-		lit2 dword 0
-		lit3 dword 8
-		lit4 dword 3
+zero byte 'Error: Division by zero', 0
+
+		lit1 word 5
+		lit2 word 0
+		lit3 word 8
+		lit4 word 3
 		lit5 byte 'Some Text', 0
 		lit6 byte 'And more', 0
-		lit7 dword 0
+		lit7 word 0
 .data
 
 buffer1 byte 256 dup(0)
 buffer2 byte 256 dup(0)
-		funca dword 0
-		ma dword 0
-		mb dword 0
-		mstr dword ?
-		mstrr dword ?
-		mst dword ?
+		funca word 0
+		ma word 0
+		mb word 0
+		mstr word ?
+		mstrr word ?
+		mst word ?
 .code
 func PROC  
 	
@@ -109,8 +111,11 @@ push mstr
 call printstr
 
 call printline 
+
 push mstrr
 call printstr
+
+call printline 
 
 push mb
 call printnumb
@@ -122,6 +127,12 @@ push eax
 call printnumb
 
 push lit7
+call ExitProcess
+div_by_0:
+call printline
+push offset zero
+call printstr
+push - 1
 call ExitProcess
 main ENDP
 end main

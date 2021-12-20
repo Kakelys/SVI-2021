@@ -1,5 +1,36 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (lp_lab13.vcxproj).  Это может привести к ошибкам очистки и перестроения.
   Error.cpp
+  FST.cpp
+  GEN.cpp
+  GRB.cpp
+  IT.cpp
+  In.cpp
+  LEX.cpp
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(51,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(59,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(78,14): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(380,48): warning C4244: +=: преобразование "double" в "__int64", возможна потеря данных
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(392,26): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(446,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(519,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\LEX.cpp(745,25): warning C4018: <: несоответствие типов со знаком и без знака
+  LT.cpp
+  Log.cpp
+  MFST.cpp
+C:\papka\programms\Git\SVI-2021\SVI-2021\MFST.cpp(285,68): warning C4267: =: преобразование из "size_t" в "short"; возможна потеря данных
+  PN.cpp
+C:\papka\programms\Git\SVI-2021\SVI-2021\PN.cpp(170,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\PN.cpp(184,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\PN.cpp(48,7): warning C4101: numbline: неиспользованная локальная переменная
+  Parm.cpp
+C:\papka\programms\Git\SVI-2021\SVI-2021\Parm.cpp(43,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\Parm.cpp(50,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\Parm.cpp(70,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\Parm.cpp(79,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\Parm.cpp(100,29): warning C4018: <: несоответствие типов со знаком и без знака
+C:\papka\programms\Git\SVI-2021\SVI-2021\Parm.cpp(107,29): warning C4018: <: несоответствие типов со знаком и без знака
+  SEM.cpp
   SVI.cpp
   Создание кода...
+C:\papka\programms\Git\SVI-2021\SVI-2021\IT.cpp(113): warning C4715: IT::GetLastFunc: значение возвращается не при всех путях выполнения
   SVI-2021.vcxproj -> C:\papka\programms\Git\SVI-2021\Debug\SVI-2021.exe

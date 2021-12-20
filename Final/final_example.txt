@@ -1,4 +1,4 @@
-int function func()
+    int function func()
 {
 	int a = 5;
 	
@@ -28,9 +28,8 @@ main
 	print str; printline();
 	print strr;
 
-
-
-
+	
+	printline();
 	print b;
 	print factorial(b);
 	return 0;

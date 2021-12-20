@@ -6,7 +6,7 @@ namespace GRB
 #define NS(n) Rule::Chain::N(n)
 #define TS(n) Rule::Chain::T(n)
 	Greibach greibach(NS('S'), TS('$'),
-		12,
+		13,
 		Rule(NS('S'), GRB_ERRORS_SERIES + 0,//Основные конструкции
 			3,
 			Rule::Chain(2, TS('m'), NS('B')),
@@ -29,16 +29,23 @@ namespace GRB
 			Rule::Chain(5, TS('t'), TS('i'), TS('='), NS('E'), TS(';')),
 			Rule::Chain(4, TS('t'), TS('i'), TS(';'), NS('N')),
 			Rule::Chain(6, TS('t'), TS('i'), TS('='), NS('E'), TS(';'), NS('N')),			
-			Rule::Chain(3, TS('p'), NS('E'), TS(';')),
+			Rule::Chain(3, TS('p'), NS('V'), TS(';')),
 			Rule::Chain(4, TS('i'), TS('='), NS('E'), TS(';')),
 			Rule::Chain(4, TS('t'), TS('i'), TS(';'), NS('N')),
 			Rule::Chain(2, TS('z'),  NS('C')),
 			Rule::Chain(5, TS('i'), TS('='), NS('E'), TS(';'), NS('N')),
-			Rule::Chain(4, TS('p'), NS('E'), TS(';'), NS('N')),
+			Rule::Chain(4, TS('p'), NS('V'), TS(';'), NS('N')),
 			Rule::Chain(6, TS('i'), TS('('), NS('W'), TS(')'), TS(';'), NS('N')),
 			Rule::Chain(5, TS('i'), TS('('), TS(')'), TS(';'), NS('N')),
 			Rule::Chain(4, TS('i'), TS('('), TS(')'), TS(';')),
 			Rule::Chain(5, TS('i'), TS('('), NS('W'), TS(')'), TS(';'))
+		),
+		Rule(NS('V'), GRB_ERRORS_SERIES + 1,
+			4,
+			Rule::Chain(4, TS('i'), TS('('), NS('W'), TS(')')),
+			Rule::Chain(3, TS('i'), TS('('), TS(')')),
+			Rule::Chain(1, TS('i')),
+			Rule::Chain(1, TS('l'))
 		),
 		Rule(NS('E'), GRB_ERRORS_SERIES + 2,
 			10,

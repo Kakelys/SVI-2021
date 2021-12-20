@@ -159,9 +159,10 @@ std::string genEqual(LT::LexTable lexems, IT::IdTable idenfs, int i)
 			case STAR:
 				str = str + "pop ebx\npop eax\nimul eax, ebx\npush eax\n"; break;
 			case DIRSLASH:
-				str = str + "pop ebx\npop eax\ncdq\nidiv ebx\npush eax\n"; break;
-
+				str = str + "pop ebx\npop eax\ncdq\ntest ebx, ebx\njz div_by_0\nidiv ebx\npush eax\n"; break;
 			}
+			
+				
 		}
 		str = str + "\npop ebx\nmov " + elem1.name + ", ebx\n";			// вычисленное выражение в ebx 
 		break;
@@ -274,9 +275,15 @@ std::string genReturn(LT::LexTable lexems, IT::IdTable idenfs, int i, std::strin
 		
 		if (func == "main") 
 		{
-			return  "\npush "+ idenfs.table[lexems.table[i + 1].indexTI].name +"\ncall ExitProcess\nmain ENDP\nend main"; 
+			return  "\npush "+ idenfs.table[lexems.table[i + 1].indexTI].name +"\ncall ExitProcess\ndiv_by_0:\ncall printline\npush offset zero\ncall printstr\npush - 1\ncall ExitProcess\nmain ENDP\nend main"; 
 		}
 	}
+
+
+
+
+
+
 	str += "ret\n";
 	str += func + " ENDP" + "\n";
 	return str;
@@ -487,6 +494,7 @@ namespace GEN
 				if (lexems.table[i + 1].lexema == LEX_LEFTHESIS && lexems.table[i - 1].lexema != LEX_FUNCTION) 
 				{
 					str = GenCallFunction(lexems,idenfs,i);
+					str += "\n";
 				}
 				break;
 			}

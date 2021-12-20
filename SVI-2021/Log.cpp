@@ -23,7 +23,7 @@ namespace Log {
 		std::string fullstr = "";
 		std::string* p = &c;
 		int i = 0;
-		while (p->size() < 1000) {
+		while (p->size() < 500) {
 
 			fullstr += *p;
 			p++;
@@ -40,7 +40,7 @@ namespace Log {
 		{
 			lexem = LT::GetEntry(lexems, i);
 
-			info += "|" + lexem.lexema + "| line -" + std::to_string(lexem.linenumber) + "| index Ti - " + std::to_string(lexem.indexTI) + "|\n";
+			info += "|" + lexem.lexema + "| line - " + std::to_string(lexem.linenumber) + "| index Ti - " + std::to_string(lexem.indexTI) + "|\n";
 		}
 
 		*log.stream << info;
