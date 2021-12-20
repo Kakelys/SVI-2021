@@ -28,7 +28,7 @@ namespace WinFormsApp1
 			InitializeComponent();
 			//Buttons();
 
-
+			numberedrtb1.RichTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(richTextBox1_KeyDown);
 			bool FileExist = false;
 			if (File.Exists("last_file.txt")) { FileExist = true;}
 			
@@ -48,7 +48,8 @@ namespace WinFormsApp1
 							if(File.Exists(openFileDialog1.FileName))
 							using (StreamReader TextToBox = new(openFileDialog1.FileName))
 							{
-								richTextBox1.Text = TextToBox.ReadToEnd();
+								//richTextBox1.Text = TextToBox.ReadToEnd();
+									numberedrtb1.RichTextBox.Text = TextToBox.ReadToEnd();
 								//Если вторая строка пуста, то взять значение по умолчанию
 								openFileDialog2.FileName = read.ReadLine();
 								if (openFileDialog2.FileName == "" || openFileDialog2.FileName == "openFileDialog2")
@@ -92,7 +93,8 @@ namespace WinFormsApp1
 			try
 			{
 				StreamReader file = new(FileName);
-				richTextBox1.Text = file.ReadToEnd();
+				//richTextBox1.Text = file.ReadToEnd();
+				numberedrtb1.RichTextBox.Text = file.ReadToEnd();
 				file.Close();
 				//Сохранение в файл, чтобы при последующих запусках открывался тот же файл
 				using (FileStream Last_File = new("last_file.txt", FileMode.OpenOrCreate))
@@ -119,8 +121,8 @@ namespace WinFormsApp1
         {
 			
 			String FileName = openFileDialog1.FileName;
-			File.WriteAllText(FileName, richTextBox1.Text);
-
+			//File.WriteAllText(FileName, richTextBox1.Text);
+			File.WriteAllText(FileName, numberedrtb1.RichTextBox.Text);
 		}
 
 		//Запуске exe с нужным параметром
@@ -131,7 +133,7 @@ namespace WinFormsApp1
 			//MessageBox.Show(openFileDialog1.FileName);
 			System.Diagnostics.Process p = new System.Diagnostics.Process();
 			p.StartInfo.FileName = "C:\\papka\\programms\\Git\\SVI-2021\\Debug\\SVI-2021.exe";
-			p.StartInfo.Arguments = "-in:\""+ openFileDialog1.FileName +"\"" + " -out:" + openFileDialog2.FileName;
+			p.StartInfo.Arguments = " -in:"+ openFileDialog1.FileName +" -out:" + openFileDialog2.FileName + " -c";
 			//MessageBox.Show(p.StartInfo.Arguments);
 
 			p.Start();
@@ -147,11 +149,25 @@ namespace WinFormsApp1
 		private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
 
+			if (e.KeyCode == Keys.Tab) 
+			{
+				numberedrtb1.RichTextBox.SelectedText = "\t";
+			}
+
+			if (e.KeyCode == Keys.F5 && e.Control)
+			{
+
+				myButton1_Click(sender, e);
+				myButton4_Click(sender, e);
+
+				e.Handled = true;
+			}
+
 			if (e.KeyCode == Keys.S && e.Control)
 			{
 
 				myButton1_Click(sender, e);
-
+			
 				textBox1.Text = "File Saved...";
 
 				TimerCallback tm = new TimerCallback(ClearTextBox);
@@ -160,7 +176,7 @@ namespace WinFormsApp1
 				e.Handled = true;
 			}
 
-			
+
 
 			if (e.KeyCode == Keys.O && e.Control)
 			{
@@ -188,7 +204,35 @@ namespace WinFormsApp1
 
 		}
 
+        private void numberedrtb1_KeyDown(object sender, KeyEventArgs e)
+        {
+			if (e.KeyCode == Keys.S && e.Control)
+			{
 
+				myButton1_Click(sender, e);
+
+				textBox1.Text = "File Saved...";
+
+				TimerCallback tm = new TimerCallback(ClearTextBox);
+				System.Threading.Timer timer = new System.Threading.Timer(tm, 0, 5000, 0);
+
+				e.Handled = true;
+			}
+
+
+
+			if (e.KeyCode == Keys.O && e.Control)
+			{
+
+				myButton3_Click(sender, e);
+				e.Handled = true;
+			}
+		}
+
+        private void numberedrtb1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
 

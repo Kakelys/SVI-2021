@@ -4,8 +4,20 @@
     <Compile Update="Class1.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="FileNameComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="HotTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UserControls\NumberedRTB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\Switch.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

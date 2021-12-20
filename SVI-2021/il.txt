@@ -4,7 +4,8 @@ int a = 5;••
 return 0;•
 }••
 int function printline();•
-int function factorial(int b);•••
+int function factorial(int b);••
+ •
 main•
 {• 
 int a = 10;•
@@ -22,9 +23,7 @@ string strr = "And more";•
 string st = str + strr;••
 print str; printline();•
 print strr;•••••
-printline();•
 print b;•
-printline();••
 print factorial(b);•
 return 0;••
 }••

@@ -20,16 +20,15 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	
 	setlocale(LC_ALL, ".1251");
-	
 
-	bool console = false;
 	Log::LOG log = Log::INITLOG;
 	bool logcreate = false;				//Если лог файл не был создан или указан, то при ошибке создастся crash_logs
+	Parm::PARM parm;
 	try
 	{
 		
 		
-		Parm::PARM parm = Parm::getparm(argc, argv, console);
+		parm = Parm::getparm(argc, argv);
 		In::getin(parm.in);
 		LT::LexTable lexems = LT::Create(LT_MAXSIZE);
 		IT::IdTable idenfs = IT::Create(IT_MAXSIZE);
@@ -117,13 +116,15 @@ int _tmain(int argc, _TCHAR* argv[])
 		
 		Log::Close(log);
 		//Запуск bat файла, который по итогу запускает ассемблерный код
-		if (console == true) 
+		if (parm.isForm == true) 
 		{
-			system("start ..\\compile.bat");
+			system("start ..\\..\\..\\..\\..\\..\\compile.bat");
+			
 		}
 		else 
 		{
-			system("start ..\\..\\..\\..\\..\\..\\compile.bat");
+			system("start ..\\compile.bat");
+		
 		}
 		
 		
@@ -132,15 +133,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	{
 		
 		if (logcreate == false) {
-			if (console == true) 
+			if (parm.isForm == true) 
 			{
-				wchar_t str[] = L"crash_logs.log";
+				wchar_t str[] = L"..\\..\\..\\..\\..\\..\\Final\\crash_logs.log";
 				log = Log::getlog(str);
 			}
 			else 
 			{
-				wchar_t str[] = L"..\\..\\..\\..\\..\\..\\Final\\crash_logs.log";
+			
+				wchar_t str[] = L"crash_logs.log";
 				log = Log::getlog(str);
+
 			}
 			
 		}
@@ -154,13 +157,13 @@ int _tmain(int argc, _TCHAR* argv[])
 #ifdef DISPLAY
 		std::cout << "Ошибка " << e.id << ":" << e.message << e.index.line;
 #endif // DEBUG
-		if (console == true) 
+		if (parm.isForm == true)
 		{
-			system("start ..\\error.bat");
+			system("start ..\\..\\..\\..\\..\\..\\error.bat");
 		}
 		else
 		{
-		system("start ..\\..\\..\\..\\..\\..\\error.bat");
+			system("start ..\\error.bat");
 		}
 		
 		

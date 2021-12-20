@@ -7,7 +7,7 @@
 using namespace std;
 namespace Parm
 {
-	PARM getparm(int argc, _TCHAR* argv[], bool& console)
+	PARM getparm(int argc, _TCHAR* argv[])
 	{
 		setlocale(LC_ALL, "RUS");
 		PARM prm = {};
@@ -19,7 +19,7 @@ namespace Parm
 		wchar_t findlog[] = L"-log:";
 		wchar_t founded[900] = L"";
 		wchar_t space[] = L" ";
-		wchar_t isconsole[] = L"-c";
+		wchar_t isForm[] = L"-c";
 
 
 		for (int i = 1; i < argc; i++) {
@@ -30,9 +30,9 @@ namespace Parm
 
 
 	
-		//Определение, запускается ли с консоли
-		if (wcsstr(fullstr, isconsole) == NULL) {}
-		else { console = true; }
+		//Определение, запускается ли с помощью формы
+		if (wcsstr(fullstr, isForm) > 0) { prm.isForm = true; }
+		
 
 
 		// Поиск/Создание in

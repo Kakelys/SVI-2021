@@ -430,6 +430,7 @@ namespace GEN
 		std::string fullfile = StartWork(lexems, idenfs);
 		std::fstream input; 
 		input.open(outfile, std::ios::out);
+		if (!input) { ERROR_THROW(114); }
 	
 
 		std::string str = "";

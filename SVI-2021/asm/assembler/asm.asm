@@ -112,12 +112,9 @@ call printline
 push mstrr
 call printstr
 
-call printline 
 push mb
 call printnumb
 
-call printline 
-call printline 
 
 push mb
 call factorial 

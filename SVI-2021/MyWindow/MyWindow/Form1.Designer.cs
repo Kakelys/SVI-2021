@@ -37,29 +37,18 @@ namespace WinFormsApp1
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.myButton3 = new WinFormsApp1.MyButton();
             this.myButton1 = new WinFormsApp1.MyButton();
             this.myButton4 = new WinFormsApp1.MyButton();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.myButton2 = new WinFormsApp1.MyButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.numberedrtb1 = new AboControls.UserControls.NumberedRTB();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.richTextBox1.Location = new System.Drawing.Point(296, 0);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(673, 410);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // myButton3
             // 
@@ -182,20 +171,35 @@ namespace WinFormsApp1
             this.textBox1.Location = new System.Drawing.Point(0, 387);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(296, 23);
+            this.textBox1.Size = new System.Drawing.Size(969, 23);
             this.textBox1.TabIndex = 7;
             this.textBox1.TabStop = false;
+            // 
+            // numberedrtb1
+            // 
+            this.numberedrtb1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numberedrtb1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.numberedrtb1.BackColor = System.Drawing.SystemColors.Window;
+            this.numberedrtb1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.numberedrtb1.Location = new System.Drawing.Point(259, 0);
+            this.numberedrtb1.Name = "numberedrtb1";
+            this.numberedrtb1.Size = new System.Drawing.Size(710, 410);
+            this.numberedrtb1.TabIndex = 8;
+            this.numberedrtb1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numberedrtb1_KeyDown_1);
+         
+
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(969, 410);
+            this.Controls.Add(this.numberedrtb1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.myButton4);
             this.Controls.Add(this.myButton1);
             this.Controls.Add(this.myButton3);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.myButton2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -206,13 +210,13 @@ namespace WinFormsApp1
         }
         #endregion
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private MyButton myButton3;
         private MyButton myButton1;
         private MyButton myButton4;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private MyButton myButton2;
         private System.Windows.Forms.TextBox textBox1;
+        private AboControls.UserControls.NumberedRTB numberedrtb1;
     }
 }
 

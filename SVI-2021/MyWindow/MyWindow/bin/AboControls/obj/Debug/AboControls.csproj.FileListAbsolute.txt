@@ -1,0 +1,76 @@
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\bin\Debug\Interop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\Interop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.csproj.ResolveComReference.cache
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.csproj.GenerateResource.Cache
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\bin\Debug\AboControls.exe.config
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\bin\Debug\AboControls.exe
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\bin\Debug\AboControls.pdb
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.exe
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.pdb
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.Other.CustomDialog.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.TestingForm.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.UserControls.CompactWebBrowser.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.UserControls.LockingMech.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.Properties.Resources.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.UserControls.NumberedRTB.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AOControls\obj\Debug\AboControls.UserControls.Switch.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AboControls.exe.config
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\Interop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.csproj.ResolveComReference.cache
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.exe
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.pdb
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AboControls.exe
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AboControls.pdb
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\Interop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.csprojResolveAssemblyReference.cache
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.Other.CustomDialog.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.TestingForm.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.CompactWebBrowser.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.LockingMech.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.Properties.Resources.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.NumberedRTB.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.Switch.resources
+C:\Users\Brian Ferguson\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.csproj.GenerateResource.Cache
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AboControls.exe.config
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\Interop.WMPLib.dll
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.csproj.ResolveComReference.cache
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.exe
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.pdb
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AboControls.exe
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AboControls.pdb
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\Interop.WMPLib.dll
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.Other.CustomDialog.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.TestingForm.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.CompactWebBrowser.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.LockingMech.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.Properties.Resources.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.NumberedRTB.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.UserControls.Switch.resources
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.csproj.GenerateResource.Cache
+C:\Users\Brian\Documents\Visual Studio 2012\Projects\Developer Tools\AboControls\obj\Debug\AboControls.csprojResolveAssemblyReference.cache
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\bin\Debug\AboControls.exe.config
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\bin\Debug\AboControls.exe
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\bin\Debug\AboControls.pdb
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\bin\Debug\Interop.WMPLib.dll
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\bin\Debug\AxInterop.WMPLib.dll
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.csproj.AssemblyReference.cache
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\Interop.WMPLib.dll
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AxInterop.WMPLib.dll
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.csproj.ResolveComReference.cache
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.Other.CustomDialog.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.TestingForm.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.UserControls.CompactWebBrowser.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.UserControls.LockingMech.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.Properties.Resources.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.UserControls.NumberedRTB.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.UserControls.Switch.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.csproj.GenerateResource.cache
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.csproj.CoreCompileInputs.cache
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.exe
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\bin\AboControls\obj\Debug\AboControls.pdb

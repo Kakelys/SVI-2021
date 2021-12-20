@@ -70,3 +70,5 @@ C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\obj\Debug\net5.0-wind
 C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\obj\Debug\net5.0-windows\ref\MyWindow.dll
 C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\obj\Debug\net5.0-windows\MyWindow.pdb
 C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\obj\Debug\net5.0-windows\MyWindow.genruntimeconfig.cache
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\obj\Debug\net5.0-windows\AboControls.UserControls.NumberedRTB.resources
+C:\papka\programms\Git\SVI-2021\SVI-2021\MyWindow\MyWindow\obj\Debug\net5.0-windows\AboControls.UserControls.Switch.resources

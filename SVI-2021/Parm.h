@@ -13,6 +13,8 @@ namespace Parm
 		wchar_t in[PARM_MAX_SIZE];
 		wchar_t out[PARM_MAX_SIZE];
 		wchar_t log[PARM_MAX_SIZE];
+		//Установил в формах параметрах -c, теперь .exe можно запускать через cmd или start.exe
+		bool isForm = false;
 	};
-	PARM getparm(int argc, _TCHAR* argv[], bool &console);
+	PARM getparm(int argc, _TCHAR* argv[]);
 };
