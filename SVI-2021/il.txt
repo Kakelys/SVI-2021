@@ -1,6 +1,10 @@
- int function func()•
+ int function func(int a)•
 {• 
-int a = 5;••
+print a;•
+if(a < 10){• 
+a = a+1;•
+func(a);•
+}•••
 return 0;•
 }••
 int function printline();•
@@ -22,7 +26,8 @@ string str = "Some Text";•
 string strr = "And more";•
 string st = str + strr;••
 print str; printline();•
-print strr;•••
+print strr;••
+func(0);••
 printline();•
 print b;•
 print factorial(b);•

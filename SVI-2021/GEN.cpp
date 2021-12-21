@@ -35,7 +35,7 @@ std::string StartWork(LT::LexTable lexems, IT::IdTable idenfs)
 		{
 			switch (elem.datatype)
 			{
-			case 1: temp = temp + " dword " + std::to_string(elem.value.vint); break;
+			case 1: temp = temp + " sdword " + std::to_string(elem.value.vint); break;
 			case 2: temp = temp + " byte '" + std::string(elem.value.vstr->str) + "', 0"; break;
 			}
 			ForConst += temp + "\n";
@@ -46,7 +46,7 @@ std::string StartWork(LT::LexTable lexems, IT::IdTable idenfs)
 			if (IT::AlredyExist(idenfs, i, elem.name)) { continue; }
 			switch (elem.datatype)
 			{
-			case 1: temp = temp + " dword 0" ; break;
+			case 1: temp = temp + " sdword 0" ; break;
 			case 2: temp = temp + " dword ?"; break;
 			}
 			ForData += temp + "\n";
@@ -153,18 +153,19 @@ std::string genEqual(LT::LexTable lexems, IT::IdTable idenfs, int i)
 				break;
 			}
 			case PLUS:
-				str = str + "pop ebx\npop eax\nadd eax, ebx\npush eax\n"; break;
+				str = str + "pop ebx\npop eax\nadd eax, ebx\npush eax\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n"; break;
 			case MINUS:
-				str = str + "pop ebx\npop eax\nsub eax, ebx\npush eax\n"; break;
+				str = str + "pop ebx\npop eax\nsub eax, ebx\npush eax\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n"; break;
 			case STAR:
-				str = str + "pop ebx\npop eax\nimul eax, ebx\npush eax\n"; break;
+				str = str + "pop ebx\npop eax\nimul eax, ebx\npush eax\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n"; break;
 			case DIRSLASH:
-				str = str + "pop ebx\npop eax\ncdq\ntest ebx, ebx\njz div_by_0\nidiv ebx\npush eax\n"; break;
+				str = str + "pop ebx\npop eax\ncdq\ntest ebx, ebx\njz div_by_0\nidiv ebx\npush eax\ntest ebx, MAX\nja over_flow\ntest ebx, MIN\njb over_flow\n"; break;
 			}
 			
 				
 		}
-		str = str + "\npop ebx\nmov " + elem1.name + ", ebx\n";			// вычисленное выражение в ebx 
+		
+		str = str + "\npop ebx\nmov " + elem1.name + ", ebx\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n";			
 		break;
 	}
 	case 2: 
@@ -275,16 +276,16 @@ std::string genReturn(LT::LexTable lexems, IT::IdTable idenfs, int i, std::strin
 		
 		if (func == "main") 
 		{
-			return  "\npush "+ idenfs.table[lexems.table[i + 1].indexTI].name +"\ncall ExitProcess\ndiv_by_0:\ncall printline\npush offset zero\ncall printstr\npush - 1\ncall ExitProcess\nmain ENDP\nend main"; 
+			return  "\npush "+ idenfs.table[lexems.table[i + 1].indexTI].name +"\ncall ExitProcess\ndiv_by_0:\ncall printline\npush offset ZERO\ncall printstr\npush - 1\ncall ExitProcess\nover_flow:\ncall printline\npush offset OVER\ncall printstr\npush - 1\ncall ExitProcess\nmain ENDP\nend main"; 
 		}
 	}
 
 
 
 
-
-
 	str += "ret\n";
+	str += "\ndiv_by_0:\ncall printline\npush offset ZERO\ncall printstr\npush - 1\ncall ExitProcess\nover_flow:\ncall printline\npush offset OVER\ncall printstr\npush - 1\ncall ExitProcess\n";
+
 	str += func + " ENDP" + "\n";
 	return str;
 }
@@ -401,7 +402,7 @@ std::string GenIf(LT::LexTable lexems, IT::IdTable idenfs, int i, int mark)
 	case less:
 	{
 		str += "mov ebx, " + op2.name + "\n";
-		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jna " + "L" + std::to_string(mark + 1) + "\n" + "ja " + "L" + std::to_string(mark + 2) + "\n";
+		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jb " + "L" + std::to_string(mark + 1) + "\n" + "jnb " + "L" + std::to_string(mark + 2) + "\n";
 
 		break;
 	}
@@ -415,7 +416,7 @@ std::string GenIf(LT::LexTable lexems, IT::IdTable idenfs, int i, int mark)
 	case less_equal: 
 	{
 		str += "mov ebx, " + op2.name + "\n";
-		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jnae " + "L" + std::to_string(mark + 1) + "\n" + "jae " + "L" + std::to_string(mark + 2) + "\n";
+		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jbe " + "L" + std::to_string(mark + 1) + "\n" + "jnbe " + "L" + std::to_string(mark + 2) + "\n";
 
 		break;
 	}

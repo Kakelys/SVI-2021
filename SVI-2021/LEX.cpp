@@ -734,7 +734,7 @@ namespace LEX
 						//if (subscope != 0) { word = prevfun + word; }
 
 
-						if (word == "printnumb" || word == "printstr" || word == "concats"||word == "buffer1"|| word == "buffer2"|| word == "zero")
+						if (word == "printnumb" || word == "printstr" || word == "concats")
 						{
 							ERROR_THROW_IN(207, sepline + separat(separators, sepcount, i), 0);
 						}

@@ -27,7 +27,10 @@
 
 
 #define CONST ".const\n"\
-"zero byte 'Error: Division by zero', 0\n\n"\
+"ZERO byte 'Ошибка: Деление на нолль', 0\n\n"\
+"OVER byte 'Ошибка: Выход за диапазон допустимых значений при присваивании'\n"\
+"MIN sdword -32768\n"\
+"MAX sdword 32767\n"\
 
 #define DATA ".data\n"\
 "\nbuffer1 byte 256 dup(0)\n"\

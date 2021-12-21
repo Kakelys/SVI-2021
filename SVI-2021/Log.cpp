@@ -7,6 +7,7 @@
 #include <fstream>
 #include <ctime>
 #include "Log.h"
+#include <chrono>
 
 namespace Log {
 	LOG getlog(wchar_t logfile[]) {
@@ -15,6 +16,13 @@ namespace Log {
 		log.stream->open(logfile);
 		if (!log.stream->is_open()) { throw ERROR_THROW(112); }
 		wcscpy_s(log.logfile, logfile);
+		//Запись времени в файл
+		auto current_time = std::chrono::system_clock::now();		
+		std::time_t current_time_t = std::chrono::system_clock::to_time_t(current_time);
+		std::string time = ctime(&current_time_t);
+		WriteLine(log, "=======================Протокол========================\n\n");
+		*log.stream << "                     "+time + "\n";
+		WriteLine(log, "=======================Время создания======================\n");
 		return log;
 	}
 
