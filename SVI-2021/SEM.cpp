@@ -339,6 +339,7 @@ namespace SEM
 				if (idenfs.table[lexems.table[i].indexTI].datatype == 1)
 				{
 					int value = idenfs.table[lexems.table[i].indexTI].value.vint;
+					// 77777 è -100000
 					if (value > 32767 || value < -32768) { ERROR_THROW_IN(310, lexems.table[i].linenumber, 0); }
 				}
 			}

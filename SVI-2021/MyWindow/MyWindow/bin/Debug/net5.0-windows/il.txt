@@ -1,15 +1,15 @@
  int function func(int a)•
 {• 
 a = 5;•
-return a;•
-}•••
+return 0;•
+}•
 int function printline();•
 int function factorial(int b);••
  •
 main•
 {• 
 int a = 10;•
-int b = 3;•
+int b = 3;••
 if(a > b)•
 {• 
 a = b;•
@@ -24,7 +24,10 @@ string st = str + strr;•
 func(a);•
 print str; printline();•
 print strr;••
-print a;•
+printline();•
+a = -4*3+(5*6)*7*func(0);•
+print a;••
+a=3;••
 printline();•
 print b;•
 print factorial(b);•

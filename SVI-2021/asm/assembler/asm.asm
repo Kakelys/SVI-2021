@@ -18,17 +18,25 @@ factorial PROTO: DWORD
 printline PROTO
 .stack 4096
 .const
-ZERO byte 'Ошибка: Деление на нолль', 0
+ZERO byte 'Ошибка: Деление на ноль', 0
 
 OVER byte 'Ошибка: Выход за диапазон допустимых значений при присваивании'
 MIN sdword -32768
 MAX sdword 32767
 		lit1 sdword 5
-		lit2 sdword 8
-		lit3 sdword 3
-		lit4 byte 'Some Text', 0
-		lit5 byte 'And more', 0
-		lit6 sdword 0
+		lit2 sdword 0
+		lit3 sdword 8
+		lit4 sdword 3
+		lit5 byte 'Some Text', 0
+		lit6 byte 'And more', 0
+		lit7 sdword -4
+		lit8 sdword 3
+		lit9 sdword 5
+		lit10 sdword 6
+		lit11 sdword 7
+		lit12 sdword 0
+		lit13 sdword 3
+		lit14 sdword 0
 .data
 
 buffer1 byte 256 dup(0)
@@ -55,7 +63,7 @@ jl over_flow
 
 pop edx
 pop ebx
-mov eax, funca
+mov eax, lit2
 ret
 
 div_by_0:
@@ -72,7 +80,7 @@ push - 1
 call ExitProcess
 func ENDP
 main PROC
-push lit2
+push lit3
 
 pop ebx
 mov ma, ebx
@@ -81,7 +89,7 @@ jg over_flow
 cmp ebx, MIN
 jl over_flow
 
-push lit3
+push lit4
 
 pop ebx
 mov mb, ebx
@@ -121,12 +129,12 @@ jl over_flow
 
 
 L2:
-push offset lit4
+push offset lit5
 
 pop ebx
 mov mstr, ebx
 
-push offset lit5
+push offset lit6
 
 pop ebx
 mov mstrr, ebx
@@ -152,8 +160,76 @@ call printline
 push mstrr
 call printstr
 
+call printline 
+push lit7
+push lit8
+pop ebx
+pop eax
+imul eax, ebx
+push eax
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+push lit9
+push lit10
+pop ebx
+pop eax
+imul eax, ebx
+push eax
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+push lit11
+pop ebx
+pop eax
+imul eax, ebx
+push eax
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+
+push lit12
+call func 
+push eax
+pop ebx
+pop eax
+imul eax, ebx
+push eax
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+pop ebx
+pop eax
+add eax, ebx
+push eax
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+
+pop ebx
+mov ma, ebx
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+
+
 push ma
 call printnumb
+push lit13
+
+pop ebx
+mov ma, ebx
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+
 
 call printline 
 
@@ -166,7 +242,7 @@ call factorial
 push eax 
 call printnumb
 
-push lit6
+push lit14
 call ExitProcess
 div_by_0:
 call printline

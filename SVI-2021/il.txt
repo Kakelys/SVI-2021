@@ -2,14 +2,14 @@
 {• 
 a = 5;•
 return 0;•
-}••
+}•
 int function printline();•
 int function factorial(int b);••
  •
 main•
 {• 
 int a = 10;•
-int b = 3;•
+int b = 3;••
 if(a > b)•
 {• 
 a = b;•
@@ -20,11 +20,21 @@ b = a;•
 }•
 string str = "Some Text";•
 string strr = "And more";•
-string st = str + strr;••
+string st = str + strr;•
+func(a);•
 print str; printline();•
-print strr;•
-a = 3+3*2-5-2+3;•
+print strr;••
+printline();•
+a = -4*3+(5*6)*7*func(0);•
 print a;•
+if(func(a)==func(a))•
+{• 
+print "yes";•
+}•
+else•
+{• 
+print "no";•
+}•
 printline();•
 print b;•
 print factorial(b);•
