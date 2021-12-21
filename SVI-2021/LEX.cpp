@@ -83,7 +83,14 @@ namespace LEX
 					{
 						if (somethingelse == true)
 						{
-							
+							// остыль дл€ минусовых чисел
+							if (line[i] == '-' && ((line[i-1] == '=' || line[i-2] == '=') || (line[i - 1] == '(' || line[i - 2] == '(') || (line[i - 1] == '>' || line[i - 2] == '>') || (line[i - 1] == '<' || line[i - 2] == '<')))
+							{
+								word += line[i];
+								somethingelse = false;
+								continue;
+								
+							}
 							word += line[i];
 							somethingelse = false;
 							//Ќебольшой костыль дл€ сравнений: равенство/неравенство

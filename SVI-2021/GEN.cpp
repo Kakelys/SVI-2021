@@ -153,19 +153,19 @@ std::string genEqual(LT::LexTable lexems, IT::IdTable idenfs, int i)
 				break;
 			}
 			case PLUS:
-				str = str + "pop ebx\npop eax\nadd eax, ebx\npush eax\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n"; break;
+				str = str + "pop ebx\npop eax\nadd eax, ebx\npush eax\ncmp ebx, MAX\njg over_flow\ncmp ebx, MIN\njl over_flow\n"; break;
 			case MINUS:
-				str = str + "pop ebx\npop eax\nsub eax, ebx\npush eax\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n"; break;
+				str = str + "pop ebx\npop eax\nsub eax, ebx\npush eax\ncmp ebx, MAX\njg over_flow\ncmp ebx, MIN\njl over_flow\n"; break;
 			case STAR:
-				str = str + "pop ebx\npop eax\nimul eax, ebx\npush eax\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n"; break;
+				str = str + "pop ebx\npop eax\nimul eax, ebx\npush eax\ncmp ebx, MAX\njg over_flow\ncmp ebx, MIN\njl over_flow\n"; break;
 			case DIRSLASH:
-				str = str + "pop ebx\npop eax\ncdq\ntest ebx, ebx\njz div_by_0\nidiv ebx\npush eax\ntest ebx, MAX\nja over_flow\ntest ebx, MIN\njb over_flow\n"; break;
+				str = str + "pop ebx\npop eax\ncdq\ntest ebx, ebx\njz div_by_0\nidiv ebx\npush eax\ncmp ebx, MAX\njg over_flow\ncmp ebx, MIN\njl over_flow\n"; break;
 			}
 			
 				
 		}
 		
-		str = str + "\npop ebx\nmov " + elem1.name + ", ebx\ntest ebx, MAX\njb over_flow\ntest ebx, MIN\nja over_flow\n";			
+		str = str + "\npop ebx\nmov " + elem1.name + ", ebx\ncmp ebx, MAX\njg over_flow\ncmp ebx, MIN\njl over_flow\n";			
 		break;
 	}
 	case 2: 
@@ -395,28 +395,28 @@ std::string GenIf(LT::LexTable lexems, IT::IdTable idenfs, int i, int mark)
 	case big:
 	{
 		str += "mov ebx, " + op2.name + "\n";
-		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "ja " + "L" + std::to_string(mark + 1) + "\n" + "jna " + "L" + std::to_string(mark + 2) + "\n";
+		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jg " + "L" + std::to_string(mark + 1) + "\n" + "jle " + "L" + std::to_string(mark + 2) + "\n";
 
 		break;
 	}
 	case less:
 	{
 		str += "mov ebx, " + op2.name + "\n";
-		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jb " + "L" + std::to_string(mark + 1) + "\n" + "jnb " + "L" + std::to_string(mark + 2) + "\n";
+		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jl " + "L" + std::to_string(mark + 1) + "\n" + "jge " + "L" + std::to_string(mark + 2) + "\n";
 
 		break;
 	}
 	case big_equal:
 	{
 		str += "mov ebx, " + op2.name + "\n";
-		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jae " + "L" + std::to_string(mark + 1) + "\n" + "jnae " + "L" + std::to_string(mark + 2) + "\n";
+		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jge " + "L" + std::to_string(mark + 1) + "\n" + "jl " + "L" + std::to_string(mark + 2) + "\n";
 
 		break;
 	}
 	case less_equal: 
 	{
 		str += "mov ebx, " + op2.name + "\n";
-		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jbe " + "L" + std::to_string(mark + 1) + "\n" + "jnbe " + "L" + std::to_string(mark + 2) + "\n";
+		str += "cmp " + op1.name + ", " + "ebx" + "\n" + "jle " + "L" + std::to_string(mark + 1) + "\n" + "jg " + "L" + std::to_string(mark + 2) + "\n";
 
 		break;
 	}

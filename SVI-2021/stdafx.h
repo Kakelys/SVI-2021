@@ -11,6 +11,7 @@
 #include <stack>
 #include <fstream>
 #include <stdarg.h>
+#include <regex>
 
 #define lexema(x) lexems.table[x].lexema
 #define idenf(x) idenfs.table[lexems.table[x].indexTI]

@@ -181,7 +181,7 @@ namespace PN
 							
 							}
 							//убирают из стека всё до скобки
-							for (int j = 0; j < stack.length()+1; j++)
+							for (int j = 0; j < stack.length()+2; j++)
 							{
 								if (stack[0] == '(')
 								{

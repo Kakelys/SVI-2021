@@ -1,10 +1,6 @@
  int function func(int a)•
 {• 
-print a;•
-if(a < 10){• 
-a = a+1;•
-func(a);•
-}•••
+a = 5;•
 return 0;•
 }••
 int function printline();•
@@ -26,8 +22,9 @@ string str = "Some Text";•
 string strr = "And more";•
 string st = str + strr;••
 print str; printline();•
-print strr;••
-func(0);••
+print strr;•
+a = 3+3*2-5-2+3;•
+print a;•
 printline();•
 print b;•
 print factorial(b);•
