@@ -1,3 +1,4 @@
-C:\papka\programms\Git\SVI-2021\Final\final_example.txt
+C:\papka\programms\Git\SVI-2021\Final\mine.txt
 C:\papka\programms\Git\SVI-2021\SVI-2021\asm\assembler\asm.asm
+asm.asm
 sm

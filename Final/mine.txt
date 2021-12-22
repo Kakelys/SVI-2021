@@ -1,0 +1,42 @@
+               int function func(int a)
+{
+	a = 5;
+	return 0;
+}
+int function printline();
+int function factorial(int b);
+
+               
+main
+{
+	int a = 10;
+	int b = 3;
+	a="line";
+	if(a > b)
+	{
+	print "yes";	
+	printline();
+	}
+	else
+	{
+	print "no";	
+	printline();
+	}
+	string str = "Some Text";
+	string strr = "And more";
+	string st = str + strr;
+	func(a);
+	print str; printline();
+	print strr;
+
+	printline();
+	a = -4*3+(5*6)*7*func(0);
+	print a;
+
+	printline();
+	print b;
+	print factorial(b);
+	return 0;
+
+}
+
