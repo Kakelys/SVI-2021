@@ -4,28 +4,25 @@ a = 5;•
 return 0;•
 }•
 int function printline();•
-int function factorial(int b);••
+int function factorial(int b);•••
  •
 main•
-{• 
+{••
 int a = 10;•
-int b = 3;•
-a="line";•
+int b = 3;••
 if(a > b)•
 {• 
-print "yes";•
-printline();•
+a = b;•
 }•
 else•
 {• 
-print "no";•
-printline();•
+b = a;•
 }•
-string str = "Some Text";•
-string strr = "And more";•
+string str = "SomedddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddText;•
+string strr = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAnd more";•
 string st = str + strr;•
 func(a);•
-print str; printline();•
+print st; printline();•
 print strr;••
 printline();•
 a = -4*3+(5*6)*7*func(0);•
@@ -33,5 +30,5 @@ print a;••
 printline();•
 print b;•
 print factorial(b);•
-return 0;••
-}••
+return 0;•
+}

@@ -84,7 +84,7 @@ namespace LEX
 						if (somethingelse == true)
 						{
 							//Костыль для минусовых чисел
-							if (line[i] == '-' && ((line[i-1] == '=' || line[i-2] == '=') || (line[i - 1] == '(' || line[i - 2] == '(') || (line[i - 1] == '>' || line[i - 2] == '>') || (line[i - 1] == '<' || line[i - 2] == '<')))
+							if (line[i] == '-' && ((line[i-1] == '=' || line[i-2] == '=') || (line[i - 1] == '(' || line[i - 2] == '(') || (line[i - 1] == '>' || line[i - 2] == '>') || (line[i - 1] == '<' || line[i - 2] == '<') || (line[i - 1] == 't' || line[i - 2] == 't')))
 							{
 								word += line[i];
 								somethingelse = false;

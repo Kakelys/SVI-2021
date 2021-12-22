@@ -1,14 +1,16 @@
-               int function func(int a)
-{
+              int function func(int a)
+	{
 	a = 5;
 	return 0;
-}
+	}
 int function printline();
 int function factorial(int b);
+
 
                
 main
 {
+
 	int a = 10;
 	int b = 3;
 	
@@ -20,11 +22,11 @@ main
 	{
 	b = a;
 	}
-	string str = "Some Text";
-	string strr = "And more";
+	string str = "SomedddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddText";
+	string strr = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAnd more";
 	string st = str + strr;
 	func(a);
-	print str; printline();
+	print st; printline();
 	print strr;
 
 	printline();
@@ -35,6 +37,4 @@ main
 	print b;
 	print factorial(b);
 	return 0;
-
 }
-

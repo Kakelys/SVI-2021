@@ -1,4 +1,4 @@
-               int function func(int a)
+                int function func(int a)
 {
 	a = 5;
 	return 0;
@@ -11,7 +11,7 @@ main
 {
 	int a = 10;
 	int b = 3;
-	a="line";
+
 	if(a > b)
 	{
 	print "yes";	

@@ -26,15 +26,7 @@ print str; printline();•
 print strr;••
 printline();•
 a = -4*3+(5*6)*7*func(0);•
-print a;•
-if(func(a)==func(a))•
-{• 
-print "yes";•
-}•
-else•
-{• 
-print "no";•
-}•
+print a;••
 printline();•
 print b;•
 print factorial(b);•
