@@ -59,7 +59,7 @@ namespace In
 			if (inn.code[(int)ch + 256] == IN::I) { continue; }
 
 			//
-			if (ch == 0x27 && (findfirstbrackets == false || findsecondbrackets == false)) //»щет строки
+			if (ch == '"' && (findfirstbrackets == false || findsecondbrackets == false)) //»щет строки
 			{
 				if (findfirstbrackets == true) {
 					line += letter[0];

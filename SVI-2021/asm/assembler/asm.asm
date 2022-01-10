@@ -27,15 +27,13 @@ MAX sdword 32767
 		lit2 sdword 0
 		lit3 sdword 8
 		lit4 sdword 3
-		lit5 byte 'SomedddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddText', 0
-		lit6 byte 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAnd more', 0
-		lit7 sdword -4
-		lit8 sdword 3
-		lit9 sdword 5
-		lit10 sdword 6
-		lit11 sdword 7
-		lit12 sdword 0
-		lit13 sdword 0
+		lit5 byte 'some                                                                                   text', 0
+		lit6 byte 'and more', 0
+		lit7 sdword 7
+		lit8 sdword 2
+		lit9 sdword 2
+		lit10 sdword 2
+		lit11 sdword 0
 .data
 
 buffer1 byte 256 dup(0)
@@ -164,7 +162,10 @@ push lit7
 push lit8
 pop ebx
 pop eax
-imul eax, ebx
+cdq
+test ebx, ebx
+jz div_by_0
+idiv ebx
 push eax
 cmp ebx, MAX
 jg over_flow
@@ -174,36 +175,15 @@ push lit9
 push lit10
 pop ebx
 pop eax
-imul eax, ebx
-push eax
-cmp ebx, MAX
-jg over_flow
-cmp ebx, MIN
-jl over_flow
-push lit11
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-cmp ebx, MAX
-jg over_flow
-cmp ebx, MIN
-jl over_flow
-
-push lit12
-call func 
-push eax
-pop ebx
-pop eax
-imul eax, ebx
-push eax
-cmp ebx, MAX
-jg over_flow
-cmp ebx, MIN
-jl over_flow
-pop ebx
-pop eax
 add eax, ebx
+push eax
+cmp ebx, MAX
+jg over_flow
+cmp ebx, MIN
+jl over_flow
+pop ebx
+pop eax
+imul eax, ebx
 push eax
 cmp ebx, MAX
 jg over_flow
@@ -232,7 +212,7 @@ call factorial
 push eax 
 call printnumb
 
-push lit13
+push lit11
 call ExitProcess
 div_by_0:
 call printline

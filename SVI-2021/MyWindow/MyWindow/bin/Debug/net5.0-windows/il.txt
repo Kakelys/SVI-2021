@@ -18,14 +18,14 @@ else•
 {• 
 b = a;•
 }•
-string str = "SomedddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddText;•
-string strr = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaAnd more";•
+string str = "some                                                                                   text";•
+string strr = "and more";•
 string st = str + strr;•
 func(a);•
 print st; printline();•
 print strr;••
 printline();•
-a = -4*3+(5*6)*7*func(0);•
+a = 7/2*(2+2);•
 print a;••
 printline();•
 print b;•
