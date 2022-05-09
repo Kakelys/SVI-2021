@@ -10,7 +10,7 @@ data types: int(2 byte), string
 
 instead \n use ↓ before main
 
-int function prinline(); #Why int? I'm lazy
+int function prinline(); 
 and then    prinline();
 
 
@@ -18,9 +18,5 @@ and then    prinline();
 example of  code u can find in:     SVI-2021/Final/final_example
 
 
-
-
-
-if you "take" my code, send me a "thank you" somewhere, it's not difficult
 
 vk: kakatys
